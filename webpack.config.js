@@ -1,9 +1,9 @@
 "use strict";
 
-var HtmlWebpackPlugin = require('html-webpack-plugin');
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var config =  {
+const config =  {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
     filename: 'dist/app.js',

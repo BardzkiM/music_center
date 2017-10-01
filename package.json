@@ -1,22 +1,14 @@
 {
-  "name": "react-redux-example",
+  "name": "music-center",
   "version": "1.0.0",
-  "description": "React Redux implementation example for the blog post purpose",
+  "description": "Music Center",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/burczu/react-redux-example.git"
+    "url": "git+https://github.com/BardzkiM/music_center.git"
   },
-  "author": "Bartłomiej Dybowski <b.dybowski@gmail.com> (http://frontendinsights.com)",
+  "author": "Michał Bardzki",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/burczu/react-redux-example/issues"
-  },
-  "homepage": "https://github.com/burczu/react-redux-example#readme",
   "devDependencies": {
     "babel-loader": "^6.2.4",
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
