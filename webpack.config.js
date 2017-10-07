@@ -1,21 +1,24 @@
 "use strict";
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const config =  {
+module.exports = {
   entry: ['babel-polyfill', './src/index.js'],
   output: {
-    filename: 'dist/app.js',
-    path: __dirname + '/dist',
+    filename: 'app.js',
+    path: __dirname + '/static/build',
     publicPath: '/'
   },
   devtool: 'eval',
   module: {
     loaders: [
       {
-        test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader')
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(
+          {
+            fallback: 'style-loader',
+            use: 'css-loader?sourceMap!sass-loader?sourceMap'
+          }
+        )
       },
       {
         test: /.*\.js$/,
@@ -29,11 +32,6 @@ const config =  {
     ]
   },
   plugins: [
-    new ExtractTextPlugin('styles.css'),
-    new HtmlWebpackPlugin({
-      template: __dirname + '/src/index.html'
-    })
+    new ExtractTextPlugin('styles.css')
   ]
 };
-
-module.exports = config;
