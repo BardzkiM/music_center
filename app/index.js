@@ -1,12 +1,9 @@
-import {render} from 'react-dom';
-import {Provider} from 'react-redux';
 import React from 'react';
+import {render} from 'react-dom';
 import store from './store/store';
+import Root from './components/Root';
 
 render(
-  <Provider store={store}>
-    <div>
-    </div>
-  </Provider>
-  , document.getElementById('root')
+  <Root store={store}/>,
+  document.getElementById('root')
 );
