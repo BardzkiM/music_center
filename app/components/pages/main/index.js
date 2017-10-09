@@ -1,7 +1,7 @@
 import React from 'react';
 
-export default class MainPage {
+export default class MainPage extends React.PureComponent {
   render() {
-    return <div>GOWNO</div>;
+    return <div>MAIN PAGE хахахахаха xD</div>;
   }
 }
