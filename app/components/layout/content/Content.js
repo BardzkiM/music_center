@@ -1,9 +1,11 @@
 import React from 'react';
 
-export default () => {
+import './Content.scss';
+
+export default props => {
   return (
     <div className="Content">
-      {this.props.children}
+      {props.children}
     </div>
   );
 };
