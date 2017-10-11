@@ -1,3 +1,9 @@
 import React from 'react';
 
-export default () => <span>FOOTER</span>;
+export default () => {
+  return (
+    <div className="Footer">
+      <span>FOOTER</span>
+    </div>
+  );
+};

@@ -1,3 +1,9 @@
 import React from 'react';
 
-export default () => <span>MENU</span>;
+export default () => {
+  return (
+    <div className="Menu">
+
+    </div>
+  );
+};

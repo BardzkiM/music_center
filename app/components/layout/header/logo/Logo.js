@@ -1,3 +1,9 @@
 import React from 'react';
 
-export default () => <span>LOGO</span>;
+export default () => {
+  return (
+    <div className="Logo">
+
+    </div>
+  );
+};
