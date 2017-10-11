@@ -1,7 +1,7 @@
 import React from 'react';
 import {Route} from 'react-router'
 
-import MainLayout from '../layouts/main/index';
+import MainLayout from '../layout/MainLayout';
 
 export default () =>
   <div>

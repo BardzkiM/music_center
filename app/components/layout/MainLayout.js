@@ -2,6 +2,6 @@ import React from 'react';
 
 export default class Main extends React.PureComponent {
   render() {
-    return <div>MAIN PAGE хахахахаха xD</div>;
+    return <div>MAIN LAYOUT</div>;
   }
 }
