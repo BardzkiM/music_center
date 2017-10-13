@@ -1,6 +1,6 @@
 import React from 'react';
 import Logo from './logo/Logo';
-import Menu from './menu/Menu';
+import Menu from '../../../connectors/menu/MenuConnector';
 import './Header.scss';
 
 export default () => {
@@ -10,5 +10,4 @@ export default () => {
       <Menu/>
     </div>
   );
-
 };

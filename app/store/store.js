@@ -8,7 +8,7 @@ import sagas from '../modules/sagas';
 const sagaMiddleware = createSagaMiddleware();
 
 const store = createStore(
-  combineReducers({routing: routerReducer}),
+  combineReducers({...reducers, routing: routerReducer}),
   {},
   compose(
     applyMiddleware(sagaMiddleware),
