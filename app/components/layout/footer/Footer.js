@@ -4,7 +4,7 @@ import './Footer.scss';
 export default () => {
   return (
     <div className="Footer">
-      <span>FOOTER</span>
+      <span>&copy; Centrum Muzyczne</span>
     </div>
   );
 };
