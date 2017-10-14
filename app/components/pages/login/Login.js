@@ -15,7 +15,6 @@ export default class LoginPage extends React.Component {
   };
 
   render() {
-    console.log(this.props.formStatus);
     return (
       <div>
         <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
