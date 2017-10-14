@@ -1,4 +1,7 @@
+import React from 'react';
+
 import serialize from 'form-serialize';
+import {InputControl} from "../components/partials/form/InputControls";
 
 export const formatData = formNode => {
   const data = serialize(formNode, {hash: true});
@@ -7,3 +10,8 @@ export const formatData = formNode => {
 
   return formData;
 };
+
+export const getFormControlsDOM = formControlsData => (
+  formControlsData.map(item =>
+    <InputControl name={item.name} text={item.text} type={item.type} key={item.name}/>)
+);

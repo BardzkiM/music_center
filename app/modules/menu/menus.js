@@ -1,10 +1,11 @@
 import {fromJS} from 'immutable';
 import {USER_TYPE_LOGGED, USER_TYPE_UNLOGGED} from '../../constants';
-import {HOME_PAGE, LOG_OUT, LOG_IN} from '../../locales';
+import {HOME_PAGE, LOG_OUT, LOG_IN, REGISTER} from '../../locales';
 
 const PATHS = {
   HOME_PAGE: {name: HOME_PAGE, path: '/'},
-  LOG_IN: {name: LOG_IN, path: '/login'}
+  LOG_IN: {name: LOG_IN, path: '/login'},
+  REGISTER: {name: REGISTER, path: '/register'}
 };
 
 const menu = fromJS({
@@ -13,7 +14,8 @@ const menu = fromJS({
   ],
   [USER_TYPE_UNLOGGED]: [
     PATHS.HOME_PAGE,
-    PATHS.LOG_IN
+    PATHS.LOG_IN,
+    PATHS.REGISTER
   ]
 });
 
