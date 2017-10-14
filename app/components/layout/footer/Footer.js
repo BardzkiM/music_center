@@ -3,8 +3,8 @@ import './Footer.scss';
 
 export default () => {
   return (
-    <div className='Footer'>
-      <span>FOOTER</span>
+    <div className="Footer">
+      <span>&copy; Centrum Muzyczne</span>
     </div>
   );
 };
