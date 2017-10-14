@@ -2,7 +2,6 @@ import {put, takeLatest, call} from 'redux-saga/effects';
 import * as axios from 'axios';
 
 import {SEND_LOGIN_REQUEST, SAVE_USER_DATA} from './actions';
-import {formatData} from '../../utils/requests';
 import {API, USER_TYPE_LOGGED, WRONG_CREDENTIALS} from '../../constants';
 import {REQUEST_DATA_SUCCESS, REQUEST_DATA_FAILED} from '../form/actions';
 import {CHANGE_MENU} from '../menu/actions';
@@ -13,7 +12,7 @@ export default function* userDataSaga() {
 
 export function* sendLoginUserData({payload: userData}) {
   try {
-    const response = yield call(axios.post, API.login, formatData(userData));
+    const response = yield call(axios.post, API.login, userData);
     const data = yield response.data;
 
     if (data) {

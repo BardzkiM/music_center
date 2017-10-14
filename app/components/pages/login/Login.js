@@ -1,17 +1,15 @@
 import React from 'react';
 
-import serialize from 'form-serialize';
+import {formatData} from "../../../utils/form";
 
 export default class LoginPage extends React.Component {
 
   handleSubmit = event => {
-    const
-      data = serialize(this.form, {hash: true}),
-      {sendLoginData} = this.props;
+    const {sendLoginData} = this.props;
 
     event.preventDefault();
 
-    sendLoginData(data);
+    sendLoginData(formatData(this.form));
   };
 
   render() {

@@ -2,8 +2,9 @@ import React from 'react';
 import {Link} from 'react-router';
 
 import './Menu.scss';
+import {LOG_OUT} from "../../../../locales";
 
-export default ({menu, logIn, logOut}) => (
+export default ({menu, logOut}) => (
   <div className="Menu">
     {
       menu.map((menuItem, index) =>
@@ -13,8 +14,7 @@ export default ({menu, logIn, logOut}) => (
       )
     }
     <div className="login-buttons">
-      <div className="login-button" onClick={logIn}>LOG IN</div>
-      <div className="logout-button" onClick={logOut}>LOG OUT</div>
+      <div className="logout-button" onClick={logOut}>{LOG_OUT}</div>
     </div>
   </div>
 );
