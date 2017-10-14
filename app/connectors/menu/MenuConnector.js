@@ -1,9 +1,9 @@
 import {connect} from 'react-redux';
 
-import Menu from "../../components/layout/header/menu/Menu";
-import {getMenu} from "../../modules/menu/selectors";
-import {CHANGE_MENU} from "../../modules/menu/actions";
-import {USER_TYPE_LOGGED, USER_TYPE_UNLOGGED} from "../../constants";
+import Menu from '../../components/layout/header/menu/Menu';
+import {getMenu} from '../../modules/menu/selectors';
+import {CHANGE_MENU} from '../../modules/menu/actions';
+import {USER_TYPE_LOGGED, USER_TYPE_UNLOGGED} from '../../constants';
 
 const mapStateToProps = state => ({
   menu: getMenu(state)

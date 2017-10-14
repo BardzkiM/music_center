@@ -5,12 +5,10 @@ import Footer from './footer/Footer';
 
 import './MainLayout.scss';
 
-export default () => {
-  return (
-    <div className="MainLayout">
-      <Header/>
-      <Content/>
-      <Footer/>
-    </div>
-  );
-}
+export default props => (
+  <div className='MainLayout'>
+    <Header/>
+    <Content content={props.children}/>
+    <Footer/>
+  </div>
+);

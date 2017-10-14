@@ -2,10 +2,8 @@ import React from 'react';
 
 import './Content.scss';
 
-export default props => {
-  return (
-    <div className="Content">
-      {props.children}
-    </div>
-  );
-};
+export default ({content}) => (
+  <div className='Content'>
+    {content}
+  </div>
+);

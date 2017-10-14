@@ -3,7 +3,7 @@ import './Logo.scss';
 
 export default () => {
   return (
-    <div className="Logo">
+    <div className='Logo'>
       <span>LOGO</span>
     </div>
   );

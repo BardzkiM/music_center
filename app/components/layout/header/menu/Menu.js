@@ -4,7 +4,7 @@ import {Link} from 'react-router';
 import './Menu.scss';
 
 export default ({menu, logIn, logOut}) => (
-  <div className="Menu">
+  <div className='Menu'>
     <ul>
       {
         menu.map((menuItem, index) =>

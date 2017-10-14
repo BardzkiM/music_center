@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 
-import {CHANGE_MENU} from "./actions";
+import {CHANGE_MENU} from './actions';
 import menus, {DEFAULT_MENU} from './menus';
 
 export default handleActions({

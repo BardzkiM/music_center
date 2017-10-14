@@ -3,7 +3,7 @@ import './Footer.scss';
 
 export default () => {
   return (
-    <div className="Footer">
+    <div className='Footer'>
       <span>FOOTER</span>
     </div>
   );

@@ -1,6 +1,6 @@
 import {fromJS} from 'immutable';
-import {USER_TYPE_LOGGED, USER_TYPE_UNLOGGED} from "../../constants";
-import {HOME_PAGE, LOG_OUT, LOG_IN} from "../../locales";
+import {USER_TYPE_LOGGED, USER_TYPE_UNLOGGED} from '../../constants';
+import {HOME_PAGE, LOG_OUT, LOG_IN} from '../../locales';
 
 const menu = fromJS({
   [USER_TYPE_LOGGED]: [
