@@ -4,7 +4,7 @@ import Menu from '../../components/layout/header/menu/Menu';
 import {getMenu} from '../../modules/menu/selectors';
 import {CHANGE_MENU} from '../../modules/menu/actions';
 import {USER_TYPE_UNLOGGED} from '../../constants';
-import {CLEAR_USER_DATA} from "../../modules/userData/actions";
+import {CLEAR_USER_DATA} from '../../modules/userData/actions';
 
 const mapStateToProps = state => ({
   menu: getMenu(state)
