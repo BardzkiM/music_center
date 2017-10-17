@@ -35,7 +35,5 @@ public class AuthenticationService {
         } else {
             return null;
         }
-
     }
-
 }

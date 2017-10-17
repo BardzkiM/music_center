@@ -2,7 +2,7 @@ import {fromJS} from 'immutable';
 import {USER_TYPE_LOGGED, USER_TYPE_UNLOGGED} from '../../constants';
 import {HOME_PAGE, LOG_OUT, LOG_IN, REGISTER} from '../../locales';
 
-const PATHS = {
+export const PATHS = {
   HOME_PAGE: {name: HOME_PAGE, path: '/'},
   LOG_IN: {name: LOG_IN, path: '/login'},
   REGISTER: {name: REGISTER, path: '/register'}

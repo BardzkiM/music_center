@@ -1,0 +1,7 @@
+.Notification {
+  display: none;
+
+  &.show {
+    display: block;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 
 import './Menu.scss';
-import {LOG_OUT} from "../../../../locales";
+import LogOut from '../../../../connectors/logout/LogOutConnector'
 
 export default ({menu, logOut}) => (
   <div className="Menu">
@@ -14,7 +14,7 @@ export default ({menu, logOut}) => (
       )
     }
     <div className="login-buttons">
-      <div className="logout-button" onClick={logOut}>{LOG_OUT}</div>
+      <LogOut />
     </div>
   </div>
 );

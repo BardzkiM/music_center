@@ -7,29 +7,28 @@ import {Provider, connect} from 'react-redux';
 import store from '../store/store';
 import Routes from './routes/Routes';
 import {LOADING} from "../locales";
+import {getIsReady} from '../modules/boot/selectors';
+import {CHECK_LOGIN} from '../modules/userData/actions';
 
 const history = syncHistoryWithStore(hashHistory, store);
 
 export class Root extends React.Component {
   componentDidMount() {
-    //TODO CHECK AUTH
+    this.props.checkAuth();
   }
 
   render() {
-    const {store: {isReady}} = this.props;
-
-    //TODO
-    //if (isReady) {
-    return (
-      <Provider store={store}>
-        <Router history={history}>
-          {Routes()}
-        </Router>
-      </Provider>
-    );
-    //} else {
-    //  return <div>{LOADING}</div>
-    //}
+    if (this.props.isReady) {
+      return (
+        <Provider store={store}>
+          <Router history={history}>
+            {Routes()}
+          </Router>
+        </Provider>
+      );
+    } else {
+      return <div>{LOADING}</div>
+    }
   }
 }
 
@@ -38,11 +37,11 @@ Root.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  isReady: state.isReady
+  isReady: getIsReady(state)
 });
 
-const mapDispatchToProps = dispatch => (
-  {} //TODO CHECK AUTH
-);
+const mapDispatchToProps = dispatch => (  {
+  checkAuth: () => dispatch(CHECK_LOGIN())
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Root);
