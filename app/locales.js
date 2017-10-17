@@ -1,4 +1,4 @@
-import {WRONG_CREDENTIALS} from './constants';
+import {WRONG_CREDENTIALS, ACCOUNT_ALREADY_EXISTS} from './constants';
 export const LOG_OUT = 'Log out';
 export const LOG_IN = 'Log in';
 export const HOME_PAGE = 'Home';
@@ -17,7 +17,8 @@ export const ADDRESS = 'Address';
 export const EMAIL = 'E-mail';
 
 const ERRORS = {
-  [WRONG_CREDENTIALS]: 'Wrong Credentials'
+  [WRONG_CREDENTIALS]: 'Wrong Credentials',
+  [ACCOUNT_ALREADY_EXISTS]: 'Login is in use; choose other'
 };
 const UNKNOWN_ERROR = 'Server Error';
 

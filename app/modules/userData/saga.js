@@ -47,7 +47,7 @@ function* handleLogoutRequest() {
 function* handleRegisterRequest({payload: userData}) {
   try {
     const response = yield call(axios.post, API.register, userData);
-    const data = yield response;
+    const data = yield response.data;
 
     if (data) {
       yield put(REQUEST_DATA_SUCCESS());
