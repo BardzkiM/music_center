@@ -41,6 +41,9 @@ public class User {
 
     private String type;
 
+    @Column(columnDefinition="text")
+    private String description;
+
     public void updateData(User user) {
         login = user.login;
         password = user.password;
@@ -48,6 +51,7 @@ public class User {
         lastName = user.lastName;
         address = user.address;
         email = user.email;
+        description = user.description;
     }
 
     public long getId() {
