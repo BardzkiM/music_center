@@ -36,7 +36,7 @@ public class Offer {
     @Column(columnDefinition = "text")
     private String description;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "itemId")
     private Item item;
 

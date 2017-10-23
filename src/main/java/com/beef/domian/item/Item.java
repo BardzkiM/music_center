@@ -3,6 +3,7 @@ package com.beef.domian.item;
 import com.beef.domian.user.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 public class Item {
@@ -20,7 +21,7 @@ public class Item {
 
     private String address;
 
-    private String images;
+    private ArrayList<String> images;
 
     private String name;
 
@@ -28,7 +29,7 @@ public class Item {
 
     private boolean active;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
@@ -56,11 +57,11 @@ public class Item {
         this.address = address;
     }
 
-    public String getImages() {
+    public ArrayList<String> getImages() {
         return images;
     }
 
-    public void setImages(String images) {
+    public void setImages(ArrayList<String> images) {
         this.images = images;
     }
 

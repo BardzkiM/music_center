@@ -30,11 +30,11 @@ public class Rental {
 
     private RentalStatus status;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "offerId")
     private Offer offer;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
 
