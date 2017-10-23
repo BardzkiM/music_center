@@ -24,9 +24,9 @@ public class Item {
 
     private String name;
 
-    private String type;
+    private ItemType type;
 
-    private String active;
+    private boolean active;
 
     @OneToMany
     @JoinColumn(name = "userId")
@@ -72,19 +72,19 @@ public class Item {
         this.name = name;
     }
 
-    public String getType() {
+    public ItemType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ItemType type) {
         this.type = type;
     }
 
-    public String getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(String active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 

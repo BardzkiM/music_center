@@ -26,7 +26,7 @@ public class UserService {
     public static User updateUserByAdmin(HttpSession session, User userData) {
         HibernateBase.closeEntityManagers();
 
-        if (UserUtils.checkUserType(session, "admin")) {
+        if (UserUtils.isUserAdmin(session)) {
             return UserHelper.updateUser(userData.getId(), userData);
         }
         return null;
@@ -36,16 +36,16 @@ public class UserService {
         HibernateBase.closeEntityManagers();
         List<User> result = null;
 
-        if (UserUtils.checkUserType(session, "admin")) {
+        if (UserUtils.isUserAdmin(session)) {
             result = UserHelper.getUsers();
         }
 
         return result;
     }
 
-    public static void changeUserStatus(HttpSession session, String id, String status) {
+    public static void changeUserStatus(HttpSession session, String id, boolean status) {
         HibernateBase.closeEntityManagers();
-        if (UserUtils.checkUserType(session, "admin")) {
+        if (UserUtils.isUserAdmin(session)) {
             UserHelper.changeUserStatus(Long.parseLong(id), status);
         }
     }
@@ -54,15 +54,9 @@ public class UserService {
         HibernateBase.closeEntityManagers();
         long userId = Long.parseLong(id);
 
-        if (UserUtils.checkUserType(session, "admin") ||
-                UserUtils.checkUserType(session, "hurtownik") ||
-                UserUtils.checkUserType(session, "dostawca")) {
-            User user = UserHelper.getUserById(userId);
-            user.setPassword("");
+        User user = UserHelper.getUserById(userId);
+        user.setPassword("");
 
-            return user;
-        }
-
-        return null;
+        return user;
     }
 }

@@ -10,15 +10,12 @@ public class UserUtils {
         return getSessionUser(session) != null;
     }
 
-    public static boolean checkUserType(HttpSession session, String type) {
+    public static boolean isUserAdmin(HttpSession session) {
         User authenticatedUser = getSessionUser(session);
 
         if (authenticatedUser != null) {
-            if (authenticatedUser.getType().equals(type) || authenticatedUser.getType().equals("admin")) {
-                return true;
-            }
+            return authenticatedUser.getLogin().equals("admin");
         }
-
         return false;
     }
 
