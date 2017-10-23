@@ -1,5 +1,6 @@
 package com.beef.domian.rental;
 
+import com.beef.domian.address.Address;
 import com.beef.domian.offer.Offer;
 import com.beef.domian.user.User;
 
@@ -12,10 +13,6 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(Rental rental) {
-        this.updateData(rental);
-    }
-
     @Id
     @GeneratedValue
     private long id;
@@ -26,7 +23,9 @@ public class Rental {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    private String deliveryAddress;
+    @OneToOne
+    @JoinColumn(name = "addressId")
+    private Address deliveryAddress;
 
     private RentalStatus status;
 
@@ -37,13 +36,6 @@ public class Rental {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
-
-    public void updateData(Rental rental) {
-        startDate = rental.startDate;
-        endDate = rental.endDate;
-        deliveryAddress = rental.deliveryAddress;
-        status = rental.status;
-    }
 
     public long getId() {
         return id;
@@ -69,11 +61,11 @@ public class Rental {
         this.endDate = endDate;
     }
 
-    public String getDeliveryAddress() {
+    public Address getDeliveryAddress() {
         return deliveryAddress;
     }
 
-    public void setDeliveryAddress(String deliveryAddress) {
+    public void setDeliveryAddress(Address deliveryAddress) {
         this.deliveryAddress = deliveryAddress;
     }
 

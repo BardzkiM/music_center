@@ -19,8 +19,6 @@ public class Item {
     @GeneratedValue
     private long id;
 
-    private String address;
-
     private ArrayList<String> images;
 
     private String name;
@@ -34,7 +32,6 @@ public class Item {
     private User user;
 
     public void updateData(Item item) {
-        address = item.address;
         images = item.images;
         name = item.name;
         type = item.type;
@@ -47,14 +44,6 @@ public class Item {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public ArrayList<String> getImages() {

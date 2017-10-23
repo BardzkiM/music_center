@@ -1,9 +1,8 @@
 package com.beef.domian.user;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import com.beef.domian.address.Address;
+
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -19,7 +18,7 @@ public class User {
     public User(User user) {
         this.updateData(user);
         password = "";
-        status = user.status;
+        active = user.active;
     }
 
     @Id
@@ -34,11 +33,13 @@ public class User {
 
     private String lastName;
 
-    private String address;
+    @OneToOne
+    @JoinColumn(name = "addressId")
+    private Address address;
 
     private String email;
 
-    private boolean status;
+    private boolean active;
 
     @Column(columnDefinition = "text")
     private String description;
@@ -93,11 +94,11 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getAddress() {
+    public Address getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
+    public void setAddress(Address address) {
         this.address = address;
     }
 
@@ -109,11 +110,19 @@ public class User {
         this.email = email;
     }
 
-    public boolean getStatus() {
-        return status;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setStatus(boolean status) {
-        this.status = status;
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
