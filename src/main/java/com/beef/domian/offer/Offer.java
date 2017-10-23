@@ -28,7 +28,7 @@ public class Offer {
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    private float deliveryArea;
+    private float deliveryMaxDistance;
 
     private float deliveryPrice;
 
@@ -45,7 +45,7 @@ public class Offer {
         price = offer.price;
         startDate = offer.startDate;
         endDate = offer.endDate;
-        deliveryArea = offer.deliveryArea;
+        deliveryMaxDistance = offer.deliveryMaxDistance;
         deliveryPrice = offer.deliveryPrice;
         title = offer.title;
         description = offer.description;
@@ -84,12 +84,12 @@ public class Offer {
         this.endDate = endDate;
     }
 
-    public float getDeliveryArea() {
-        return deliveryArea;
+    public float getDeliveryMaxDistance() {
+        return deliveryMaxDistance;
     }
 
-    public void setDeliveryArea(float deliveryArea) {
-        this.deliveryArea = deliveryArea;
+    public void setDeliveryMaxDistance(float deliveryMaxDistance) {
+        this.deliveryMaxDistance = deliveryMaxDistance;
     }
 
     public float getDeliveryPrice() {

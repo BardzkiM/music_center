@@ -18,7 +18,6 @@ public class User {
     public User(User user) {
         this.updateData(user);
         password = "";
-        type = user.type;
         status = user.status;
     }
 
@@ -38,9 +37,7 @@ public class User {
 
     private String email;
 
-    private String status;
-
-    private String type;
+    private boolean status;
 
     @Column(columnDefinition="text")
     private String description;
@@ -111,19 +108,11 @@ public class User {
         this.email = email;
     }
 
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
     }
 }

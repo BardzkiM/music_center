@@ -27,8 +27,7 @@ public class DatabaseCreation {
         user.setLastName("admin");
         user.setAddress("admin address");
         user.setEmail("admin@admin.pl");
-        user.setStatus("A");
-        user.setType("admin");
+        user.setStatus(true);
 
         return user;
     }
