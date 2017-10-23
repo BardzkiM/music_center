@@ -2,9 +2,8 @@ package com.beef.domian.offer;
 
 import com.beef.domian.item.Item;
 
-import java.util.Date;
-
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Offer {
@@ -34,7 +33,7 @@ public class Offer {
 
     private String title;
 
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "text")
     private String description;
 
     @OneToMany

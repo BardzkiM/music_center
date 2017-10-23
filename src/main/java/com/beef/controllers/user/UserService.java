@@ -7,12 +7,11 @@ import com.beef.domian.user.User;
 import com.beef.domian.user.UserHelper;
 
 import javax.servlet.http.HttpSession;
-import java.io.IOException;
 import java.util.List;
 
-public class UserService {
+class UserService {
 
-    public static User updateUser(HttpSession session, User user) {
+    static User updateUser(HttpSession session, User user) {
         HibernateBase.closeEntityManagers();
         User sessionUser = UserUtils.getSessionUser(session);
         User newUser = UserHelper.updateUser(sessionUser.getId(), user);
@@ -23,7 +22,7 @@ public class UserService {
         return newUser;
     }
 
-    public static User updateUserByAdmin(HttpSession session, User userData) {
+    static User updateUserByAdmin(HttpSession session, User userData) {
         HibernateBase.closeEntityManagers();
 
         if (UserUtils.isUserAdmin(session)) {
@@ -32,7 +31,7 @@ public class UserService {
         return null;
     }
 
-    public static List<User> getUsers(HttpSession session) {
+    static List<User> getUsers(HttpSession session) {
         HibernateBase.closeEntityManagers();
         List<User> result = null;
 
@@ -43,14 +42,14 @@ public class UserService {
         return result;
     }
 
-    public static void changeUserStatus(HttpSession session, String id, boolean status) {
+    static void changeUserStatus(HttpSession session, String id, boolean status) {
         HibernateBase.closeEntityManagers();
         if (UserUtils.isUserAdmin(session)) {
             UserHelper.changeUserStatus(Long.parseLong(id), status);
         }
     }
 
-    public static User getUserById(HttpSession session, String id) {
+    static User getUserById(HttpSession session, String id) {
         HibernateBase.closeEntityManagers();
         long userId = Long.parseLong(id);
 

@@ -13,10 +13,7 @@ public class UserUtils {
     public static boolean isUserAdmin(HttpSession session) {
         User authenticatedUser = getSessionUser(session);
 
-        if (authenticatedUser != null) {
-            return authenticatedUser.getLogin().equals("admin");
-        }
-        return false;
+        return authenticatedUser != null && authenticatedUser.getLogin().equals("admin");
     }
 
     public static User getSessionUser(HttpSession session) {

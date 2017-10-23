@@ -3,9 +3,8 @@ package com.beef.domian.rental;
 import com.beef.domian.offer.Offer;
 import com.beef.domian.user.User;
 
-import java.util.Date;
-
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 public class Rental {

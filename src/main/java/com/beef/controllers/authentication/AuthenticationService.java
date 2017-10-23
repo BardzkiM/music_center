@@ -28,7 +28,7 @@ public class AuthenticationService {
         return UserHelper.createUser(user);
     }
 
-    public static User getLoggedUser(HttpSession session) {
+    static User getLoggedUser(HttpSession session) {
         User sessionUser = (User) session.getAttribute(Utils.sessionUserName);
         if (sessionUser != null) {
             return new User(sessionUser);

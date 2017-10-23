@@ -8,7 +8,8 @@ import javax.persistence.Id;
 @Entity
 public class User {
 
-    public User() {}
+    public User() {
+    }
 
     public User(String login, String password) {
         this.login = login;
@@ -39,7 +40,7 @@ public class User {
 
     private boolean status;
 
-    @Column(columnDefinition="text")
+    @Column(columnDefinition = "text")
     private String description;
 
     public void updateData(User user) {
