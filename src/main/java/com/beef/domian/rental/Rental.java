@@ -28,7 +28,7 @@ public class Rental {
 
     private String deliveryAddress;
 
-    private RentalStatusType status;
+    private RentalStatus status;
 
     @OneToMany
     @JoinColumn(name = "offerId")
@@ -77,11 +77,11 @@ public class Rental {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public RentalStatusType getStatus() {
+    public RentalStatus getStatus() {
         return status;
     }
 
-    public void setStatus(RentalStatusType status) {
+    public void setStatus(RentalStatus status) {
         this.status = status;
     }
 

@@ -4,18 +4,18 @@ public enum ItemType {
     ROOM("room"),
     GUITAR("guitar"),
     DRUMS("drums"),
-    SOUND_SYSTEM("sound system"),
-    BASS_GUITAR("bass guitar"),
+    SOUND_SYSTEM("sound_system"),
+    BASS_GUITAR("bass_guitar"),
     SAXOPHONE("saxophone"),
-    THROMBONE("thrombone");
+    TROMBONE("trombone");
 
-    private final String name;
+    private final String type;
 
-    ItemType(final String name) {
-        this.name = name;
+    ItemType(final String type) {
+        this.type = type;
     }
 
     public String toString() {
-        return name;
+        return type;
     }
 }
