@@ -24,8 +24,8 @@ public class AuthenticationService {
 
     public static boolean register(User user) {
         HibernateBase.closeEntityManagers();
-        boolean result = UserHelper.createUser(user);
-        return result;
+
+        return UserHelper.createUser(user);
     }
 
     public static User getLoggedUser(HttpSession session) {
