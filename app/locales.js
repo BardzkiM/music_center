@@ -2,6 +2,7 @@ import {WRONG_CREDENTIALS, ACCOUNT_ALREADY_EXISTS} from './constants';
 export const LOG_OUT = 'Log out';
 export const LOG_IN = 'Log in';
 export const HOME_PAGE = 'Home';
+export const ADD_ITEM = 'Add Item';
 export const LOADING = 'LOADING';
 export const BACK_TO_HOME = 'Back to Home Page';
 export const GO_TO_LOGIN_PAGE = 'Log in';
