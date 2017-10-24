@@ -10,7 +10,7 @@ public class UserHelper extends BaseHelper {
 
     public static User isUserValid(User user) {
 
-        TypedQuery<User> query = HibernateBase.entityManager.createQuery("select u from User u where u.login=:login and u.password=:password and u.active = 'true'", User.class);
+        TypedQuery<User> query = HibernateBase.entityManager.createQuery("select u from User u where u.login=:login and u.password=:password and u.active = 1", User.class);
         query.setParameter("login", user.getLogin());
         query.setParameter("password", user.getPassword());
 
