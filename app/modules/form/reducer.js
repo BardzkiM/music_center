@@ -11,9 +11,16 @@ export default handleActions({
     state
       .set('status', ERROR)
       .set('error', message),
-  [REQUEST_DATA_SUCCESS]: state => state.set('status', SUCCESS),
+  [REQUEST_DATA_SUCCESS]: (state, {payload: data}) =>
+    state
+      .set('status', SUCCESS)
+      .set('data', data),
   [CLEAR_STATUS]: state => clearStatus(state),
   [ROUTER_LOCATION_CHANGE]: state => clearStatus(state)
-}, Map({status: NONE, error: ''}));
+}, Map({status: NONE, error: '', data: {}}));
 
-const clearStatus = state => state.set('status', NONE).set('error', '');
+const clearStatus = state =>
+  state
+    .set('status', NONE)
+    .set('error', '')
+    .set('data', {});

@@ -16,6 +16,26 @@ InputControl.PropTypes = {
   value: PropTypes.string
 };
 
+const FileInputControl = ({name, text, multiple}) => (
+  <div className="form-row">
+    <label htmlFor={name} className="">{text}</label>
+    {
+      !multiple &&
+      <input id={name} type="file" className="" name={name} placeholder={text}/>
+    }
+    {
+      multiple &&
+      <input id={name} type="file" className="" name={name} placeholder={text} multiple/>
+    }
+  </div>
+);
+
+FileInputControl.PropTypes = {
+  name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  multi: PropTypes.bool
+};
+
 const SubmitControl = ({text}) => (
   <input type="submit" className="" value={text}/>
 );
@@ -24,4 +44,4 @@ SubmitControl.PropTypes = {
   text: PropTypes.string.isRequired
 };
 
-export {InputControl, SubmitControl};
+export {InputControl, FileInputControl, SubmitControl};
