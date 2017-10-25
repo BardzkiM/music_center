@@ -1,5 +1,6 @@
 package com.beef.domian.item;
 
+import com.beef.domian.address.Address;
 import com.beef.domian.user.User;
 
 import javax.persistence.*;
@@ -30,6 +31,10 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "addressId")
+    private Address address;
 
     public void updateData(Item item) {
         images = item.images;
@@ -84,5 +89,13 @@ public class Item {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
