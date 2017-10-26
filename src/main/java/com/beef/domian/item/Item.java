@@ -4,7 +4,7 @@ import com.beef.domian.address.Address;
 import com.beef.domian.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -20,7 +20,8 @@ public class Item {
     @GeneratedValue
     private long id;
 
-    private ArrayList<String> images;
+    @ElementCollection
+    private List<String> images;
 
     private String name;
 
@@ -51,11 +52,11 @@ public class Item {
         this.id = id;
     }
 
-    public ArrayList<String> getImages() {
+    public List<String> getImages() {
         return images;
     }
 
-    public void setImages(ArrayList<String> images) {
+    public void setImages(List<String> images) {
         this.images = images;
     }
 

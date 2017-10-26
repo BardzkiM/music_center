@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Router, hashHistory} from 'react-router'
-import {syncHistoryWithStore, routerReducer} from 'react-router-redux'
+import {Router, hashHistory} from 'react-router';
+import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
 import {Provider, connect} from 'react-redux';
-
 import store from '../store/store';
 import Routes from './routes/Routes';
-import {LOADING} from "../locales";
+import {LOADING} from '../locales';
 import {getIsReady} from '../modules/boot/selectors';
 import {CHECK_LOGIN} from '../modules/userData/actions';
 

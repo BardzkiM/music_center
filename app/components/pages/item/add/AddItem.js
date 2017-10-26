@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router';
 import AddressFormControls from '../../../partials/form/AddressFormControls';
 import {ITEM_NAME, ITEM_TYPE, ADD_ITEM, SHOW_ITEM, MESSAGES, getError, IMAGES} from '../../../../locales';
 import {getFormControlsDOM, formatData} from '../../../../utils/form';
@@ -6,8 +7,8 @@ import {SUCCESS, LOADING, ERROR} from '../../../../constants';
 import {SubmitControl} from '../../../partials/form/InputControls';
 
 const formControls = [
-  {name: 'name', text: ITEM_NAME, type: 'text'},
-  {name: 'type', text: ITEM_TYPE, type: 'text'},
+  {name: 'name', text: ITEM_NAME, type: 'text', value:'dupa'},
+  {name: 'type', text: ITEM_TYPE, type: 'text', value: 'TROMBONE'}, //TODO
   {name: 'images', text: IMAGES, type: 'file', multiple: true}
 ];
 
@@ -19,7 +20,7 @@ class AddItem extends React.Component {
     const formData = formatData(this.form);
     const files = this.form.querySelector('[type=file]').files;
 
-    formData.append('images', files);
+    [...files].forEach(file => formData.append('images', file));
 
     this.props.sendItemData(formData);
   };
