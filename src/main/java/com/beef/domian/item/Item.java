@@ -1,9 +1,10 @@
 package com.beef.domian.item;
 
+import com.beef.domian.address.Address;
 import com.beef.domian.user.User;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Item {
@@ -19,7 +20,8 @@ public class Item {
     @GeneratedValue
     private long id;
 
-    private ArrayList<String> images;
+    @ElementCollection
+    private List<String> images;
 
     private String name;
 
@@ -30,6 +32,10 @@ public class Item {
     @ManyToOne
     @JoinColumn(name = "userId")
     private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "addressId")
+    private Address address;
 
     public void updateData(Item item) {
         images = item.images;
@@ -46,11 +52,11 @@ public class Item {
         this.id = id;
     }
 
-    public ArrayList<String> getImages() {
+    public List<String> getImages() {
         return images;
     }
 
-    public void setImages(ArrayList<String> images) {
+    public void setImages(List<String> images) {
         this.images = images;
     }
 
@@ -84,5 +90,13 @@ public class Item {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }

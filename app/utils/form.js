@@ -1,17 +1,19 @@
 import React from 'react';
-
 import serialize from 'form-serialize';
-import {InputControl} from "../components/partials/form/InputControls";
+import {InputControl, FileInputControl} from '../components/partials/form/InputControls';
 
-export const formatData = formNode => {
+export const formatData = (formNode, dataName = 'data') => {
   const data = serialize(formNode, {hash: true});
   const formData = new FormData();
-  formData.append('data', JSON.stringify(data));
+  formData.append(dataName, JSON.stringify(data));
 
   return formData;
 };
 
 export const getFormControlsDOM = formControlsData => (
   formControlsData.map(item =>
-    <InputControl name={item.name} text={item.text} type={item.type} key={item.name}/>)
+    item.type === 'file'
+      ? <FileInputControl name={item.name} text={item.text} key={item.name} multiple={item.multiple}/>
+      : <InputControl name={item.name} text={item.text} type={item.type} key={item.name} value={item.value}/>
+  )
 );
