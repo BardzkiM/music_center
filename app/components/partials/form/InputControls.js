@@ -21,11 +21,11 @@ const FileInputControl = ({name, text, multiple}) => (
     <label htmlFor={name} className="">{text}</label>
     {
       !multiple &&
-      <input id={name} type="file" className="" name={name} placeholder={text}/>
+      <input id={name} type="file" className="" name={name} placeholder={text} accept="image/*"/>
     }
     {
       multiple &&
-      <input id={name} type="file" className="" name={name} placeholder={text} multiple/>
+      <input id={name} type="file" className="" name={name} placeholder={text} accept="image/*" multiple/>
     }
   </div>
 );

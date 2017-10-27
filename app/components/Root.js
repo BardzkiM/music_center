@@ -9,6 +9,7 @@ import {LOADING} from '../locales';
 import {getIsReady} from '../modules/boot/selectors';
 import {CHECK_LOGIN} from '../modules/userData/actions';
 
+export const isDebugMode = false;
 const history = syncHistoryWithStore(hashHistory, store);
 
 export class Root extends React.Component {
@@ -20,14 +21,15 @@ export class Root extends React.Component {
     if (this.props.isReady) {
       return (
         <Provider store={store}>
-          <Router history={history}>
-            {Routes()}
+          <Router
+            routes={Routes(store)}
+            history={history}>
           </Router>
         </Provider>
       );
-    } else {
-      return <div>{LOADING}</div>
     }
+
+    return <div>{LOADING}</div>;
   }
 }
 

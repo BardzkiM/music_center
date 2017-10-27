@@ -10,10 +10,12 @@ public class FileUtils {
     private static String UPLOAD_PATH = "/public/uploads/";
 
     public static String saveFile(HttpServletRequest request, MultipartFile file) {
-        String fileName = UPLOAD_PATH + file.getOriginalFilename();
+        String fileName = String.format("%s%d_%s",
+                UPLOAD_PATH, Utils.getRandomInt(), file.getOriginalFilename());
         File imageFile = new File(request.getRealPath(fileName));
 
         try {
+            new File(UPLOAD_PATH).mkdir();
             file.transferTo(imageFile);
         } catch (IOException e) {
             e.printStackTrace();
