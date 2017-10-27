@@ -5,9 +5,9 @@ import Login from '../../connectors/pages/LoginConnector';
 import Register from '../../connectors/pages/RegisterConnector';
 import itemRoutes from '../pages/item/routes';
 
-export default () =>
+export default requireAuth =>
   <Route path='/' component={MainLayout}>
     <Route path='login' component={Login}/>
     <Route path='register' component={Register}/>
-    {itemRoutes()}
+    {itemRoutes(requireAuth)}
   </Route>;
