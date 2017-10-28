@@ -3,12 +3,12 @@ import {Link} from 'react-router';
 import AddressFormControls from '../../../partials/form/AddressFormControls';
 import {ITEM_NAME, ITEM_TYPE, ADD_ITEM, SHOW_ITEM, MESSAGES, getError, IMAGES} from '../../../../locales';
 import {getFormControlsDOM, formatData} from '../../../../utils/form';
-import {SUCCESS, LOADING, ERROR} from '../../../../constants';
+import {SUCCESS, LOADING, ERROR, ITEM_TYPES} from '../../../../constants';
 import {SubmitControl} from '../../../partials/form/InputControls';
+import CustomSelect from '../../../partials/form/CustomSelect';
 
 const formControls = [
-  {name: 'name', text: ITEM_NAME, type: 'text', value:'dupa'},
-  {name: 'type', text: ITEM_TYPE, type: 'text', value: 'TROMBONE'}, //TODO
+  {name: 'name', text: ITEM_NAME, type: 'text'},
   {name: 'images', text: IMAGES, type: 'file', multiple: true}
 ];
 
@@ -30,6 +30,7 @@ class AddItem extends React.Component {
       <div>
         <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
           {getFormControlsDOM(formControls)}
+          <CustomSelect name='type' label={ITEM_TYPE} items={ITEM_TYPES}/>
           <AddressFormControls />
           <SubmitControl text={ADD_ITEM}/>
         </form>

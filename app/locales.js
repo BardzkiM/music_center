@@ -25,6 +25,13 @@ export const ZIP_CODE = 'Zip-code';
 export const ITEM_NAME = 'Name';
 export const ITEM_TYPE = 'Type';
 export const IMAGES = 'Images';
+export const ROOM = 'Room';
+export const GUITAR = 'Guitar';
+export const DRUMS = 'Drums';
+export const SOUND_SYSTEM = 'Sound system';
+export const BASS_GUITAR = 'Bass guitar';
+export const SAXOPHONE = 'Saxophone';
+export const TROMBONE = 'Trombone';
 
 const ERRORS = {
   [WRONG_CREDENTIALS]: 'Wrong Credentials',
