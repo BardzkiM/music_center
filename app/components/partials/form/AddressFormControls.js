@@ -3,11 +3,11 @@ import {CITY, STREET, HOUSE_NUMBER, APARTMENT_NUMBER, ZIP_CODE} from '../../../l
 import {getFormControlsDOM} from '../../../utils/form';
 
 const controls = [
-  {name: 'address[city]', text: CITY, type: 'text', value:'dupa'},
-  {name: 'address[street]', text: STREET, type: 'text', value:'dupa'},
-  {name: 'address[houseNumber]', text: HOUSE_NUMBER, type: 'number', value: 666},
-  {name: 'address[apartmentNumber]', text: APARTMENT_NUMBER, type: 'number', value:666},
-  {name: 'address[zipCode]', text: ZIP_CODE, type: 'text', value:'dupa'}
+  {name: 'address[city]', text: CITY, type: 'text'},
+  {name: 'address[street]', text: STREET, type: 'text'},
+  {name: 'address[houseNumber]', text: HOUSE_NUMBER, type: 'number'},
+  {name: 'address[apartmentNumber]', text: APARTMENT_NUMBER, type: 'number'},
+  {name: 'address[zipCode]', text: ZIP_CODE, type: 'text'}
 ];
 
 export default () => getFormControlsDOM(controls);

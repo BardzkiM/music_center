@@ -1,3 +1,4 @@
+import {ROOM, GUITAR, DRUMS, SOUND_SYSTEM, BASS_GUITAR, SAXOPHONE} from './locales';
 export const USER_TYPE_LOGGED = 'USER_TYPE_LOGGED';
 export const USER_TYPE_UNLOGGED = 'USER_TYPE_UNLOGGED';
 export const WRONG_CREDENTIALS = 'WRONG_CREDENTIALS';
@@ -24,3 +25,12 @@ export const WARNING = 'WARNING';
 export const INFO = 'INFO';
 export const LOADING = 'LOADING';
 export const NONE = '';
+
+export const ITEM_TYPES = [
+  {value: 'ROOM', name: ROOM},
+  {value: 'GUITAR', name: GUITAR},
+  {value: 'DRUMS', name: DRUMS},
+  {value: 'SOUND_SYSTEM', name: SOUND_SYSTEM},
+  {value: 'BASS_GUITAR', name: BASS_GUITAR},
+  {value: 'SAXOPHONE', name: SAXOPHONE},
+];
