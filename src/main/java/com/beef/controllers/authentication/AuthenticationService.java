@@ -1,6 +1,7 @@
 package com.beef.controllers.authentication;
 
 import com.beef.core.hibernate.HibernateBase;
+import com.beef.core.utils.UserUtils;
 import com.beef.core.utils.Utils;
 import com.beef.domian.user.User;
 import com.beef.domian.user.UserHelper;
@@ -29,11 +30,6 @@ public class AuthenticationService {
     }
 
     static User getLoggedUser(HttpSession session) {
-        User sessionUser = (User) session.getAttribute(Utils.sessionUserName);
-        if (sessionUser != null) {
-            return new User(sessionUser);
-        } else {
-            return null;
-        }
+        return UserUtils.getSessionUser(session);
     }
 }

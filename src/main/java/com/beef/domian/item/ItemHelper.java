@@ -12,23 +12,16 @@ public class ItemHelper extends BaseHelper {
         persist(item);
     }
 
-    public static List<Item> getItems(String queryValue) {
-        List<Item> items;
-        TypedQuery<Item> query = HibernateBase.entityManager.createQuery(queryValue, Item.class);
+    public static List<Item> getAllItems(long userId) {
+        String queryString = "select i from Item i where i.user.id = :userId";
+        TypedQuery<Item> query = HibernateBase.entityManager.createQuery(queryString, Item.class);
+        query.setParameter("userId", userId);
 
         try {
-            items = query.getResultList();
+            return query.getResultList();
         } catch (Exception e) {
-            items = null;
+            return null;
         }
-
-        return items;
-    }
-
-    public static List<Item> getAllItems() {
-        String query = "select i from Item i";
-
-        return getItems(query);
     }
 
     public static Item getItemById(long id) {

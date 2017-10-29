@@ -7,6 +7,7 @@ import com.beef.domian.address.Address;
 import com.beef.domian.address.AddressHelper;
 import com.beef.domian.item.Item;
 import com.beef.domian.item.ItemHelper;
+import com.beef.domian.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -38,6 +39,8 @@ class ItemService {
         item.setImages(saveImages(request, images));
         item.setUser(UserUtils.getSessionUser(session));
 
+        item.setActive(true);
+
         AddressHelper.createAddress(address);
         ItemHelper.createItem(item);
 
@@ -48,7 +51,8 @@ class ItemService {
         HibernateBase.closeEntityManagers();
 
         if (UserUtils.isUserAuthenticated(session)) {
-            return ItemHelper.getAllItems();
+            User sessionUser = UserUtils.getSessionUser(session);
+            return ItemHelper.getAllItems(sessionUser.getId());
         }
 
         return null;
