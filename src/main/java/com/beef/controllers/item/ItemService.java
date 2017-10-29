@@ -43,4 +43,24 @@ class ItemService {
 
         return item;
     }
+
+    protected static List<Item> getAllItems(HttpSession session) {
+        HibernateBase.closeEntityManagers();
+
+        if (UserUtils.isUserAuthenticated(session)) {
+            return ItemHelper.getAllItems();
+        }
+
+        return null;
+    }
+
+    protected static Item getItemById(HttpSession session, String itemId) {
+        HibernateBase.closeEntityManagers();
+
+        if (UserUtils.isUserAuthenticated(session)) {
+            return ItemHelper.getItemById(Long.parseLong(itemId));
+        }
+
+        return null;
+    }
 }
