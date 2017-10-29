@@ -6,6 +6,6 @@ export function requireAuth(nextState, replace) {
   const isLogged = getIsUserLogged(getState());
 
   if (!isLogged) {
-    replace(API.login);
+    replace('/login');
   }
 }
