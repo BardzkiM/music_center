@@ -1,5 +1,4 @@
 import React from 'react';
-import {Map} from 'immutable';
 import {CITY, STREET, HOUSE_NUMBER, APARTMENT_NUMBER, ZIP_CODE} from '../../../locales';
 import {getFormControlsDOM} from '../../../utils/form';
 
@@ -13,10 +12,10 @@ const controls = [
 
 const addDefaultValues = values =>
   controls.forEach(control =>
-    control.value = values.get(control.name.replace(/.*\[|]/gi, ''))
+    control.value = values[control.name.replace(/.*\[|]/gi, '')]
   );
 
 export default ({values = {}}) => {
-  addDefaultValues(Map(values));
+  addDefaultValues(values);
   return getFormControlsDOM(controls)
 };

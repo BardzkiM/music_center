@@ -29,7 +29,6 @@ export default class Form extends React.Component {
       case ERROR:
       default:
         return this.getForm();
-        return this.getForm();
     }
   }
 
