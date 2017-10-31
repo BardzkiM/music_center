@@ -4,9 +4,7 @@ import {formatData} from '../../../utils/form';
 import {MESSAGES, getError} from '../../../locales';
 import {SUCCESS, ERROR, LOADING} from '../../../constants';
 
-
 export default class Form extends React.Component {
-
   constructor(successMessageText = 'SET this.successMessageText') {
     super();
 
