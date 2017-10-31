@@ -33,12 +33,10 @@ class ItemService {
         HibernateBase.closeEntityManagers();
 
         Item item = new ObjectMapper().readValue(itemData, Item.class);
-        Address address = item.getAddress();
 
         item.setImages(saveImages(request, images));
         item.setUser(UserUtils.getSessionUser(session));
 
-        AddressHelper.createAddress(address);
         ItemHelper.createItem(item);
 
         return item;
