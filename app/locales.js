@@ -7,6 +7,7 @@ export const LOADING = 'LOADING';
 export const BACK_TO_HOME = 'Back to Home Page';
 export const GO_TO_LOGIN_PAGE = 'Log in';
 export const SHOW_ITEM = 'Show added item';
+export const EDIT_USER_DATA = 'Edit profile';
 
 
 //form controls
@@ -26,12 +27,7 @@ export const ITEM_NAME = 'Name';
 export const ITEM_TYPE = 'Type';
 export const IMAGES = 'Images';
 export const ROOM = 'Room';
-export const GUITAR = 'Guitar';
-export const DRUMS = 'Drums';
-export const SOUND_SYSTEM = 'Sound system';
-export const BASS_GUITAR = 'Bass guitar';
-export const SAXOPHONE = 'Saxophone';
-export const TROMBONE = 'Trombone';
+export const CHANGE_DATA = 'Change Data';
 
 const ERRORS = {
   [WRONG_CREDENTIALS]: 'Wrong Credentials',
@@ -47,5 +43,13 @@ export const MESSAGES = {
   REGISTERED: 'You have been successfully registered! \nNow you can login into page!',
   LOADING: 'Loading data from server',
   LOGGED_OUT: 'You have been logged out',
-  ITEM_ADDED: 'Your item has been successfully added!'
+  ITEM_ADDED: 'Your item has been successfully added!',
+  USER_DATA_CHANGED: 'Your data has been successfully updated!'
 };
+
+export const GUITAR = 'Guitar';
+export const DRUMS = 'Drums';
+export const SOUND_SYSTEM = 'Sound system';
+export const BASS_GUITAR = 'Bass guitar';
+export const SAXOPHONE = 'Saxophone';
+export const TROMBONE = 'Trombone';

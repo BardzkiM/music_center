@@ -10,4 +10,12 @@ const controls = [
   {name: 'address[zipCode]', text: ZIP_CODE, type: 'text'}
 ];
 
-export default () => getFormControlsDOM(controls);
+const addDefaultValues = values =>
+  controls.forEach(control =>
+    control.value = values[control.name.replace(/.*\[|]/gi, '')]
+  );
+
+export default ({values = {}}) => {
+  addDefaultValues(values);
+  return getFormControlsDOM(controls)
+};

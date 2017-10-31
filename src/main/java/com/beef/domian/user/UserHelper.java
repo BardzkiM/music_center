@@ -42,6 +42,7 @@ public class UserHelper extends BaseHelper {
 
         if (canCreate) {
             user.setActive(true);
+            persist(user.getAddress());
             persist(user);
         }
 
