@@ -7,6 +7,7 @@ import com.beef.domian.address.Address;
 import com.beef.domian.address.AddressHelper;
 import com.beef.domian.item.Item;
 import com.beef.domian.item.ItemHelper;
+import com.beef.domian.user.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -33,12 +34,37 @@ class ItemService {
         HibernateBase.closeEntityManagers();
 
         Item item = new ObjectMapper().readValue(itemData, Item.class);
+        Address address = item.getAddress();
 
         item.setImages(saveImages(request, images));
         item.setUser(UserUtils.getSessionUser(session));
 
+        item.setActive(true);
+
+        AddressHelper.createAddress(address);
         ItemHelper.createItem(item);
 
         return item;
+    }
+
+    protected static List<Item> getAllItems(HttpSession session) {
+        HibernateBase.closeEntityManagers();
+
+        if (UserUtils.isUserAuthenticated(session)) {
+            User sessionUser = UserUtils.getSessionUser(session);
+            return ItemHelper.getAllItems(sessionUser.getId());
+        }
+
+        return null;
+    }
+
+    protected static Item getItemById(HttpSession session, String itemId) {
+        HibernateBase.closeEntityManagers();
+
+        if (UserUtils.isUserAuthenticated(session)) {
+            return ItemHelper.getItemById(Long.parseLong(itemId));
+        }
+
+        return null;
     }
 }
