@@ -34,7 +34,7 @@ const ERRORS = {
   [ACCOUNT_ALREADY_EXISTS]: 'Login is in use; choose other',
   [ITEM_CANNOT_BE_ADDED]: 'Item cannot be added'
 };
-const UNKNOWN_ERROR = 'Server Error';
+export const UNKNOWN_ERROR = 'Server Error';
 
 export const getError = error => ERRORS[error] || UNKNOWN_ERROR;
 

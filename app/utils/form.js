@@ -1,6 +1,6 @@
 import React from 'react';
 import serialize from 'form-serialize';
-import {InputControl, FileInputControl} from '../components/partials/form/InputControls';
+import {InputControl, FileInputControl, TextAreaControl} from '../components/partials/form/InputControls';
 
 export const formatData = (formNode, dataName = 'data') => {
   const data = serialize(formNode, {hash: true});
@@ -11,9 +11,14 @@ export const formatData = (formNode, dataName = 'data') => {
 };
 
 export const getFormControlsDOM = formControlsData => (
-  formControlsData.map(item =>
-    item.type === 'file'
-      ? <FileInputControl name={item.name} text={item.text} key={item.name} multiple={item.multiple}/>
-      : <InputControl name={item.name} text={item.text} type={item.type} key={item.name} value={item.value}/>
-  )
+  formControlsData.map(item => {
+    switch (item.type) {
+      case 'file':
+        return <FileInputControl name={item.name} text={item.text} key={item.name} multiple={item.multiple}/>;
+      case 'textarea':
+        return <TextAreaControl name={item.name} text={item.text} key={item.name} value={item.value}/>;
+      default:
+        return <InputControl name={item.name} text={item.text} type={item.type} key={item.name} value={item.value}/>;
+    }
+  })
 );

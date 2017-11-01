@@ -36,6 +36,19 @@ FileInputControl.PropTypes = {
   multi: PropTypes.bool
 };
 
+const TextAreaControl = ({name, text, value}) => (
+  <div className="form-row">
+    <label htmlFor={name} className="form-label">{text}</label>
+    <textarea name={name} id={name}>{value}</textarea>
+  </div>
+);
+
+TextAreaControl.PropTypes = {
+  name: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  value: PropTypes.string
+};
+
 const SubmitControl = ({text}) => (
   <input type="submit" className="" value={text}/>
 );
@@ -44,4 +57,4 @@ SubmitControl.PropTypes = {
   text: PropTypes.string.isRequired
 };
 
-export {InputControl, FileInputControl, SubmitControl};
+export {InputControl, FileInputControl, SubmitControl, TextAreaControl};

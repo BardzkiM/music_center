@@ -7,14 +7,16 @@ export const PATHS = {
   LOG_IN: {name: LOG_IN, path: '/login'},
   REGISTER: {name: REGISTER, path: '/register'},
   ADD_ITEM: {name: ADD_ITEM, path: '/item/add'},
-  EDIT_USER_DATA: {name: EDIT_USER_DATA, path: '/user/editData'}
+  EDIT_USER_DATA: {name: EDIT_USER_DATA, path: '/user/editData'},
+  ADD_OFFER: {name: 'ADD_OFFER', path: '/offer/add'}
 };
 
 const menu = fromJS({
   [USER_TYPE_LOGGED]: [
     PATHS.HOME_PAGE,
     PATHS.ADD_ITEM,
-    PATHS.EDIT_USER_DATA
+    PATHS.EDIT_USER_DATA,
+    PATHS.ADD_OFFER
   ],
   [USER_TYPE_UNLOGGED]: [
     PATHS.HOME_PAGE,
