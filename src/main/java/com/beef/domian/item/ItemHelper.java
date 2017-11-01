@@ -19,13 +19,17 @@ public class ItemHelper extends BaseHelper {
         query.setParameter("userId", userId);
 
         try {
-            return query.getResultList();
+            List<Item> items = query.getResultList();
+            items.forEach(Item::clearUser);
+            return items;
         } catch (Exception e) {
             return null;
         }
     }
 
     public static Item getItemById(long id) {
-        return HibernateBase.entityManager.find(Item.class, id);
+        Item item = HibernateBase.entityManager.find(Item.class, id);
+        item.clearUser();
+        return item;
     }
 }

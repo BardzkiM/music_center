@@ -30,6 +30,8 @@ public class AuthenticationService {
     }
 
     static User getLoggedUser(HttpSession session) {
-        return UserUtils.getSessionUser(session);
+        User user = UserUtils.getSessionUser(session);
+        user.clearUser();
+        return user;
     }
 }

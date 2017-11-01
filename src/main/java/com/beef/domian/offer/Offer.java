@@ -1,6 +1,7 @@
 package com.beef.domian.offer;
 
 import com.beef.domian.item.Item;
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,11 +22,9 @@ public class Offer {
 
     private float price;
 
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
+    private long startDate;
 
-    @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private long endDate;
 
     private float deliveryMaxDistance;
 
@@ -67,19 +66,19 @@ public class Offer {
         this.price = price;
     }
 
-    public Date getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(long endDate) {
         this.endDate = endDate;
     }
 
@@ -121,5 +120,9 @@ public class Offer {
 
     public void setItem(Item item) {
         this.item = item;
+    }
+
+    public void clearUser() {
+        this.item.clearUser();
     }
 }

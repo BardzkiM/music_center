@@ -99,4 +99,8 @@ public class Item {
     public void setAddress(Address address) {
         this.address = address;
     }
+
+    public void clearUser() {
+        user.setPassword("");
+    }
 }
