@@ -27,7 +27,17 @@ export const ITEM_NAME = 'Name';
 export const ITEM_TYPE = 'Type';
 export const IMAGES = 'Images';
 export const ROOM = 'Room';
+export const PRICE = 'Price';
+export const DELIVERY_PRICE = 'Delivery price';
+export const DELIVERY_MAX_DISTANCE = 'Delivery max distance';
+export const START_DATE = 'Start date';
+export const END_DATE = 'End date';
+export const DESCRIPTION = 'Description';
+export const TITLE = 'Title';
+export const ITEM = 'Item';
+export const ADD_OFFER = 'Add offer';
 export const CHANGE_DATA = 'Change Data';
+export const SHOW_OFFER = 'Show added offer';
 
 const ERRORS = {
   [WRONG_CREDENTIALS]: 'Wrong Credentials',
@@ -44,7 +54,9 @@ export const MESSAGES = {
   LOADING: 'Loading data from server',
   LOGGED_OUT: 'You have been logged out',
   ITEM_ADDED: 'Your item has been successfully added!',
-  USER_DATA_CHANGED: 'Your data has been successfully updated!'
+  USER_DATA_CHANGED: 'Your data has been successfully updated!',
+  START_DATE_BIGGER: 'Start date must be before end date!',
+  OFFER_ADDED: 'Offer has been successfully added!'
 };
 
 export const GUITAR = 'Guitar';
