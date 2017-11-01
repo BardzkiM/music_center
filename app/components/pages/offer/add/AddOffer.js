@@ -1,42 +1,90 @@
 import React from 'react';
 import {Link} from 'react-router';
+import serialize from 'form-serialize';
 import {SubmitControl} from '../../../partials/form/InputControls';
 import {getFormControlsDOM} from '../../../../utils/form';
 import Form from '../../generic/Form';
+import {WARNING} from '../../../../constants';
+import {
+  MESSAGES,
+  TITLE,
+  PRICE,
+  DELIVERY_PRICE,
+  DELIVERY_MAX_DISTANCE,
+  START_DATE,
+  END_DATE,
+  DESCRIPTION,
+  ITEM,
+  ADD_OFFER,
+  SHOW_OFFER
+} from '../../../../locales';
+import CustomSelect from '../../../partials/form/CustomSelect';
 
 const formControls = [
-  {name: 'title', text: 'TITLE', type: 'text'},
-  {name: 'price', text: 'PRICE', type: 'number'},
-  {name: 'deliveryPrice', text: 'DELIVERY_PRICE', type: 'number'},
-  {name: 'deliveryMaxDistance', text: 'DELIVERY_MAX_DISTANCE', type: 'number'},
-  {name: 'startDate', text: 'START_DATE', type: 'date'},
-  {name: 'startHour', text: 'START_HOUR', type: 'number'},
-  {name: 'endDate', text: 'END_DATE', type: 'date'},
-  {name: 'endHour', text: 'END_HOUR', type: 'number'},
-  {name: 'description', text: 'DESCRIPTION', type: 'textarea'}
+  {name: 'title', text: TITLE, type: 'text'},
+  {name: 'price', text: PRICE, type: 'number'},
+  {name: 'deliveryPrice', text: DELIVERY_PRICE, type: 'number'},
+  {name: 'deliveryMaxDistance', text: DELIVERY_MAX_DISTANCE, type: 'number'},
+  {name: 'startDate', text: START_DATE, type: 'datetime-local'},
+  {name: 'endDate', text: END_DATE, type: 'datetime-local'},
+  {name: 'description', text: DESCRIPTION, type: 'textarea'}
 ];
 
-export default class LoginPage extends Form {
+export default class AddOffer extends Form {
   constructor() {
-    super('ADD_ITEM');
+    super(MESSAGES.OFFER_ADDED);
   }
 
   componentDidMount() {
     this.props.fetchItems();
   }
 
+  handleSubmit = event => {
+    const {sendData, showNotification} = this.props;
+    const data = this.formatData(serialize(this.form, {hash: true}));
+
+    event.preventDefault();
+
+    if (data.startDate >= data.endDate) {
+      showNotification({message: MESSAGES.START_DATE_BIGGER, type: WARNING});
+    } else {
+      const formData = new FormData();
+
+      formData.append('data', JSON.stringify(data));
+      sendData(formData);
+    }
+  };
+
+  formatData(data) {
+    data.startDate = new Date(data.startDate).getTime();
+    data.endDate = new Date(data.endDate).getTime();
+    data.item = this.props.items.find(item => item.id == data.item);
+
+    return data;
+  }
+
   getForm() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
-          {getFormControlsDOM(formControls)}
-          <SubmitControl text={'ADD_OFFER'}/>
-        </form>
-      </div>
-    );
+    const {items} = this.props;
+
+    if (items && items.size) {
+      return (
+        <div>
+          <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
+            <CustomSelect name='item' label={ITEM} items={formatItems(items).toJS()}/>
+            {getFormControlsDOM(formControls)}
+            <SubmitControl text={ADD_OFFER}/>
+          </form>
+        </div>
+      );
+    }
+
+    return null;
   }
 
   getSuccessContent() {
-    return <Link path={`/offer/show/${this.props.offerId}`}>{'SHOW_OFFER'}</Link>;
+    return <Link path={`/offer/show/${this.props.offerId}`}>{SHOW_OFFER}</Link>;
   }
 }
+
+const formatItems = items =>
+  items.map(item => ({value: item.id, name: item.name, id: item.id}));

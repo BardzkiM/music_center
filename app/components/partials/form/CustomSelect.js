@@ -28,14 +28,14 @@ class CustomSelect extends React.Component {
   };
 
   getList() {
-    return this.props.items.map(item => <Item item={item} key={item.name} onSelect={this.changeSelectedItem}/>);
+    return this.props.items.map(item => <Item item={item} key={item.name + item.id} onSelect={this.changeSelectedItem}/>);
   }
 
   toggle = () => this.setState({expanded: !this.state.expanded});
 
   changeSelectedItem = ({target}) => {
     const value = target.getAttribute('value');
-    const selected = this.props.items.find(item => item.value === value);
+    const selected = this.props.items.find(item => item.value == value);
 
     this.setState({expanded: !this.state.expanded, selected});
   };

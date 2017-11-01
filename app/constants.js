@@ -4,6 +4,7 @@ export const USER_TYPE_UNLOGGED = 'USER_TYPE_UNLOGGED';
 export const WRONG_CREDENTIALS = 'WRONG_CREDENTIALS';
 export const ACCOUNT_ALREADY_EXISTS = 'ACCOUNT_ALREADY_EXISTS';
 export const ITEM_CANNOT_BE_ADDED = 'ITEM_CANNOT_BE_ADDED';
+export const OFFER_CANNOT_BE_ADDED = 'Item is already rented on selected period';
 
 export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 
@@ -17,6 +18,9 @@ export const API = {
   item: {
     add: '/item/add',
     getAll: '/item/getAll'
+  },
+  offer: {
+    add: '/offer/add'
   }
 };
 
@@ -36,3 +40,5 @@ export const ITEM_TYPES = [
   {value: 'BASS_GUITAR', name: BASS_GUITAR},
   {value: 'SAXOPHONE', name: SAXOPHONE},
 ];
+
+export const TIME = {HOUR: 1000 * 3600};

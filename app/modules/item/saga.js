@@ -17,7 +17,7 @@ function* addItem({payload: itemData}) {
     const data = yield response.data;
 
     if (data) {
-      yield put(SAVE(data));
+      yield put(REQUEST_DATA_SUCCESS(data));
     } else {
       yield put(REQUEST_DATA_FAILED(ITEM_CANNOT_BE_ADDED));
     }
