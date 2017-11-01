@@ -15,7 +15,8 @@ export const API = {
   getLoggedUser: '/getLoggedUser',
   logout: '/logout',
   item: {
-    add: '/item/add'
+    add: '/item/add',
+    getAll: '/item/getAll'
   }
 };
 
