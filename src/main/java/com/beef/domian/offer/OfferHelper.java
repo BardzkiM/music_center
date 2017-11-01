@@ -39,6 +39,21 @@ public class OfferHelper extends BaseHelper {
         return OfferHelper.getOffersFromQueryWithClearedUsers(query);
     }
 
+    public static List<Offer> getAllActiveOffersByTimeAndItemId(long itemId, long startDate, long endDate) {
+        String queryString = "select o from Offer o where " +
+                "o.item.id = :itemId and " +
+                "o.startDate <= :startDate and :startDate >= o.endDate or " +
+                "o.startDate <= :endDate and :endDate >= o.endDate or " +
+                ":startDate <= o.startDate and :endDate >= o.endDate";
+
+        TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
+        query.setParameter("itemId", itemId);
+        query.setParameter("startDate", startDate);
+        query.setParameter("endDate", endDate);
+
+        return OfferHelper.getOffersFromQueryWithClearedUsers(query);
+    }
+
     public static Offer getOfferById(long id) {
         return HibernateBase.entityManager.find(Offer.class, id);
     }
