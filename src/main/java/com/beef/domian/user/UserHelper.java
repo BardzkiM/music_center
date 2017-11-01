@@ -71,6 +71,7 @@ public class UserHelper extends BaseHelper {
 
         try {
             users = query.getResultList();
+            users.forEach(User::clearUser);
         } catch (Exception e) {
             users = null;
         }
