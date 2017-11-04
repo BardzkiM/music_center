@@ -14,9 +14,10 @@ import {
   START_DATE,
   END_DATE,
   DESCRIPTION,
-  ITEM,
   ADD_OFFER,
-  SHOW_OFFER
+  SHOW_OFFER,
+  NO_ITEMS_ADDED
+  , ITEM
 } from '../../../../locales';
 import CustomSelect from '../../../partials/form/CustomSelect';
 
@@ -76,6 +77,9 @@ export default class AddOffer extends Form {
           </form>
         </div>
       );
+    }
+    if (!items.size) {
+      return <div>{NO_ITEMS_ADDED}</div>;
     }
 
     return null;

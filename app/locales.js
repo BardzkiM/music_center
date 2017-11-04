@@ -37,6 +37,7 @@ export const ADD_OFFER = 'Add offer';
 export const CHANGE_DATA = 'Change Data';
 export const SHOW_OFFER = 'Show added offer';
 export const USE_USER_ADDRESS = 'Use my address';
+export const NO_ITEMS_ADDED = 'No items added';
 
 const ERRORS = {
   'WRONG_CREDENTIALS': 'Wrong Credentials',

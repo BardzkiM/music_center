@@ -26,6 +26,7 @@ export default class AddItem extends Form {
     const formData = formatData(this.form);
     const files = this.form.querySelector('[type=file]').files;
 
+    formData.append('useUserAddress', this.addressCheckbox.checked);
     [...files].forEach(file => formData.append('images', file));
 
     this.props.sendData(formData);
@@ -52,7 +53,7 @@ export default class AddItem extends Form {
   getAddressCheckbox() {
     return <div className="form-row">
       <label htmlFor='useUserAddress' className="">{USE_USER_ADDRESS}</label>
-      <input id='useUserAddress' type='checkbox' className="" name='useUserAddress'
+      <input id='useUserAddress' type='checkbox' className=""
              ref={el => this.addressCheckbox = el}/>
     </div>;
   }

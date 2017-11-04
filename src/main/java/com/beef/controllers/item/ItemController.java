@@ -16,7 +16,8 @@ public class ItemController {
     @PostMapping("/add")
     public long addItem(HttpSession session, HttpServletRequest request,
                         @RequestParam("data") String itemData,
-                        @RequestParam("images") List<MultipartFile> images)
+                        @RequestParam("images") List<MultipartFile> images,
+                        @RequestParam("useUserAddress") boolean useUserAddress)
             throws IOException {
         return ItemService.addItem(session, request, itemData, images).getId();
     }
