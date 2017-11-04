@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import AddressFormControls from '../../../partials/form/AddressFormControls';
-import {ITEM_NAME, ITEM_TYPE, ADD_ITEM, SHOW_ITEM, MESSAGES, IMAGES} from '../../../../locales';
+import {ITEM_NAME, ITEM_TYPE, ADD_ITEM, SHOW_ITEM, MESSAGES, IMAGES, USE_USER_ADDRESS} from '../../../../locales';
 import {getFormControlsDOM, formatData} from '../../../../utils/form';
 import {ITEM_TYPES} from '../../../../constants';
 import {SubmitControl} from '../../../partials/form/InputControls';
@@ -13,10 +13,11 @@ const formControls = [
   {name: 'images', text: IMAGES, type: 'file', multiple: true}
 ];
 
-class AddItem extends Form {
+export default class AddItem extends Form {
 
   constructor() {
     super(MESSAGES.ITEM_ADDED);
+    this.state = {useUserAddress: false};
   }
 
   handleSubmit = event => {
@@ -36,7 +37,8 @@ class AddItem extends Form {
         <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
           {getFormControlsDOM(formControls)}
           <CustomSelect name='type' label={ITEM_TYPE} items={ITEM_TYPES}/>
-          <AddressFormControls />
+          {this.getAddressCheckbox()}
+          {!this.state.useUserAddress && <AddressFormControls />}
           <SubmitControl text={ADD_ITEM}/>
         </form>
       </div>
@@ -46,6 +48,22 @@ class AddItem extends Form {
   getSuccessContent() {
     return <Link to={'/item/show/' + this.props.itemId}>{SHOW_ITEM}</Link>;
   }
-}
 
-export default AddItem;
+  getAddressCheckbox() {
+    return <div className="form-row">
+      <label htmlFor='useUserAddress' className="">{USE_USER_ADDRESS}</label>
+      <input id='useUserAddress' type='checkbox' className="" name='useUserAddress'
+             ref={el => this.addressCheckbox = el}/>
+    </div>;
+  }
+
+  componentDidMount() {
+    this.addressCheckbox.addEventListener('click', this.handleCheckboxChange);
+  }
+
+  componentWillUnmount() {
+    this.addressCheckbox.removeEventListener('click', this.handleCheckboxChange);
+  }
+
+  handleCheckboxChange = event => this.setState({useUserAddress: event.target.checked});
+}

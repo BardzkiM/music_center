@@ -38,6 +38,7 @@ export const ITEM = 'Item';
 export const ADD_OFFER = 'Add offer';
 export const CHANGE_DATA = 'Change Data';
 export const SHOW_OFFER = 'Show added offer';
+export const USE_USER_ADDRESS = 'Use my address';
 
 const ERRORS = {
   [WRONG_CREDENTIALS]: 'Wrong Credentials',
