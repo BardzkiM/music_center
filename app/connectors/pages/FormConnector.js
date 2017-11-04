@@ -11,7 +11,6 @@ export default function FormConnector(Component, requestAction, states = {}, dis
     return stateToProps;
   };
 
-  //TODO mergin' dispatches
   const mapDispatchToProps = dispatch => {
     const dispatchProps = {
       sendData: data => {

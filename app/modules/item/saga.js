@@ -11,9 +11,11 @@ export default function* watchItemRequests() {
   yield takeLatest(REQUEST_FETCH_ITEMS, getActiveItems);
 }
 
+const itemAPI = API.item;
+
 function* addItem({payload: itemData}) {
   try {
-    const response = yield call(axios.post, API.item.add, itemData);
+    const response = yield call(axios.post, itemAPI.add, itemData);
     const data = yield response.data;
 
     if (data) {
@@ -28,7 +30,7 @@ function* addItem({payload: itemData}) {
 
 function* getActiveItems() {
   try {
-    const response = yield call(axios.get, API.item.getAll);
+    const response = yield call(axios.get, itemAPI.all);
     const data = yield response.data;
 
     if (data) {

@@ -14,17 +14,21 @@ import java.util.List;
 class OfferService {
 
     static Offer addOffer(HttpSession session,
-                        HttpServletRequest request,
-                        String data)
+                          HttpServletRequest request,
+                          String data)
             throws IOException {
         HibernateBase.closeEntityManagers();
 
         Offer offer = new ObjectMapper().readValue(data, Offer.class);
+        long itemId = offer.getItem().getId();
+        List<Offer> activeOffersWithItem = OfferHelper.getAllActiveOffersByTimeAndItemId(itemId, offer.getStartDate(), offer.getEndDate());
 
+        if (activeOffersWithItem.size() == 0) {
+            OfferHelper.createOffer(offer);
+            return offer;
+        }
 
-        OfferHelper.createOffer(offer);
-
-        return offer;
+        return null;
     }
 
     protected static List<Offer> getAllOffers(HttpSession session) {
@@ -46,7 +50,6 @@ class OfferService {
 
         return null;
     }
-
 
     protected static Offer getOfferById(HttpSession session, String offerId) {
         HibernateBase.closeEntityManagers();

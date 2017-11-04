@@ -14,9 +14,13 @@ public class OfferController {
 
     @PostMapping("/add")
     public long addOffer(HttpSession session, HttpServletRequest request,
-                        @RequestParam("data") String data)
+                         @RequestParam("data") String data)
             throws IOException {
-        return OfferService.addOffer(session, request, data).getId();
+        Offer offer = OfferService.addOffer(session, request, data);
+        if (offer != null) {
+            return offer.getId();
+        }
+        return -1;
     }
 
     @GetMapping("/all")

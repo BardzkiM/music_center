@@ -5,6 +5,7 @@ import {SubmitControl} from '../../../partials/form/InputControls';
 import {LOGIN, PASSWORD, FIRST_NAME, LAST_NAME, EMAIL} from '../../../../locales';
 import AddressFormControls from '../../../partials/form/AddressFormControls';
 import Form from '../Form';
+import BackToHome from '../../../partials/links/BackToHome';
 
 const formControls = [
   {name: 'login', text: LOGIN, type: 'text'},
@@ -40,6 +41,6 @@ export default class UserDataForm extends Form {
   }
 
   getSuccessContent() {
-    return null;
+    return <BackToHome/>
   }
 }
