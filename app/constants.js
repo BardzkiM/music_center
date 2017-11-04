@@ -11,16 +11,24 @@ export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 export const NOTIFICATION_HIDE_TIME = 5000;
 
 export const API = {
-  login: '/login',
-  register: '/register',
-  getLoggedUser: '/getLoggedUser',
-  logout: '/logout',
   item: {
     add: '/item/add',
     getAll: '/item/getAll'
   },
   offer: {
     add: '/offer/add'
+  },
+  user: {
+    login: '/login',
+    logout: '/logout',
+    register: '/register',
+    getLogged: '/getLoggedUser',
+    update: '/updateUser'
+    // login: '/user/login',
+    // logout: '/user/logout',
+    // register: '/user/register',
+    // getLogged: '/user/getLogged',
+    // update: '/user/update'
   }
 };
 
