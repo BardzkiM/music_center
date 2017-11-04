@@ -53,6 +53,7 @@ public class UserHelper extends BaseHelper {
         HibernateBase.entityManager.getTransaction().begin();
         User dbUser = HibernateBase.entityManager.find(User.class, id);
         dbUser.updateData(user);
+        HibernateBase.entityManager.persist(dbUser);
         HibernateBase.entityManager.getTransaction().commit();
         return dbUser;
     }

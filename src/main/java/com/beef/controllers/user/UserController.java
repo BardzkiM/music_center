@@ -20,7 +20,7 @@ public class UserController {
         return AuthenticationService.register(user);
     }
 
-    @PutMapping("/update")
+    @PostMapping("/update")
     public User updateUser(HttpSession session, @RequestParam("data") String userData) throws IOException {
         User user = new ObjectMapper().readValue(userData, User.class);
 

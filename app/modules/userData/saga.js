@@ -79,7 +79,7 @@ function* handleLoginCheck() {
 
 function* handleUserDataChange({payload: userData}) {
   try {
-    const response = yield call(axios.put, userAPI.update, userData);
+    const response = yield call(axios.post, userAPI.update, userData);
     const data = yield response.data;
 
     if (data) {

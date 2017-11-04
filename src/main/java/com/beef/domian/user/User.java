@@ -129,4 +129,8 @@ public class User {
     public void clearUser() {
         this.password = "";
     }
+
+    public void setAddressId(long addressId) {
+        this.address.setId(addressId);
+    }
 }

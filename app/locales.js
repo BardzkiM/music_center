@@ -1,4 +1,3 @@
-import {WRONG_CREDENTIALS, ACCOUNT_ALREADY_EXISTS, ITEM_CANNOT_BE_ADDED} from './constants';
 export const LOG_OUT = 'Log out';
 export const LOG_IN = 'Log in';
 export const HOME_PAGE = 'Home';
@@ -8,7 +7,6 @@ export const BACK_TO_HOME = 'Back to Home Page';
 export const GO_TO_LOGIN_PAGE = 'Log in';
 export const SHOW_ITEM = 'Show added item';
 export const EDIT_USER_DATA = 'Edit profile';
-
 
 //form controls
 export const LOGIN = 'Login';
@@ -41,10 +39,11 @@ export const SHOW_OFFER = 'Show added offer';
 export const USE_USER_ADDRESS = 'Use my address';
 
 const ERRORS = {
-  [WRONG_CREDENTIALS]: 'Wrong Credentials',
-  [ACCOUNT_ALREADY_EXISTS]: 'Login is in use; choose other',
-  [ITEM_CANNOT_BE_ADDED]: 'Item cannot be added'
+  'WRONG_CREDENTIALS': 'Wrong Credentials',
+  'ACCOUNT_ALREADY_EXISTS': 'Login is in use; choose other',
+  'ITEM_CANNOT_BE_ADDED': 'Item cannot be added'
 };
+
 export const UNKNOWN_ERROR = 'Server Error';
 
 export const getError = error => ERRORS[error] || UNKNOWN_ERROR;

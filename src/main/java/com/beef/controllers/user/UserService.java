@@ -14,9 +14,13 @@ class UserService {
     static User updateUser(HttpSession session, User user) {
         HibernateBase.closeEntityManagers();
         User sessionUser = UserUtils.getSessionUser(session);
+
+        user.setAddressId(sessionUser.getAddress().getId());
         User newUser = UserHelper.updateUser(sessionUser.getId(), user);
+
         if (newUser != null) {
             session.setAttribute(Utils.sessionUserName, newUser);
+            newUser.clearUser();
         }
 
         return newUser;
