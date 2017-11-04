@@ -13,22 +13,17 @@ export const NOTIFICATION_HIDE_TIME = 5000;
 export const API = {
   item: {
     add: '/item/add',
-    getAll: '/item/getAll'
+    all: '/item/all'
   },
   offer: {
     add: '/offer/add'
   },
   user: {
-    login: '/login',
-    logout: '/logout',
-    register: '/register',
-    getLogged: '/getLoggedUser',
-    update: '/updateUser'
-    // login: '/user/login',
-    // logout: '/user/logout',
-    // register: '/user/register',
-    // getLogged: '/user/getLogged',
-    // update: '/user/update'
+    login: '/user/login',
+    logout: '/user/logout',
+    register: '/user/register',
+    logged: '/user/logged',
+    update: '/user/update'
   }
 };
 

@@ -64,7 +64,7 @@ function* handleRegisterRequest({payload: userData}) {
 
 function* handleLoginCheck() {
   try {
-    const response = yield call(axios.get, userAPI.getLogged);
+    const response = yield call(axios.get, userAPI.logged);
     const data = yield response.data;
 
     if (data) {
@@ -79,7 +79,7 @@ function* handleLoginCheck() {
 
 function* handleUserDataChange({payload: userData}) {
   try {
-    const response = yield call(axios.post, userAPI.update, userData);
+    const response = yield call(axios.put, userAPI.update, userData);
     const data = yield response.data;
 
     if (data) {
