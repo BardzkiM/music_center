@@ -19,18 +19,18 @@ public class OfferController {
         return OfferService.addOffer(session, request, data).getId();
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/all")
     public List<Offer> getAllOffers(HttpSession session) {
         return OfferService.getAllOffers(session);
     }
 
-    @GetMapping("/getAllActive")
+    @GetMapping("/allActive")
     public List<Offer> getAllActive(HttpSession session) {
         return OfferService.getAllActiveOffers(session);
     }
 
-    @PostMapping("/getById")
-    public Offer getOfferById(HttpSession session, @RequestParam("offerId") String offerId) {
-        return OfferService.getOfferById(session, offerId);
+    @PostMapping("/{id}")
+    public Offer getOfferById(HttpSession session, @PathVariable(value="id") String id) {
+        return OfferService.getOfferById(session, id);
     }
 }

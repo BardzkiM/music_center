@@ -1,11 +1,7 @@
 package com.beef.controllers.item;
 
 import com.beef.domian.item.Item;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,13 +21,13 @@ public class ItemController {
         return ItemService.addItem(session, request, itemData, images).getId();
     }
 
-    @GetMapping("/getAll")
+    @GetMapping("/all")
     public List<Item> getAllItems(HttpSession session) {
         return ItemService.getAllItems(session);
     }
 
-    @PostMapping("/getById")
-    public Item getItemById(HttpSession session, @RequestParam("itemId") String itemId) {
-        return ItemService.getItemById(session, itemId);
+    @GetMapping("/{id}")
+    public Item getItemById(HttpSession session, @PathVariable(value="id") String id) {
+        return ItemService.getItemById(session, id);
     }
 }
