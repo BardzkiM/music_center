@@ -39,7 +39,7 @@ function* handleLoginRequest({payload: userData}) {
 
 function* handleLogoutRequest() {
   try {
-    yield call(axios.post, API.logout);
+    yield call(axios.post, userAPI.logout);
 
     yield dispatchLogoutActions();
   } catch (e) {

@@ -20,9 +20,9 @@ export default class UserDataForm extends Form {
   componentWillMount() {
     const {userData} = this.props;
 
-    if (userData) {
-      formControls.forEach(control => control.value = userData.get(control.name));
-    }
+    formControls.forEach(control =>
+      userData ? control.value = userData.get(control.name) : delete control.value
+    );
   }
 
   getForm() {
