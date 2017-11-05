@@ -26,7 +26,7 @@ export default class AddItem extends Form {
     const formData = formatData(this.form);
     const files = this.form.querySelector('[type=file]').files;
 
-    formData.append('useUserAddress', this.addressCheckbox.checked);
+    formData.append('useUserAddress', this.state.useUserAddress);
     [...files].forEach(file => formData.append('images', file));
 
     this.props.sendData(formData);
@@ -54,16 +54,8 @@ export default class AddItem extends Form {
     return <div className="form-row">
       <label htmlFor='useUserAddress' className="">{USE_USER_ADDRESS}</label>
       <input id='useUserAddress' type='checkbox' className=""
-             ref={el => this.addressCheckbox = el}/>
+             onClick={this.handleCheckboxChange}/>
     </div>;
-  }
-
-  componentDidMount() {
-    this.addressCheckbox.addEventListener('click', this.handleCheckboxChange);
-  }
-
-  componentWillUnmount() {
-    this.addressCheckbox.removeEventListener('click', this.handleCheckboxChange);
   }
 
   handleCheckboxChange = event => this.setState({useUserAddress: event.target.checked});

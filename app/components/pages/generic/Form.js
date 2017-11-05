@@ -36,8 +36,8 @@ export default class Form extends React.Component {
     return null;
   }
 
-  componentDidUpdate() {
-    const {showNotification, formStatus, error} = this.props;
+  componentWillReceiveProps(nextProps) {
+    const {showNotification, formStatus, error} = nextProps;
     const notificationData = {
       SUCCESS: {message: this.successMessageText, type: SUCCESS},
       ERROR: {message: getError(error), type: ERROR},
