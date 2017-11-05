@@ -51,11 +51,12 @@ export default class AddItem extends Form {
   }
 
   getAddressCheckbox() {
-    return <div className="form-row">
-      <label htmlFor='useUserAddress' className="">{USE_USER_ADDRESS}</label>
-      <input id='useUserAddress' type='checkbox' className=""
-             onClick={this.handleCheckboxChange}/>
-    </div>;
+    return (
+      <div className="form-row">
+        <label htmlFor='useUserAddress' className="">{USE_USER_ADDRESS}</label>
+        <input id='useUserAddress' type='checkbox' className="" onClick={this.handleCheckboxChange}/>
+      </div>
+    );
   }
 
   handleCheckboxChange = event => this.setState({useUserAddress: event.target.checked});
