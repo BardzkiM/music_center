@@ -15,10 +15,8 @@ class Notification extends React.Component {
   }
 }
 
-Notification.PropTypes = {
-  message: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  show: PropTypes.bool.isRequired,
+Notification.propTypes = {
+  notification: PropTypes.object.isRequired,
   hide: PropTypes.func.isRequired
 };
 

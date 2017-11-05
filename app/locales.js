@@ -38,11 +38,16 @@ export const CHANGE_DATA = 'Change Data';
 export const SHOW_OFFER = 'Show added offer';
 export const USE_USER_ADDRESS = 'Use my address';
 export const NO_ITEMS_ADDED = 'No items added';
+export const MAX_PRICE = 'Max price';
+export const DATE = 'Date';
+export const SEARCH = 'Search';
 
 const ERRORS = {
   'WRONG_CREDENTIALS': 'Wrong Credentials',
   'ACCOUNT_ALREADY_EXISTS': 'Login is in use; choose other',
-  'ITEM_CANNOT_BE_ADDED': 'Item cannot be added'
+  'ITEM_CANNOT_BE_ADDED': 'Item cannot be added',
+  'OFFER_CANNOT_BE_ADDED': 'Item is already rented on selected period',
+  'NO_OFFERS_FOUND': 'No offers found with current criteria'
 };
 
 export const UNKNOWN_ERROR = 'Server Error';

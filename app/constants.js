@@ -4,7 +4,8 @@ export const USER_TYPE_UNLOGGED = 'USER_TYPE_UNLOGGED';
 export const WRONG_CREDENTIALS = 'WRONG_CREDENTIALS';
 export const ACCOUNT_ALREADY_EXISTS = 'ACCOUNT_ALREADY_EXISTS';
 export const ITEM_CANNOT_BE_ADDED = 'ITEM_CANNOT_BE_ADDED';
-export const OFFER_CANNOT_BE_ADDED = 'Item is already rented on selected period';
+export const OFFER_CANNOT_BE_ADDED = 'OFFER_CANNOT_BE_ADDED';
+export const NO_OFFERS_FOUND = 'NO_OFFERS_FOUND';
 
 export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 
@@ -16,7 +17,8 @@ export const API = {
     all: '/item/all'
   },
   offer: {
-    add: '/offer/add'
+    add: '/offer/add',
+    search: '/offer/search'
   },
   user: {
     login: '/user/login',

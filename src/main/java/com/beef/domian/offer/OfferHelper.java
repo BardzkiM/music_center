@@ -61,14 +61,14 @@ public class OfferHelper extends BaseHelper {
 
     public static List<Offer> search(OfferSearch offerSearch) {
         String queryString = "select o from Offer o where o.item.type = :search.type AND :search.date BETWEEN o.startDate AND o.endDate";
-        if (offerSearch.getTitle().equals("")) {
+        if (!offerSearch.getTitle().equals("")) {
             Arrays.stream(offerSearch.getTitle().split(" "))
                     .forEach(word -> String.format(" and o.item.title LIKE %%%s%%", word));
         }
-        if (offerSearch.getCity().equals("")) {
+        if (!offerSearch.getCity().equals("")) {
             queryString += " AND o.item.address.city LIKE :search.city";
         }
-        if (offerSearch.getMaxPrice() != 0) {
+        if (offerSearch.getMaxPrice() > 0) {
             queryString += " AND o.maxPrice >= :search.maxPrice";
         }
 

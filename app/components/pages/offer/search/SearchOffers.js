@@ -1,0 +1,50 @@
+import React from 'react';
+import serialize from 'form-serialize';
+import moment from 'moment';
+import {ITEM_TYPE, TITLE, CITY, MAX_PRICE, DATE, SEARCH} from '../../../../locales';
+import {getFormControlsDOM} from '../../../../utils/form';
+import {SubmitControl} from '../../../partials/form/InputControls';
+import {ITEM_TYPES} from '../../../../constants';
+import CustomSelect from '../../../partials/form/CustomSelect';
+
+const currentDate = moment().format('YYYY-MM-DDTHH:00');
+
+const formControls = [
+  {name: 'title', text: TITLE, type: 'text'},
+  {name: 'maxPrice', text: MAX_PRICE, type: 'number', required: false},
+  {name: 'city', text: CITY, type: 'text', required: false},
+  {name: 'date', text: DATE, type: 'datetime-local', value: currentDate}
+];
+
+export default class SearchOffers extends React.Component {
+
+  handleSubmit = event => {
+    event.preventDefault();
+
+    const data = serialize(event.target, {hash: true});
+    const formData = new FormData();
+
+    formData.append('data', JSON.stringify(this.formatData(data)));
+
+    this.props.searchOffers(formData);
+
+  };
+
+  formatData(data) {
+    data.date = new Date(data.date).getTime();
+
+    return data;
+  }
+
+  render() {
+    return (
+      <div>
+        <form onSubmit={this.handleSubmit}>
+          <CustomSelect name='type' label={ITEM_TYPE} items={ITEM_TYPES}/>
+          {getFormControlsDOM(formControls)}
+          <SubmitControl text={SEARCH}/>
+        </form>
+      </div>
+    );
+  }
+}

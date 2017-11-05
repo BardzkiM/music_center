@@ -18,7 +18,11 @@ export const getFormControlsDOM = formControlsData => (
       case 'textarea':
         return <TextAreaControl name={item.name} text={item.text} key={item.name} value={item.value}/>;
       default:
-        return <InputControl name={item.name} text={item.text} type={item.type} key={item.name} value={item.value}/>;
+        return <InputControl name={item.name} text={item.text} type={item.type}
+                             key={item.name} value={item.value} required={item.required}/>;
     }
   })
 );
+
+export const formatItems = items =>
+  items.map(item => ({value: item.id, name: item.name, id: item.id}));

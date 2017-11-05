@@ -11,11 +11,11 @@ export default class Form extends React.Component {
     this.successMessageText = successMessageText;
   }
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     const {sendData} = this.props;
 
     event.preventDefault();
-    sendData(formatData(this.form));
+    sendData(formatData(event.target));
   };
 
   getForm() {

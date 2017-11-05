@@ -23,7 +23,7 @@ export default function FormConnector(Component, requestAction, states = {}, dis
     Object.keys(dispatches)
       .forEach(key => dispatchProps[key] = () => dispatch(dispatches[key]));
 
-    return dispatchProps
+    return dispatchProps;
   };
 
   return connect(mapStateToProps, mapDispatchToProps)(Component);

@@ -66,7 +66,7 @@ class CustomSelect extends React.Component {
   }
 }
 
-CustomSelect.PropTypes = {
+CustomSelect.propTypes = {
   items: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired

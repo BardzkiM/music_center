@@ -18,7 +18,7 @@ export default class LoginPage extends Form {
   getForm() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
+        <form onSubmit={this.handleSubmit}>
           {getFormControlsDOM(formControls)}
           <SubmitControl text={LOG_IN}/>
         </form>

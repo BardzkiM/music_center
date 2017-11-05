@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import serialize from 'form-serialize';
 import {SubmitControl} from '../../../partials/form/InputControls';
-import {getFormControlsDOM} from '../../../../utils/form';
+import {getFormControlsDOM, formatItems} from '../../../../utils/form';
 import Form from '../../generic/Form';
 import {WARNING} from '../../../../constants';
 import {
@@ -42,7 +42,7 @@ export default class AddOffer extends Form {
 
   handleSubmit = event => {
     const {sendData, showNotification} = this.props;
-    const data = this.formatData(serialize(this.form, {hash: true}));
+    const data = this.formatData(serialize(event.target, {hash: true}));
 
     event.preventDefault();
 
@@ -70,7 +70,7 @@ export default class AddOffer extends Form {
     if (items && items.size) {
       return (
         <div>
-          <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
+          <form onSubmit={this.handleSubmit}>
             <CustomSelect name='item' label={ITEM} items={formatItems(items).toJS()}/>
             {getFormControlsDOM(formControls)}
             <SubmitControl text={ADD_OFFER}/>
@@ -89,6 +89,3 @@ export default class AddOffer extends Form {
     return <Link path={`/offer/show/${this.props.offerId}`}>{SHOW_OFFER}</Link>;
   }
 }
-
-const formatItems = items =>
-  items.map(item => ({value: item.id, name: item.name, id: item.id}));

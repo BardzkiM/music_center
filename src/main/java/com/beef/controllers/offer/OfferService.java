@@ -65,10 +65,6 @@ class OfferService {
         HibernateBase.closeEntityManagers();
         OfferSearch offerSearch = new ObjectMapper().readValue(data, OfferSearch.class);
 
-        if (UserUtils.isUserAuthenticated(session)) {
-            return OfferHelper.search(offerSearch);
-        }
-
-        return null;
+        return OfferHelper.search(offerSearch);
     }
 }

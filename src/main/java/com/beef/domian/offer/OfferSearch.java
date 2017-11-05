@@ -6,21 +6,13 @@ public class OfferSearch {
 
     private ItemType type;
 
-    private String title;
+    private String title = "";
 
-    private float maxPrice;
+    private float maxPrice = 0;
 
-    private String city;
+    private String city = "";
 
     private long date;
-
-    public OfferSearch(ItemType type, String title, float maxPrice, String city, long date) {
-        this.type = type;
-        this.title = title;
-        this.maxPrice = maxPrice;
-        this.city = city;
-        this.date = date;
-    }
 
     public ItemType getType() {
         return type;

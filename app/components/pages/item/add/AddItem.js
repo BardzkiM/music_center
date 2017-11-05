@@ -23,8 +23,9 @@ export default class AddItem extends Form {
   handleSubmit = event => {
     event.preventDefault();
 
-    const formData = formatData(this.form);
-    const files = this.form.querySelector('[type=file]').files;
+    const {target} = event;
+    const formData = formatData(target);
+    const files = target.querySelector('[type=file]').files;
 
     formData.append('useUserAddress', this.state.useUserAddress);
     [...files].forEach(file => formData.append('images', file));
@@ -35,7 +36,7 @@ export default class AddItem extends Form {
   getForm() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit} ref={el => this.form = el}>
+        <form onSubmit={this.handleSubmit}>
           {getFormControlsDOM(formControls)}
           <CustomSelect name='type' label={ITEM_TYPE} items={ITEM_TYPES}/>
           {this.getAddressCheckbox()}

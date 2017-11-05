@@ -1,20 +1,23 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-const InputControl = ({name, text, type, value}) => (
+const InputControl = ({name, text, type, value, required}) => (
   <div className="form-row">
     <label htmlFor={name} className="">{text}</label>
-    <input id={name} required type={type} className=""
+    <input id={name} required={required} type={type} className=""
            defaultValue={value} name={name} placeholder={text}/>
   </div>
 );
 
-InputControl.PropTypes = {
+InputControl.propTypes = {
   name: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.string
+  value: PropTypes.string,
+  required: PropTypes.bool
 };
+
+InputControl.defaultProps = {required: true};
 
 const FileInputControl = ({name, text, multiple}) => (
   <div className="form-row">
@@ -30,7 +33,7 @@ const FileInputControl = ({name, text, multiple}) => (
   </div>
 );
 
-FileInputControl.PropTypes = {
+FileInputControl.propTypes = {
   name: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   multi: PropTypes.bool
@@ -43,7 +46,7 @@ const TextAreaControl = ({name, text, value}) => (
   </div>
 );
 
-TextAreaControl.PropTypes = {
+TextAreaControl.propTypes = {
   name: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   value: PropTypes.string
@@ -53,7 +56,7 @@ const SubmitControl = ({text}) => (
   <input type="submit" className="" value={text}/>
 );
 
-SubmitControl.PropTypes = {
+SubmitControl.propTypes = {
   text: PropTypes.string.isRequired
 };
 
