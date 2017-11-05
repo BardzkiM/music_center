@@ -60,20 +60,26 @@ public class OfferHelper extends BaseHelper {
     }
 
     public static List<Offer> search(OfferSearch offerSearch) {
-        String queryString = "select o from Offer o where o.item.type = :search.type AND :search.date BETWEEN o.startDate AND o.endDate";
-        if (!offerSearch.getTitle().equals("")) {
-            Arrays.stream(offerSearch.getTitle().split(" "))
-                    .forEach(word -> String.format(" and o.item.title LIKE %%%s%%", word));
-        }
-        if (!offerSearch.getCity().equals("")) {
-            queryString += " AND o.item.address.city LIKE :search.city";
-        }
+        String queryString = "select o from Offer o where o.item.type = :searchType AND :searchDate BETWEEN o.startDate AND o.endDate";
+
+
+        Arrays.stream(offerSearch.getTitle().split(" "))
+                .forEach(word -> String.format(" and o.item.title LIKE %%%s%%", word));
+
+        queryString += " AND o.item.address.city LIKE :searchCity";
+
         if (offerSearch.getMaxPrice() > 0) {
-            queryString += " AND o.maxPrice >= :search.maxPrice";
+            queryString += " AND o.price <= :searchMaxPrice";
+        }
+        if (offerSearch.getMaxPrice() == 0) {
+            queryString += " AND o.price > :searchMaxPrice";
         }
 
         TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
-        query.setParameter("search", offerSearch);
+        query.setParameter("searchType", offerSearch.getType());
+        query.setParameter("searchDate", offerSearch.getDate());
+        query.setParameter("searchCity", offerSearch.getCity());
+        query.setParameter("searchMaxPrice", offerSearch.getMaxPrice());
 
         return OfferHelper.getOffersFromQueryWithClearedUsers(query);
     }
