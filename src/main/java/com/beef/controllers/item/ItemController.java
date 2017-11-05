@@ -19,7 +19,7 @@ public class ItemController {
                         @RequestParam("images") List<MultipartFile> images,
                         @RequestParam("useUserAddress") boolean useUserAddress)
             throws IOException {
-        return ItemService.addItem(session, request, itemData, images).getId();
+        return ItemService.addItem(session, request, itemData, images, useUserAddress).getId();
     }
 
     @GetMapping("/all")
@@ -28,7 +28,7 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public Item getItemById(HttpSession session, @PathVariable(value="id") String id) {
+    public Item getItemById(HttpSession session, @PathVariable(value = "id") String id) {
         return ItemService.getItemById(session, id);
     }
 }

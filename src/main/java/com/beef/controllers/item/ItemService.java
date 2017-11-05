@@ -29,19 +29,23 @@ class ItemService {
     static Item addItem(HttpSession session,
                         HttpServletRequest request,
                         String itemData,
-                        List<MultipartFile> images)
+                        List<MultipartFile> images,
+                        boolean useUserAddress)
             throws IOException {
         HibernateBase.closeEntityManagers();
 
         Item item = new ObjectMapper().readValue(itemData, Item.class);
-        Address address = item.getAddress();
+        User sessionUser = UserUtils.getSessionUser(session);
+
+        if (useUserAddress) {
+            item.setAddress(new Address(sessionUser.getAddress()));
+        }
 
         item.setImages(saveImages(request, images));
-        item.setUser(UserUtils.getSessionUser(session));
-
+        item.setUser(sessionUser);
         item.setActive(true);
 
-        AddressHelper.createAddress(address);
+        AddressHelper.createAddress(item.getAddress());
         ItemHelper.createItem(item);
 
         return item;
