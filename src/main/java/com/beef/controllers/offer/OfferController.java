@@ -3,7 +3,6 @@ package com.beef.controllers.offer;
 import com.beef.domian.offer.Offer;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
@@ -13,10 +12,8 @@ import java.util.List;
 public class OfferController {
 
     @PostMapping("/add")
-    public long addOffer(HttpSession session, HttpServletRequest request,
-                         @RequestParam("data") String data)
-            throws IOException {
-        Offer offer = OfferService.addOffer(session, request, data);
+    public long addOffer(HttpSession session, @RequestParam("data") String data) throws IOException {
+        Offer offer = OfferService.addOffer(session, data);
         if (offer != null) {
             return offer.getId();
         }
@@ -33,8 +30,13 @@ public class OfferController {
         return OfferService.getAllActiveOffers(session);
     }
 
-    @PostMapping("/{id}")
-    public Offer getOfferById(HttpSession session, @PathVariable(value="id") String id) {
+    @GetMapping("/{id}")
+    public Offer getOfferById(HttpSession session, @PathVariable(value = "id") String id) {
         return OfferService.getOfferById(session, id);
+    }
+
+    @GetMapping("/search")
+    public List<Offer> search(HttpSession session, @RequestParam("data") String data) throws IOException {
+        return OfferService.search(session, data);
     }
 }

@@ -32,12 +32,12 @@ public class UserController {
         return UserService.getUsers(session);
     }
 
-    @PutMapping("/deactivate")
+    @PostMapping("/deactivate")
     public void deactivateUser(HttpSession session, @RequestParam("userId") String id) throws IOException {
         UserService.changeUserStatus(session, id, false);
     }
 
-    @PutMapping("/activate")
+    @PostMapping("/activate")
     public void activateUser(HttpSession session, @RequestParam("userId") String id) throws IOException {
         UserService.changeUserStatus(session, id, true);
     }
@@ -47,7 +47,7 @@ public class UserController {
         return UserService.getUserById(session, id);
     }
 
-    @PutMapping("/updateByAdmin")
+    @PostMapping("/updateByAdmin")
     public User updateUserByAdmin(HttpSession session,
                                   @RequestParam("data") String userData,
                                   @RequestParam("userId") String userId) throws IOException {

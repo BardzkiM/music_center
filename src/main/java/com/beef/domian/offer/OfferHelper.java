@@ -4,6 +4,7 @@ import com.beef.core.hibernate.HibernateBase;
 import com.beef.domian.BaseHelper;
 
 import javax.persistence.TypedQuery;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 
@@ -56,5 +57,24 @@ public class OfferHelper extends BaseHelper {
 
     public static Offer getOfferById(long id) {
         return HibernateBase.entityManager.find(Offer.class, id);
+    }
+
+    public static List<Offer> search(OfferSearch offerSearch) {
+        String queryString = "select o from Offer o where o.item.type = :search.type AND :search.date BETWEEN o.startDate AND o.endDate";
+        if (offerSearch.getTitle().equals("")) {
+            Arrays.stream(offerSearch.getTitle().split(" "))
+                    .forEach(word -> String.format(" and o.item.title LIKE %%%s%%", word));
+        }
+        if (offerSearch.getCity().equals("")) {
+            queryString += " AND o.item.address.city LIKE :search.city";
+        }
+        if (offerSearch.getMaxPrice() != 0) {
+            queryString += " AND o.maxPrice >= :search.maxPrice";
+        }
+
+        TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
+        query.setParameter("search", offerSearch);
+
+        return OfferHelper.getOffersFromQueryWithClearedUsers(query);
     }
 }
