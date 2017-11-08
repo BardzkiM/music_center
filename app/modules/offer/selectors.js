@@ -1,0 +1,1 @@
+export const getOffer = state => state.offer.get('offer');

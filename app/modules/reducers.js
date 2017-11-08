@@ -4,6 +4,7 @@ import userData from './userData/reducer';
 import boot from './boot/reducer';
 import notification from './notification/reducer';
 import item from './item/reducer';
+import offer from './offer/reducer';
 
 export default {
   boot,
@@ -11,5 +12,6 @@ export default {
   form,
   userData,
   notification,
-  item
+  item,
+  offer
 };

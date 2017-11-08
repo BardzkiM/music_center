@@ -8,7 +8,8 @@ module.exports = {
     path: __dirname + '/static/build',
     publicPath: '/'
   },
-  devtool: 'eval',
+  // devtool: 'eval',
+  devtool: 'source-map',
   module: {
     loaders: [
       {

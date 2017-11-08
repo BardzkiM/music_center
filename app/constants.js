@@ -18,7 +18,8 @@ export const API = {
   },
   offer: {
     add: '/offer/add',
-    search: '/offer/search'
+    search: '/offer/search',
+    getById: '/offer'
   },
   user: {
     login: '/user/login',

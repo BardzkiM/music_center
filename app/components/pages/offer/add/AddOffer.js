@@ -16,8 +16,8 @@ import {
   DESCRIPTION,
   ADD_OFFER,
   SHOW_OFFER,
-  NO_ITEMS_ADDED
-  , ITEM
+  NO_ITEMS_ADDED,
+  ITEM
 } from '../../../../locales';
 import CustomSelect from '../../../partials/form/CustomSelect';
 
