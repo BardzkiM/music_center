@@ -5,16 +5,16 @@ import {REQUEST_DATA_SUCCESS, REQUEST_DATA_FAILED} from '../form/actions';
 import {REQUEST_ADD_OFFER, REQUEST_SEARCH_OFFERS} from './actions';
 
 export default function* watchItemRequests() {
-  yield takeLatest(REQUEST_ADD_OFFER, addItem);
+  yield takeLatest(REQUEST_ADD_OFFER, addOffer);
   yield takeLatest(REQUEST_SEARCH_OFFERS, searchOffers);
 }
 
-function* addItem({payload: offerData}) {
+function* addOffer({payload: offerData}) {
   try {
     const response = yield call(axios.post, API.offer.add, offerData);
     const data = yield response.data;
 
-    if (data) {
+    if (data && ~data) {
       yield put(REQUEST_DATA_SUCCESS(data));
     } else {
       yield put(REQUEST_DATA_FAILED(OFFER_CANNOT_BE_ADDED));

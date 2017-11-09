@@ -42,11 +42,11 @@ public class OfferHelper extends BaseHelper {
     }
 
     public static List<Offer> getAllActiveOffersByTimeAndItemId(long itemId, long startDate, long endDate) {
-        String queryString = "select o from Offer o where " +
-                "o.item.id = :itemId and " +
-                "o.startDate <= :startDate and :startDate >= o.endDate or " +
-                "o.startDate <= :endDate and :endDate >= o.endDate or " +
-                ":startDate <= o.startDate and :endDate >= o.endDate";
+        String queryString = "SELECT o FROM Offer o WHERE " +
+                "o.item.id = :itemId AND " +
+                "(:startDate BETWEEN o.startDate AND o.endDate OR" +
+                ":endDate BETWEEN o.startDate AND o.endDate OR " +
+                "(:startDate <= o.startDate AND :endDate >= o.endDate))";
 
         TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
         query.setParameter("itemId", itemId);
@@ -61,11 +61,14 @@ public class OfferHelper extends BaseHelper {
     }
 
     public static List<Offer> search(OfferSearch offerSearch) {
-        String queryString = "select o from Offer o where o.item.type = :searchType AND :searchDate BETWEEN o.startDate AND o.endDate";
+        String queryString = "select o from Offer o " +
+                "where o.item.type = :searchType " +
+                "AND :startDate BETWEEN o.startDate AND o.endDate " +
+                "AND :endDate BETWEEN o.startDate AND o.endDate";
         List<String> words = new ArrayList<>(Arrays.asList(offerSearch.getTitle().split(" ")));
 
         queryString += words.stream()
-                .reduce("", (acc, word) -> acc += String.format(" and o.title LIKE :word_%s", word));
+                .reduce("", (acc, word) -> acc += String.format(" AND o.title LIKE :word_%s", word));
 
         queryString += " AND o.item.address.city LIKE :searchCity";
 
@@ -79,7 +82,8 @@ public class OfferHelper extends BaseHelper {
 
         TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
         query.setParameter("searchType", offerSearch.getType());
-        query.setParameter("searchDate", offerSearch.getDate());
+        query.setParameter("startDate", offerSearch.getStartDate());
+        query.setParameter("endDate", offerSearch.getEndDate());
         query.setParameter("searchCity", String.format("%%%s%%", offerSearch.getCity()));
         query.setParameter("searchMaxPrice", offerSearch.getMaxPrice());
         words.forEach(word -> query.setParameter("word_" + word, String.format("%%%s%%", word)));

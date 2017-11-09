@@ -20,7 +20,9 @@ class OfferService {
 
             Offer offer = new ObjectMapper().readValue(data, Offer.class);
             long itemId = offer.getItem().getId();
-            List<Offer> activeOffersWithItem = OfferHelper.getAllActiveOffersByTimeAndItemId(itemId, offer.getStartDate(), offer.getEndDate());
+            List<Offer> activeOffersWithItem =
+                    OfferHelper.getAllActiveOffersByTimeAndItemId(
+                            itemId, offer.getStartDate(), offer.getEndDate());
 
             if (activeOffersWithItem == null || activeOffersWithItem.size() == 0) {
                 OfferHelper.createOffer(offer);
