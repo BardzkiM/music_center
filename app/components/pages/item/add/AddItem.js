@@ -48,7 +48,7 @@ export default class AddItem extends Form {
   }
 
   getSuccessContent() {
-    return <Link to={'/item/show/' + this.props.itemId}>{SHOW_ITEM}</Link>;
+    return <Link to={'/item/' + this.props.itemId}>{SHOW_ITEM}</Link>;
   }
 
   getAddressCheckbox() {

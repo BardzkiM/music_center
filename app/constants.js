@@ -1,11 +1,14 @@
 import {ROOM, GUITAR, DRUMS, SOUND_SYSTEM, BASS_GUITAR, SAXOPHONE, TROMBONE} from './locales';
-export const USER_TYPE_LOGGED = 'USER_TYPE_LOGGED';
-export const USER_TYPE_UNLOGGED = 'USER_TYPE_UNLOGGED';
-export const WRONG_CREDENTIALS = 'WRONG_CREDENTIALS';
-export const ACCOUNT_ALREADY_EXISTS = 'ACCOUNT_ALREADY_EXISTS';
-export const ITEM_CANNOT_BE_ADDED = 'ITEM_CANNOT_BE_ADDED';
-export const OFFER_CANNOT_BE_ADDED = 'OFFER_CANNOT_BE_ADDED';
-export const NO_OFFERS_FOUND = 'NO_OFFERS_FOUND';
+
+export const
+  USER_TYPE_LOGGED = 'USER_TYPE_LOGGED',
+  USER_TYPE_UNLOGGED = 'USER_TYPE_UNLOGGED',
+  WRONG_CREDENTIALS = 'WRONG_CREDENTIALS',
+  ACCOUNT_ALREADY_EXISTS = 'ACCOUNT_ALREADY_EXISTS',
+  ITEM_CANNOT_BE_ADDED = 'ITEM_CANNOT_BE_ADDED',
+  OFFER_CANNOT_BE_ADDED = 'OFFER_CANNOT_BE_ADDED',
+  NO_OFFERS_FOUND = 'NO_OFFERS_FOUND',
+  ITEM_NOT_FOUND = 'ITEM_NOT_FOUND';
 
 export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 
@@ -14,7 +17,8 @@ export const NOTIFICATION_HIDE_TIME = 5000;
 export const API = {
   item: {
     add: '/item/add',
-    all: '/item/all'
+    all: '/item/all',
+    getById: '/item'
   },
   offer: {
     add: '/offer/add',
@@ -29,12 +33,13 @@ export const API = {
   }
 };
 
-export const SUCCESS = 'SUCCESS';
-export const ERROR = 'ERROR';
-export const WARNING = 'WARNING';
-export const INFO = 'INFO';
-export const LOADING = 'LOADING';
-export const NONE = '';
+export const
+  SUCCESS = 'SUCCESS',
+  ERROR = 'ERROR',
+  WARNING = 'WARNING',
+  INFO = 'INFO',
+  LOADING = 'LOADING',
+  NONE = '';
 
 export const ITEM_TYPES = [
   {value: 'ROOM', name: ROOM},
@@ -46,4 +51,4 @@ export const ITEM_TYPES = [
   {value: 'SAXOPHONE', name: SAXOPHONE},
 ];
 
-export const TIME = {HOUR: 1000 * 3600};
+export const getItemTypeName = value => ITEM_TYPES.find(item => item.value === value).name;

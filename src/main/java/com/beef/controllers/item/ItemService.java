@@ -66,7 +66,9 @@ class ItemService {
         HibernateBase.closeEntityManagers();
 
         if (UserUtils.isUserAuthenticated(session)) {
-            return ItemHelper.getItemById(Long.parseLong(itemId));
+            long userId = UserUtils.getSessionUser(session).getId();
+
+            return ItemHelper.getItemById(Long.parseLong(itemId), userId);
         }
 
         return null;
