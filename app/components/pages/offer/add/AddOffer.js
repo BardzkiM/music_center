@@ -66,8 +66,8 @@ export default class AddOffer extends Form {
 
   getForm() {
     const {items} = this.props;
-
-    if (items) {
+    
+    if (items && items.size) {
       return (
         <div>
           <form onSubmit={this.handleSubmit}>
@@ -79,7 +79,7 @@ export default class AddOffer extends Form {
       );
     }
 
-    if (!items.size) {
+    if (items && !items.size) {
       return <div>{NO_ITEMS_ADDED}</div>;
     }
 
@@ -87,6 +87,6 @@ export default class AddOffer extends Form {
   }
 
   getSuccessContent() {
-    return <Link path={`/offer/${this.props.offerId}`}>{SHOW_OFFER}</Link>;
+    return <Link to={`/offer/${this.props.offerId}`}>{SHOW_OFFER}</Link>;
   }
 }
