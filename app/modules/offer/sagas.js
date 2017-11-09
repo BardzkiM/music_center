@@ -15,7 +15,7 @@ function* addOffer({payload: offerData}) {
     const response = yield call(axios.post, API.offer.add, offerData);
     const data = yield response.data;
 
-    if (data) {
+    if (data && ~data) {
       yield put(REQUEST_DATA_SUCCESS(data));
     } else {
       yield put(REQUEST_DATA_FAILED(OFFER_CANNOT_BE_ADDED));

@@ -12,7 +12,9 @@ public class OfferSearch {
 
     private String city = "";
 
-    private long date;
+    private long startDate;
+
+    private long endDate;
 
     public ItemType getType() {
         return type;
@@ -46,11 +48,19 @@ public class OfferSearch {
         this.city = city;
     }
 
-    public long getDate() {
-        return date;
+    public long getStartDate() {
+        return startDate;
     }
 
-    public void setDate(long date) {
-        this.date = date;
+    public void setStartDate(long startDate) {
+        this.startDate = startDate;
+    }
+
+    public long getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(long endDate) {
+        this.endDate = endDate;
     }
 }
