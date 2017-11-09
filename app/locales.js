@@ -56,7 +56,7 @@ const ERRORS = {
 
 export const UNKNOWN_ERROR = 'Server Error';
 
-export const getError = error => ERRORS[error] || UNKNOWN_ERROR;
+export const getErrorMessage = error => ERRORS[error] || UNKNOWN_ERROR;
 
 export const MESSAGES = {
   LOGGED_IN: 'You have been successfully logged in!',

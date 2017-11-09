@@ -1,11 +1,12 @@
 import React from 'react';
 import serialize from 'form-serialize';
 import moment from 'moment';
-import {ITEM_TYPE, TITLE, CITY, MAX_PRICE, DATE, SEARCH, MESSAGES} from '../../../../locales';
+import {ITEM_TYPE, TITLE, CITY, MAX_PRICE, DATE, SEARCH, MESSAGES, getErrorMessage} from '../../../../locales';
 import {getFormControlsDOM} from '../../../../utils/form';
 import {SubmitControl} from '../../../partials/form/InputControls';
-import {ITEM_TYPES, WARNING} from '../../../../constants';
+import {ITEM_TYPES, WARNING, INFO, ERROR, SUCCESS} from '../../../../constants';
 import CustomSelect from '../../../partials/form/CustomSelect';
+import OffersList from '../list/OffersList';
 
 const currentDate = moment().format('YYYY-MM-DDTHH:00');
 const endDate = moment().add(1, 'hours').format('YYYY-MM-DDTHH:00');
@@ -42,7 +43,19 @@ export default class SearchOffers extends React.Component {
     return data;
   }
 
+  componentDidUpdate() {
+    const {formStatus, error} = this.props;
+
+    if (formStatus === ERROR) {
+      this.props.showNotification({message: getErrorMessage(error), type: INFO});
+    }
+  }
+
   render() {
+    const {offers, formStatus} = this.props;
+
+    console.log(offers)
+    
     return (
       <div>
         <form onSubmit={this.handleSubmit}>
@@ -50,6 +63,7 @@ export default class SearchOffers extends React.Component {
           {getFormControlsDOM(formControls)}
           <SubmitControl text={SEARCH}/>
         </form>
+        {formStatus === SUCCESS && <OffersList offers={offers}/>}
       </div>
     );
   }

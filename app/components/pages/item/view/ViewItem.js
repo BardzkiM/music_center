@@ -1,6 +1,7 @@
 import React from 'react';
-import {getError, ACTIVE, ITEM_NAME, ITEM_TYPE, ADDRESS, YES, NO} from '../../../../locales';
+import {getErrorMessage, ACTIVE, ITEM_NAME, ITEM_TYPE, ADDRESS, YES, NO} from '../../../../locales';
 import {getItemTypeName} from '../../../../constants';
+import Gallery from '../../../partials/gallery/Gallery';
 
 export default class ViewItem extends React.Component {
 
@@ -23,7 +24,7 @@ export default class ViewItem extends React.Component {
   }
 
   getError() {
-    return <div>{getError(this.props.item.get('error'))}</div>;
+    return <div>{getErrorMessage(this.props.item.get('error'))}</div>;
   }
 
   getLoading() {
@@ -31,7 +32,9 @@ export default class ViewItem extends React.Component {
   }
 
   getItemMarkup() {
-    const {item} = this.props;
+    const
+      {item} = this.props,
+      images = item.get('images');
 
     return (
       <div>
@@ -51,6 +54,7 @@ export default class ViewItem extends React.Component {
           <span>{ADDRESS}</span>
           <span>{this.getAddress(item.get('address'))}</span>
         </div>
+        {images && <Gallery images={images}/>}
       </div>
     );
   }

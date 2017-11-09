@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import {formatData} from '../../../utils/form';
-import {MESSAGES, getError} from '../../../locales';
+import {MESSAGES, getErrorMessage} from '../../../locales';
 import {SUCCESS, ERROR, LOADING} from '../../../constants';
 
 export default class Form extends React.Component {
@@ -40,7 +40,7 @@ export default class Form extends React.Component {
     const {showNotification, formStatus, error} = nextProps;
     const notificationData = {
       SUCCESS: {message: this.successMessageText, type: SUCCESS},
-      ERROR: {message: getError(error), type: ERROR},
+      ERROR: {message: getErrorMessage(error), type: ERROR},
       LOADING: {message: MESSAGES.LOADING, type: LOADING}
     }[formStatus];
 

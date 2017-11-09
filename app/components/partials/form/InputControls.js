@@ -13,7 +13,7 @@ InputControl.propTypes = {
   name: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   required: PropTypes.bool
 };
 

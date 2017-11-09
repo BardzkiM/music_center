@@ -2,11 +2,13 @@ import {connect} from 'react-redux';
 import SearchOffers from '../../../components/pages/offer/search/SearchOffers';
 import {REQUEST_SEARCH_OFFERS} from '../../../modules/offer/actions';
 import {REQUEST_DATA} from '../../../modules/form/actions';
-import {getFormResponse} from '../../../modules/form/selectors';
+import {getFormResponse, getStatus, getError} from '../../../modules/form/selectors';
 import {SHOW_NOTIFICATION} from '../../../modules/notification/actions';
 
 const mapStateToProps = state => ({
-  data: getFormResponse(state)
+  offers: getFormResponse(state),
+  formStatus: getStatus(state),
+  error: getError(state)
 });
 
 const mapDispatchToProps = dispatch => ({
