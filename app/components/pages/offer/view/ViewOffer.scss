@@ -1,0 +1,36 @@
+.ViewOffer {
+  display: flex;
+  flex-flow: row wrap;
+
+  .offer-header {
+    flex: 1 0 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .photo-gallery {
+    flex-basis: 40%;
+    height: auto;
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .content {
+    flex-basis: 60%;
+
+    .title {
+
+    }
+
+    .subtitle {
+
+    }
+
+    .description {
+
+    }
+  }
+}

@@ -1,1 +1,14 @@
 @import "node_modules/react-image-gallery/styles/scss/image-gallery.scss";
+
+.image-gallery {
+  max-height: 100vh;
+}
+
+.fullscreen {
+  .image-gallery-slides {
+    max-height: 100vh;
+  }
+  .image-gallery-thumbnails-wrapper {
+    bottom: 100px;
+  }
+}

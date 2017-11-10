@@ -3,7 +3,7 @@ export const
   LOG_IN = 'Log in',
   HOME_PAGE = 'Home',
   ADD_ITEM = 'Add Item',
-  LOADING = 'LOADING',
+  LOADING = 'Loading...',
   BACK_TO_HOME = 'Back to Home Page',
   GO_TO_LOGIN_PAGE = 'Log in',
   SHOW_ITEM = 'Show added item',
@@ -17,7 +17,8 @@ export const
   FIRST_NAME = 'First Name',
   LAST_NAME = 'Last Name',
   ADDRESS = 'Address',
-  EMAIL = 'E-mail', CITY = 'City',
+  EMAIL = 'E-mail',
+  CITY = 'City',
   STREET = 'Street',
   HOUSE_NUMBER = 'House number',
   APARTMENT_NUMBER = 'Apartment number',
@@ -25,9 +26,11 @@ export const
   ITEM_NAME = 'Name',
   ITEM_TYPE = 'Type',
   IMAGES = 'Images',
-  ROOM = 'Room', PRICE = 'Price',
+  ROOM = 'Room',
+  PRICE = 'Price',
   DELIVERY_PRICE = 'Delivery price',
   DELIVERY_MAX_DISTANCE = 'Delivery max distance',
+  DELIVERY_AREA = "Delivery distance",
   START_DATE = 'Start date',
   END_DATE = 'End date',
   DESCRIPTION = 'Description',
@@ -43,7 +46,9 @@ export const
   SEARCH = 'Search',
   ACTIVE = 'Active',
   YES = 'Yes',
-  NO = 'NO';
+  NO = 'No',
+  PER_HOUR = "per hour",
+  AVAILABLE = "Available";
 
 const ERRORS = {
   'WRONG_CREDENTIALS': 'Wrong Credentials',
