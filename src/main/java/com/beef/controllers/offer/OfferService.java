@@ -53,14 +53,10 @@ class OfferService {
         return null;
     }
 
-    protected static Offer getOfferById(HttpSession session, String offerId) {
+    protected static Offer getOfferById(String offerId) {
         HibernateBase.closeEntityManagers();
 
-        if (UserUtils.isUserAuthenticated(session)) {
-            return OfferHelper.getOfferById(Long.parseLong(offerId));
-        }
-
-        return null;
+        return OfferHelper.getOfferById(Long.parseLong(offerId));
     }
 
     protected static List<Offer> search(HttpSession session, String data) throws IOException {

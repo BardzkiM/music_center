@@ -31,8 +31,8 @@ public class OfferController {
     }
 
     @GetMapping("/{id}")
-    public Offer getOfferById(HttpSession session, @PathVariable(value = "id") String id) {
-        return OfferService.getOfferById(session, id);
+    public Offer getOfferById(@PathVariable(value = "id") String id) {
+        return OfferService.getOfferById(id);
     }
 
     @PostMapping("/search")

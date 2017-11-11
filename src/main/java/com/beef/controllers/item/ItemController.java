@@ -28,7 +28,7 @@ public class ItemController {
     }
 
     @GetMapping("/{id}")
-    public Item getItemById(HttpSession session, @PathVariable(value = "id") String id) {
-        return ItemService.getItemById(session, id);
+    public Item getItemById(@PathVariable(value = "id") String id) {
+        return ItemService.getItemById(id);
     }
 }
