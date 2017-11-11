@@ -22,6 +22,10 @@ module.exports = {
         )
       },
       {
+        test:   /\.css$/,
+        loader: "style-loader!css-loader!postcss-loader"
+      },
+      {
         test: /.*\.js$/,
         loaders: ['babel-loader'],
         exclude: /node_modules/

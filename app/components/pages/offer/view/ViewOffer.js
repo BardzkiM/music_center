@@ -3,6 +3,7 @@ import {getFormattedDate} from '../../../../utils/dateUtil';
 import './ViewOffer.scss';
 import {PRICE, DELIVERY_AREA, CITY, DELIVERY_PRICE, LOADING, PER_HOUR} from "../../../../locales";
 import Gallery from '../../../partials/gallery/Gallery';
+import Calendar from '../../../partials/calendar/Calendar';
 
 export default class ViewOffer extends React.Component {
 
@@ -22,6 +23,7 @@ export default class ViewOffer extends React.Component {
           <Gallery images={item.images}/>
         </div>
         <div className="content">
+          <Calendar />
           <p className="title">{offer.item.name}</p>
           <p className="title">{PRICE}: {offer.price} {PER_HOUR}</p>
           <p className="subtitle">{getFormattedDate(offer.startDate)} - {getFormattedDate(offer.endDate)}</p>
