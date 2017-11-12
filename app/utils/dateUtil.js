@@ -1,4 +1,3 @@
-export function getFormattedDate(timestamp) {
-  const date = new Date(timestamp);
-  return `${date.getHours()}:${date.getMinutes()} ${date.getDay()}-${date.getMonth()}-${date.getYear()}`;
-}
+import moment from 'moment';
+
+export const getFormattedDate = time => moment(time).format('hh:mm DD-MM-YYYY');
