@@ -27,10 +27,10 @@ public class ItemHelper extends BaseHelper {
         }
     }
 
-    public static Item getItemById(long id, long userId) {
+    public static Item getItemById(long id) {
         Item item = HibernateBase.entityManager.find(Item.class, id);
 
-        if (item != null && item.getUser().getId() == userId) {
+        if (item != null) {
             item.clearUser();
 
             return item;

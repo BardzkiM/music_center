@@ -14,8 +14,8 @@ export default class Calendar extends React.Component {
     this.events = [
       {
         'title': 'rented',
-        'start': new Date(2017, 11, 11, 8, 0, 0),
-        'end': new Date(2017, 11, 11, 11, 0, 0)
+        'start': new Date(2017, 11, 11, 12, 0, 0),
+        'end': new Date(2017, 11, 11, 14, 0, 0)
       },
       {
         'title': 'rented',

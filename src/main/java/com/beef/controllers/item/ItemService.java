@@ -62,15 +62,9 @@ class ItemService {
         return null;
     }
 
-    protected static Item getItemById(HttpSession session, String itemId) {
+    protected static Item getItemById(String itemId) {
         HibernateBase.closeEntityManagers();
 
-        if (UserUtils.isUserAuthenticated(session)) {
-            long userId = UserUtils.getSessionUser(session).getId();
-
-            return ItemHelper.getItemById(Long.parseLong(itemId), userId);
-        }
-
-        return null;
+        return ItemHelper.getItemById(Long.parseLong(itemId));
     }
 }

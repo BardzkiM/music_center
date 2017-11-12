@@ -1,7 +1,7 @@
 import React from 'react';
 import {getFormattedDate} from '../../../../utils/dateUtil';
 import './ViewOffer.scss';
-import {PRICE, DELIVERY_AREA, CITY, DELIVERY_PRICE, LOADING, PER_HOUR} from "../../../../locales";
+import {PRICE, DELIVERY_AREA, CITY, DELIVERY_PRICE, LOADING, PER_HOUR, getErrorMessage} from "../../../../locales";
 import Gallery from '../../../partials/gallery/Gallery';
 import Calendar from '../../../partials/calendar/Calendar';
 
@@ -23,7 +23,6 @@ export default class ViewOffer extends React.Component {
           <Gallery images={item.images}/>
         </div>
         <div className="content">
-          <Calendar />
           <p className="title">{offer.item.name}</p>
           <p className="title">{PRICE}: {offer.price} {PER_HOUR}</p>
           <p className="subtitle">{getFormattedDate(offer.startDate)} - {getFormattedDate(offer.endDate)}</p>
@@ -37,7 +36,16 @@ export default class ViewOffer extends React.Component {
             <p className="subtitle">{offer.description}</p>
           </div>
         </div>
+        <div className="calendar">
+          <Calendar />
+        </div>
       </div>
+    );
+  }
+
+  getErrorInfo() {
+    return(
+      <div className="error-info">{getErrorMessage('OFFER_NOT_FOUND')}</div>
     );
   }
 
@@ -45,8 +53,9 @@ export default class ViewOffer extends React.Component {
     const {offer} = this.props;
 
     if(offer) {
-      return this.getOffer();
-    } else {
+      return offer.error ? this.getErrorInfo() : this.getOffer();
+    }
+    else {
       return <div>{LOADING}</div>
     }
   }
