@@ -1,9 +1,11 @@
 import React from 'react';
 import {getFormattedDate} from '../../../../utils/dateUtil';
 import './ViewOffer.scss';
-import {PRICE, DELIVERY_AREA, CITY, DELIVERY_PRICE, LOADING, PER_HOUR, getErrorMessage} from "../../../../locales";
+import {PRICE, DELIVERY_AREA, CITY, DELIVERY_PRICE, PER_HOUR} from '../../../../locales';
 import Gallery from '../../../partials/gallery/Gallery';
 import Calendar from '../../../partials/calendar/Calendar';
+import {Loading, ErrorMessage} from '../../../partials/common/common';
+import {OFFER_NOT_FOUND} from '../../../../constants';
 
 export default class ViewOffer extends React.Component {
 
@@ -23,10 +25,10 @@ export default class ViewOffer extends React.Component {
           <Gallery images={item.images}/>
         </div>
         <div className="content">
-          <p className="title">{offer.item.name}</p>
+          <p className="title">{item.name}</p>
           <p className="title">{PRICE}: {offer.price} {PER_HOUR}</p>
           <p className="subtitle">{getFormattedDate(offer.startDate)} - {getFormattedDate(offer.endDate)}</p>
-          <p className="subtitle">{CITY}: {offer.item.address.city}</p>
+          <p className="subtitle">{CITY}: {item.address.city}</p>
           <div className="delivery">
             <p className="subtitle">{DELIVERY_PRICE}: {offer.deliveryPrice}</p>
             <p className="subtitle">{DELIVERY_AREA}: {offer.deliveryMaxDistance}</p>
@@ -43,20 +45,14 @@ export default class ViewOffer extends React.Component {
     );
   }
 
-  getErrorInfo() {
-    return(
-      <div className="error-info">{getErrorMessage('OFFER_NOT_FOUND')}</div>
-    );
-  }
-
   render() {
     const {offer} = this.props;
 
-    if(offer) {
-      return offer.error ? this.getErrorInfo() : this.getOffer();
+    if (offer) {
+      return offer.error ? <ErrorMessage message={OFFER_NOT_FOUND}/> : this.getOffer();
     }
     else {
-      return <div>{LOADING}</div>
+      return <Loading />
     }
   }
 }

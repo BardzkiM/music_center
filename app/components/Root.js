@@ -5,10 +5,10 @@ import {syncHistoryWithStore, routerReducer} from 'react-router-redux';
 import {Provider, connect} from 'react-redux';
 import store from '../store/store';
 import Routes from './routes/Routes';
-import {LOADING} from '../locales';
 import {getIsReady} from '../modules/boot/selectors';
 import {CHECK_LOGIN} from '../modules/userData/actions';
 import {requireAuth} from '../utils/auth';
+import {Loading} from './partials/common/common';
 
 export const isDebugMode = false;
 const history = syncHistoryWithStore(hashHistory, store);
@@ -30,7 +30,7 @@ export class Root extends React.Component {
       );
     }
 
-    return <div>{LOADING}</div>;
+    return <Loading />;
   }
 }
 
