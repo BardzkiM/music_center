@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-public class OfferService {
+class OfferService {
 
     static Offer addOffer(HttpSession session, String data) throws IOException {
 
