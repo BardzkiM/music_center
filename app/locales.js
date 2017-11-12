@@ -7,10 +7,9 @@ export const
   BACK_TO_HOME = 'Back to Home Page',
   GO_TO_LOGIN_PAGE = 'Log in',
   SHOW_ITEM = 'Show added item',
-  EDIT_USER_DATA = 'Edit profile';
-
-//form controls
-export const
+  EDIT_USER_DATA = 'Edit profile',
+  ADD_RENTAL = 'Add rental',
+  SHOW_RENTAL = 'Show added rental',
   LOGIN = 'Login',
   PASSWORD = 'Password',
   REGISTER = 'Register',
@@ -58,7 +57,8 @@ const ERRORS = {
   'NO_OFFERS_FOUND': 'No offers found with current criteria',
   'OFFER_NOT_FOUND': 'Sorry, offer not found',
   'ITEM_NOT_FOUND': 'Item with specified id not found!',
-  'USER_NOT_FOUND': 'User not found'
+  'USER_NOT_FOUND': 'User not found',
+  'RENTAL_CANNOT_BE_ADDED': 'Rental cannot be added - check if item is not already rent at selected period'
 };
 
 export const UNKNOWN_ERROR = 'Server Error';
@@ -73,7 +73,8 @@ export const MESSAGES = {
   ITEM_ADDED: 'Your item has been successfully added!',
   USER_DATA_CHANGED: 'Your data has been successfully updated!',
   START_DATE_BIGGER: 'Start date must be before end date!',
-  OFFER_ADDED: 'Offer has been successfully added!'
+  OFFER_ADDED: 'Offer has been successfully added!',
+  RENTAL_ADDED: 'Rental has been successfully added!'
 };
 
 export const

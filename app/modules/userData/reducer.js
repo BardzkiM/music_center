@@ -3,7 +3,7 @@ import {Map} from 'immutable';
 
 import {SAVE_USER_DATA, CLEAR_USER_DATA, SAVE_CACHED_USER} from './actions';
 
-const initialState = Map({loggedUser: null, user: null});
+const initialState = Map({loggedUser: Map({}), user: null});
 
 export default handleActions({
   [SAVE_USER_DATA]: (state, {payload}) => state.set('loggedUser', Map(payload)),

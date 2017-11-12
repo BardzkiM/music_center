@@ -10,7 +10,8 @@ export const
   NO_OFFERS_FOUND = 'NO_OFFERS_FOUND',
   ITEM_NOT_FOUND = 'ITEM_NOT_FOUND',
   USER_NOT_FOUND = 'USER_NOT_FOUND',
-  OFFER_NOT_FOUND = 'OFFER_NOT_FOUND';
+  OFFER_NOT_FOUND = 'OFFER_NOT_FOUND',
+  RENTAL_CANNOT_BE_ADDED = 'RENTAL_CANNOT_BE_ADDED';
 
 export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 
@@ -26,6 +27,9 @@ export const API = {
     add: '/offer/add',
     search: '/offer/search',
     getById: '/offer'
+  },
+  rental: {
+    add: '/rental/add'
   },
   user: {
     login: '/user/login',

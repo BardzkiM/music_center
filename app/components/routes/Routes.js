@@ -6,6 +6,7 @@ import Register from '../../connectors/pages/RegisterConnector';
 import itemRoutes from '../pages/item/routes';
 import userRoutes from '../pages/user/routes';
 import offerRoutes from '../pages/offer/routes';
+import rentalRoutes from '../pages/rental/routes';
 
 export default requireAuth =>
   <Route path='/' component={MainLayout}>
@@ -14,4 +15,5 @@ export default requireAuth =>
     {itemRoutes(requireAuth)}
     {userRoutes(requireAuth)}
     {offerRoutes(requireAuth)}
+    {rentalRoutes(requireAuth)}
   </Route>;
