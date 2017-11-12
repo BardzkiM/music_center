@@ -1,7 +1,10 @@
 import {put, takeLatest, call} from 'redux-saga/effects';
 import * as axios from 'axios';
 
-import {REQUEST_LOGIN, SAVE_USER_DATA, REQUEST_REGISTER, CHECK_LOGIN, LOGOUT, CLEAR_USER_DATA, REQUEST_USER_DATA_CHANGE} from './actions';
+import {REQUEST_LOGIN, SAVE_USER_DATA, REQUEST_REGISTER, CHECK_LOGIN, LOGOUT, CLEAR_USER_DATA, REQUEST_USER_DATA_CHANGE,
+  REQUEST_USER
+  , SAVE_CACHED_USER
+} from './actions';
 import {
   API, USER_TYPE_LOGGED, WRONG_CREDENTIALS, ACCOUNT_ALREADY_EXISTS, USER_TYPE_UNLOGGED, INFO
 } from '../../constants';
@@ -17,6 +20,7 @@ export default function* userDataSaga() {
   yield takeLatest(CHECK_LOGIN, handleLoginCheck);
   yield takeLatest(LOGOUT, handleLogoutRequest);
   yield takeLatest(REQUEST_USER_DATA_CHANGE, handleUserDataChange);
+  yield takeLatest(REQUEST_USER, getUserById);
 }
 
 const userAPI = API.user;
@@ -102,4 +106,19 @@ function* dispatchLogoutActions() {
 function* dispatchLoginActions(data) {
   yield put(SAVE_USER_DATA(data));
   yield put(CHANGE_MENU(USER_TYPE_LOGGED));
+}
+
+function* getUserById({payload: id}) {
+    try {
+      const response = yield call(axios.get, API.user.getUserById + '/' + id);
+      const data = yield response.data;
+
+      if (data) {
+        yield put(SAVE_CACHED_USER(data));
+      } else {
+        yield put(SAVE_CACHED_USER({error: USER_NOT_FOUND}));
+      }
+    } catch (e) {
+      yield put(SAVE_CACHED_USER({error: e}));
+    }
 }

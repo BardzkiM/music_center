@@ -56,7 +56,8 @@ const ERRORS = {
   'ITEM_CANNOT_BE_ADDED': 'Item cannot be added',
   'OFFER_CANNOT_BE_ADDED': 'Item is already rented on selected period',
   'NO_OFFERS_FOUND': 'No offers found with current criteria',
-  'ITEM_NOT_FOUND': 'Item with specified id not found!'
+  'ITEM_NOT_FOUND': 'Item with specified id not found!',
+  'USER_NOT_FOUND': 'User not found'
 };
 
 export const UNKNOWN_ERROR = 'Server Error';

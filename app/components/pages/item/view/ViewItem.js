@@ -2,6 +2,7 @@ import React from 'react';
 import {getErrorMessage, ACTIVE, ITEM_NAME, ITEM_TYPE, ADDRESS, YES, NO} from '../../../../locales';
 import {getItemTypeName} from '../../../../constants';
 import Gallery from '../../../partials/gallery/Gallery';
+import {AddressView, Loading, ErrorMessage} from '../../../partials/common/common';
 
 export default class ViewItem extends React.Component {
 
@@ -14,21 +15,13 @@ export default class ViewItem extends React.Component {
 
     if (item) {
       if (item.get('error')) {
-        return this.getError();
+        return <ErrorMessage message={item.get('error')} />
       }
 
       return this.getItemMarkup();
     }
 
-    return this.getLoading();
-  }
-
-  getError() {
-    return <div>{getErrorMessage(this.props.item.get('error'))}</div>;
-  }
-
-  getLoading() {
-    return <div>LOADING...</div>;
+    return <Loading/>
   }
 
   getItemMarkup() {
@@ -52,18 +45,9 @@ export default class ViewItem extends React.Component {
         </div>
         <div>
           <span>{ADDRESS}</span>
-          <span>{this.getAddress(item.get('address'))}</span>
+          <span><AddressView address={item.get('address')}/></span>
         </div>
         {images && <Gallery images={images}/>}
-      </div>
-    );
-  }
-
-  getAddress({street, houseNumber, apartmentNumber, city, zipCode}) {
-    return (
-      <div>
-        <div>{street} {houseNumber}/{apartmentNumber}</div>
-        <div>{city}, {zipCode}</div>
       </div>
     );
   }

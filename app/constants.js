@@ -8,7 +8,8 @@ export const
   ITEM_CANNOT_BE_ADDED = 'ITEM_CANNOT_BE_ADDED',
   OFFER_CANNOT_BE_ADDED = 'OFFER_CANNOT_BE_ADDED',
   NO_OFFERS_FOUND = 'NO_OFFERS_FOUND',
-  ITEM_NOT_FOUND = 'ITEM_NOT_FOUND';
+  ITEM_NOT_FOUND = 'ITEM_NOT_FOUND',
+  USER_NOT_FOUND = 'USER_NOT_FOUND';
 
 export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 
@@ -30,7 +31,8 @@ export const API = {
     logout: '/user/logout',
     register: '/user/register',
     logged: '/user/logged',
-    update: '/user/update'
+    update: '/user/update',
+    getUserById: '/user/'
   }
 };
 
