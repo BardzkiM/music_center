@@ -1,8 +1,9 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import './InputControls.scss';
 
 const InputControl = ({name, text, type, value, required}) => (
-  <div className="form-row">
+  <div className={`form-row ${type}`}>
     <label htmlFor={name} className="">{text}</label>
     <input id={name} required={required} type={type} className=""
            defaultValue={value} name={name} placeholder={text}/>

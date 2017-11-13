@@ -1,0 +1,7 @@
+.form-row {
+  &.hidden {
+    label {
+      display: none;
+    }
+  }
+}

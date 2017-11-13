@@ -60,5 +60,5 @@ export default class AddItem extends Form {
     );
   }
 
-  handleCheckboxChange = event => this.setState({useUserAddress: event.target.checked});
+  handleCheckboxChange = ({target}) => this.setState({useUserAddress: target.checked});
 }

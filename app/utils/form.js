@@ -25,4 +25,4 @@ export const getFormControlsDOM = formControlsData => (
 );
 
 export const formatItems = items =>
-  items.map(item => ({value: item.id, name: item.name, id: item.id}));
+  items.map(item => ({value: item.id, name: item.name, id: item.id, type: item.type}));

@@ -13,7 +13,10 @@ class CustomSelect extends React.Component {
   }
 
   componentWillMount() {
-    this.setState({selected: this.props.items[0]});
+    const {items} = this.props;
+
+    this.setState({selected: items[0]});
+    this.props.onChange(items[0]);
     document.addEventListener('click', this.handleDocumentClick);
   }
 
@@ -38,6 +41,7 @@ class CustomSelect extends React.Component {
     const selected = this.props.items.find(item => item.value == value);
 
     this.setState({expanded: !this.state.expanded, selected});
+    this.props.onChange(selected);
   };
 
   render() {
@@ -69,7 +73,12 @@ class CustomSelect extends React.Component {
 CustomSelect.propTypes = {
   items: PropTypes.array.isRequired,
   name: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired
+  label: PropTypes.string.isRequired,
+  onChange: PropTypes.func
+};
+
+CustomSelect.defaultProps = {
+  onChange: () => void 0
 };
 
 export default CustomSelect;

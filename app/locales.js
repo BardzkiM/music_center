@@ -29,7 +29,7 @@ export const
   PRICE = 'Price',
   DELIVERY_PRICE = 'Delivery price',
   DELIVERY_MAX_DISTANCE = 'Delivery max distance',
-  DELIVERY_AREA = "Delivery distance",
+  DELIVERY_AREA = 'Delivery distance',
   START_DATE = 'Start date',
   END_DATE = 'End date',
   DESCRIPTION = 'Description',
@@ -46,8 +46,9 @@ export const
   ACTIVE = 'Active',
   YES = 'Yes',
   NO = 'No',
-  PER_HOUR = "per hour",
-  AVAILABLE = "Available";
+  PER_HOUR = 'per hour',
+  AVAILABLE = 'Available',
+  NON_DELIVERABLE = 'Non deliverable';
 
 const ERRORS = {
   'WRONG_CREDENTIALS': 'Wrong Credentials',
