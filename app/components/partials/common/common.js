@@ -9,6 +9,10 @@ export const ErrorMessage = ({message}) => (
   <div>{getErrorMessage(message)}</div>
 );
 
+export const InfoMessage = ({message}) => (
+  <div>{message}</div>
+);
+
 export const AddressView = ({address: {street, houseNumber, apartmentNumber, city, zipCode}}) => (
   <div>
     <div>{street} {houseNumber}/{apartmentNumber}</div>

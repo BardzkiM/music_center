@@ -1,6 +1,6 @@
 import {put, takeLatest, call} from 'redux-saga/effects';
 import * as axios from 'axios';
-import {API, OFFER_CANNOT_BE_ADDED, NO_OFFERS_FOUND} from '../../constants';
+import {API, OFFER_CANNOT_BE_ADDED, NO_OFFERS_FOUND, OFFER_NOT_FOUND} from '../../constants';
 import {REQUEST_DATA_SUCCESS, REQUEST_DATA_FAILED} from '../form/actions';
 import {REQUEST_ADD_OFFER, REQUEST_SEARCH_OFFERS, REQUEST_GET_OFFER, SET_OFFER} from './actions';
 
@@ -48,7 +48,7 @@ function* getOffer({payload: offerData}) {
     if (data) {
       yield put(SET_OFFER(data));
     } else {
-      yield put(SET_OFFER({error: 'CANNOT_FIND_OFFER'}));
+      yield put(SET_OFFER({error: OFFER_NOT_FOUND}));
     }
   } catch (e) {
    //TODO: yield put(REQUEST_DATA_FAILED(e));

@@ -1,11 +1,20 @@
 import React from 'react';
 import Form from '../../generic/Form';
 import serialize from 'form-serialize';
-import {START_DATE, END_DATE, MESSAGES, ADD_RENTAL, SHOW_RENTAL, USE_USER_ADDRESS} from '../../../../locales';
-import {formatData, getFormControlsDOM} from '../../../../utils/form';
+import {
+  START_DATE,
+  END_DATE,
+  MESSAGES,
+  ADD_RENTAL,
+  SHOW_RENTAL,
+  USE_USER_ADDRESS,
+  ONLY_PERSONAL_COLLECTION
+} from '../../../../locales';
+import {getFormControlsDOM} from '../../../../utils/form';
 import {WARNING} from '../../../../constants';
 import {SubmitControl} from '../../../partials/form/InputControls';
 import AddressFormControls from '../../../partials/form/AddressFormControls';
+import {ErrorMessage, Loading, InfoMessage} from '../../../partials/common/common';
 
 const controls = [
   {name: 'startDate', type: 'datetime-local', text: START_DATE},
@@ -18,10 +27,16 @@ export default class AddRental extends Form {
     this.state = {useUserAddress: false};
   }
 
+  componentDidMount() {
+    const {params, getOffer} = this.props;
+
+    getOffer(params.id);
+  }
+
   handleSubmit = event => {
     event.preventDefault();
 
-    const {showNotification, params, sendData} = this.props;
+    const {showNotification, sendData, offer} = this.props;
     const data = this.formatData(serialize(event.target, {hash: true}));
 
     if (data.startDate >= data.endDate) {
@@ -31,7 +46,7 @@ export default class AddRental extends Form {
 
       formData.append('data', JSON.stringify(data));
       formData.append('useUserAddress', this.state.useUserAddress);
-      formData.append('offerId', params.id);
+      formData.append('offerId', offer.id);
 
       sendData(formData);
     }
@@ -44,17 +59,34 @@ export default class AddRental extends Form {
     return data;
   }
 
+  isOfferDeliverable() {
+    return this.props.offer.deliveryMaxDistance > 0;
+  }
+
   getForm() {
-    return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          {getFormControlsDOM(controls)}
-          {this.getAddressCheckbox()}
-          {!this.state.useUserAddress && <AddressFormControls />}
-          <SubmitControl text={ADD_RENTAL}/>
-        </form>
-      </div>
-    );
+    const {offer} = this.props;
+
+    if (offer) {
+      if (offer.error) {
+        return <ErrorMessage message={offer.error}/>
+      }
+
+      const isOfferDeliverable = this.isOfferDeliverable();
+
+      return (
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            {isOfferDeliverable || <InfoMessage message={ONLY_PERSONAL_COLLECTION}/>}
+            {getFormControlsDOM(controls)}
+            {isOfferDeliverable && this.getAddressCheckbox()}
+            {!this.state.useUserAddress && isOfferDeliverable && <AddressFormControls />}
+            <SubmitControl text={ADD_RENTAL}/>
+          </form>
+        </div>
+      );
+    }
+
+    return <Loading/>
   }
 
   getSuccessContent() {
