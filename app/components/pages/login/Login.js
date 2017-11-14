@@ -4,6 +4,7 @@ import {SubmitControl} from '../../partials/form/InputControls';
 import BackToHome from '../../partials/links/BackToHome';
 import {getFormControlsDOM} from '../../../utils/form';
 import Form from '../generic/Form';
+import RegisterConnector from '../../../connectors/pages/RegisterConnector';
 
 const formControls = [
   {name: 'login', text: LOGIN, type: 'text'},

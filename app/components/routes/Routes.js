@@ -1,6 +1,6 @@
 import React from 'react';
 import {Route} from 'react-router';
-import MainLayout from '../layout/MainLayout';
+import MainLayout from '../../connectors/mainLayout/MainLayoutConnector';
 import Login from '../../connectors/pages/LoginConnector';
 import Register from '../../connectors/pages/RegisterConnector';
 import itemRoutes from '../pages/item/routes';

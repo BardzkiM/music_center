@@ -5,6 +5,7 @@ import boot from './boot/reducer';
 import notification from './notification/reducer';
 import item from './item/reducer';
 import offer from './offer/reducer';
+import modal from './modal/reducer';
 
 export default {
   boot,
@@ -13,5 +14,6 @@ export default {
   userData,
   notification,
   item,
-  offer
+  offer,
+  modal
 };

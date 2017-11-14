@@ -4,4 +4,11 @@
   flex-wrap: nowrap;
   width: 100%;
   min-height: 100vh;
+
+  &.showModal {
+    .Content {
+      filter: blur(5px);
+      pointer-events: none;
+    }
+  }
 }

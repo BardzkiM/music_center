@@ -27,12 +27,6 @@ export default class AddRental extends Form {
     this.state = {useUserAddress: false};
   }
 
-  componentDidMount() {
-    const {params, getOffer} = this.props;
-
-    getOffer(params.id);
-  }
-
   handleSubmit = event => {
     event.preventDefault();
 

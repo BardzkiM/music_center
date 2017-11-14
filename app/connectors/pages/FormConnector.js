@@ -2,6 +2,7 @@ import {connect} from 'react-redux';
 import {getStatus, getError} from '../../modules/form/selectors';
 import {REQUEST_DATA} from '../../modules/form/actions';
 import {SHOW_NOTIFICATION} from '../../modules/notification/actions';
+import {SHOW_MODAL} from '../../modules/modal/actions';
 
 export default function FormConnector(Component, requestAction, states = {}, dispatches = {}) {
   const mapStateToProps = state => {
@@ -17,7 +18,8 @@ export default function FormConnector(Component, requestAction, states = {}, dis
         dispatch(REQUEST_DATA());
         dispatch(requestAction(data));
       },
-      showNotification: payload => dispatch(SHOW_NOTIFICATION(payload))
+      showNotification: payload => dispatch(SHOW_NOTIFICATION(payload)),
+      showModal: payload => dispatch(SHOW_MODAL(payload))
     };
 
     Object.keys(dispatches)

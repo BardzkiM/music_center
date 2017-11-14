@@ -49,7 +49,8 @@ export const
   PER_HOUR = 'per hour',
   AVAILABLE = 'Available',
   NON_DELIVERABLE = 'Non deliverable',
-  ONLY_PERSONAL_COLLECTION = 'Item is available with personal collection';
+  ONLY_PERSONAL_COLLECTION = 'Item is available only with personal collection',
+  RENT = 'Rent';
 
 const ERRORS = {
   'WRONG_CREDENTIALS': 'Wrong Credentials',
