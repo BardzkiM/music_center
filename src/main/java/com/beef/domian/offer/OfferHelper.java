@@ -1,13 +1,11 @@
 package com.beef.domian.offer;
 
 import com.beef.core.hibernate.HibernateBase;
+import com.beef.core.utils.MathUtils;
 import com.beef.domian.BaseHelper;
 
 import javax.persistence.TypedQuery;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
+import java.util.*;
 
 public class OfferHelper extends BaseHelper {
 
@@ -87,6 +85,19 @@ public class OfferHelper extends BaseHelper {
         query.setParameter("searchCity", String.format("%%%s%%", offerSearch.getCity()));
         query.setParameter("searchMaxPrice", offerSearch.getMaxPrice());
         words.forEach(word -> query.setParameter("word_" + word, String.format("%%%s%%", word)));
+
+        return OfferHelper.getOffersFromQueryWithClearedUsers(query);
+    }
+
+    public static Boolean getOfferAvailability(long offerId, long startDate, long endDate) {
+        Offer offer = OfferHelper.getOfferById(offerId);
+        return MathUtils.areBetween(offer.getStartDate(), offer.getEndDate(), startDate, endDate);
+    }
+
+    public static List<Offer> getOffersByUserId(long userId) {
+        String queryString = "select o from Offer o where o.item.user.id = :userId";
+        TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
+        query.setParameter("userId", userId);
 
         return OfferHelper.getOffersFromQueryWithClearedUsers(query);
     }

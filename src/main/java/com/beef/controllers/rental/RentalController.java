@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/rental")
@@ -23,5 +24,15 @@ public class RentalController {
             return rental.getId();
         }
         return -1;
+    }
+
+    @GetMapping("/getAllRentalsByOfferId/{id}")
+    public List<Rental> getAllRentalsByOfferId(@PathVariable(value = "id") long offerId) throws IOException {
+        return RentalService.getAllRentalsByOfferId(offerId);
+    }
+
+    @GetMapping("/getAllUserRentals")
+    public List<Rental> getAllUserRentals(HttpSession session) {
+        return RentalService.getAllUserRentals(session);
     }
 }

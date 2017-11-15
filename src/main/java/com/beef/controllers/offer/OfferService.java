@@ -1,5 +1,6 @@
 package com.beef.controllers.offer;
 
+import com.beef.controllers.authentication.AuthenticationController;
 import com.beef.core.hibernate.HibernateBase;
 import com.beef.core.utils.UserUtils;
 import com.beef.domian.offer.Offer;
@@ -64,5 +65,12 @@ class OfferService {
         OfferSearch offerSearch = new ObjectMapper().readValue(data, OfferSearch.class);
 
         return OfferHelper.search(offerSearch);
+    }
+
+    protected static List<Offer> getOffersByUserId(HttpSession session, String userId) {
+        if (UserUtils.isUserAuthenticated(session)) {
+            return OfferHelper.getOffersByUserId(Long.parseLong(userId));
+        }
+        return null;
     }
 }

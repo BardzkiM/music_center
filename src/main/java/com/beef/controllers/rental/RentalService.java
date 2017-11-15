@@ -10,10 +10,12 @@ import com.beef.domian.rental.Rental;
 import com.beef.domian.rental.RentalHelper;
 import com.beef.domian.rental.RentalStatus;
 import com.beef.domian.user.User;
+import com.beef.domian.user.UserHelper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 class RentalService {
 
@@ -25,6 +27,11 @@ class RentalService {
         if (UserUtils.isUserAuthenticated(session)) {
             HibernateBase.closeEntityManagers();
             Rental rental = new ObjectMapper().readValue(data, Rental.class);
+
+            if (!RentalHelper.getRentalAvailability(offerId, rental.getStartDate(), rental.getEndDate())) {
+                return null;
+            }
+
             User sessionUser = UserUtils.getSessionUser(session);
 
             rental.setUser(sessionUser);
@@ -46,4 +53,16 @@ class RentalService {
         return null;
     }
 
+    static List<Rental> getAllRentalsByOfferId(long offerId) throws IOException {
+        HibernateBase.closeEntityManagers();
+        return RentalHelper.getAllRentalsByOfferId(offerId);
+    }
+
+    static List<Rental> getAllUserRentals(HttpSession session) {
+        if (UserUtils.isUserAuthenticated(session)) {
+            User sessionUser = UserUtils.getSessionUser(session);
+            return RentalHelper.getAllUserRentals(sessionUser.getId());
+        }
+        return null;
+    }
 }

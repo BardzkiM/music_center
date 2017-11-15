@@ -39,4 +39,9 @@ public class OfferController {
     public List<Offer> search(HttpSession session, @RequestParam("data") String data) throws IOException {
         return OfferService.search(session, data);
     }
+
+    @GetMapping("/getOffersByUserId/{id}")
+    public List<Offer> getOffersByUserId(HttpSession session, @PathVariable(value = "id") String id){
+        return OfferService.getOffersByUserId(session, id);
+    }
 }

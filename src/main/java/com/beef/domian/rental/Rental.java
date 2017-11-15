@@ -17,11 +17,9 @@ public class Rental {
     @GeneratedValue
     private long id;
 
-    @Temporal(TemporalType.DATE)
-    private Date startDate;
+    private long startDate;
 
-    @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private long endDate;
 
     @OneToOne
     @JoinColumn(name = "addressId")
@@ -45,19 +43,19 @@ public class Rental {
         this.id = id;
     }
 
-    public Date getStartDate() {
+    public long getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(long startDate) {
         this.startDate = startDate;
     }
 
-    public Date getEndDate() {
+    public long getEndDate() {
         return endDate;
     }
 
-    public void setEndDate(Date endDate) {
+    public void setEndDate(long endDate) {
         this.endDate = endDate;
     }
 
@@ -91,5 +89,9 @@ public class Rental {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public void clearUser() {
+        this.user.clearUser();
     }
 }
