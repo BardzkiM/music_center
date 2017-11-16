@@ -11,7 +11,8 @@ export const
   ITEM_NOT_FOUND = 'ITEM_NOT_FOUND',
   USER_NOT_FOUND = 'USER_NOT_FOUND',
   OFFER_NOT_FOUND = 'OFFER_NOT_FOUND',
-  RENTAL_CANNOT_BE_ADDED = 'RENTAL_CANNOT_BE_ADDED';
+  RENTAL_CANNOT_BE_ADDED = 'RENTAL_CANNOT_BE_ADDED',
+  NO_RENTALS = 'NO_RENTALS';
 
 export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
 
@@ -30,7 +31,8 @@ export const API = {
     getByUserId: '/offer/getOffersByUserId'
   },
   rental: {
-    add: '/rental/add'
+    add: '/rental/add',
+    getMyRentals: '/rental/getAllUserRentals'
   },
   user: {
     login: '/user/login',

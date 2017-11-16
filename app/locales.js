@@ -61,7 +61,8 @@ const ERRORS = {
   'OFFER_NOT_FOUND': 'Sorry, offer not found',
   'ITEM_NOT_FOUND': 'Item with specified id not found!',
   'USER_NOT_FOUND': 'User not found',
-  'RENTAL_CANNOT_BE_ADDED': 'Rental cannot be added - check if item is not already rent at selected period'
+  'RENTAL_CANNOT_BE_ADDED': 'Rental cannot be added - check if item is not already rent at selected period',
+  'NO_RENTALS': 'You have no rentals at the time'
 };
 
 export const UNKNOWN_ERROR = 'Server Error';
