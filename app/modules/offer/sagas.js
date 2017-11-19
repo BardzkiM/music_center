@@ -15,7 +15,7 @@ export default function* watchItemRequests() {
   yield takeLatest(REQUEST_ADD_OFFER, addOffer);
   yield takeLatest(REQUEST_SEARCH_OFFERS, searchOffers);
   yield takeLatest(REQUEST_GET_OFFER, getOffer);
-  yield takeLatest(REQUEST_USER_OFFERS, getUserOffers);
+  yield takeLatest(REQUEST_USER_OFFERS, getActiveUserOffers);
 }
 
 const offerAPI = API.offer;
@@ -65,9 +65,9 @@ function* getOffer({payload: offerData}) {
   }
 }
 
-function* getUserOffers({payload: userId}) {
+function* getActiveUserOffers({payload: userId}) {
   try {
-    const response = yield call(axios.get, offerAPI.getByUserId + '/' + userId);
+    const response = yield call(axios.get, offerAPI.getActiveByUserId + '/' + userId);
     const data = yield response.data;
 
     if (data) {

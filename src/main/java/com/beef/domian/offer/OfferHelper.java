@@ -1,11 +1,15 @@
 package com.beef.domian.offer;
 
 import com.beef.core.hibernate.HibernateBase;
+import com.beef.core.utils.DateUtils;
 import com.beef.core.utils.MathUtils;
 import com.beef.domian.BaseHelper;
 
 import javax.persistence.TypedQuery;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
+import java.util.List;
 
 public class OfferHelper extends BaseHelper {
 
@@ -27,7 +31,7 @@ public class OfferHelper extends BaseHelper {
         String queryString = "select o from Offer o";
         TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
 
-        return OfferHelper.getOffersFromQueryWithClearedUsers(query);
+        return getOffersFromQueryWithClearedUsers(query);
     }
 
     public static List<Offer> getAllActiveOffers() {
@@ -51,7 +55,7 @@ public class OfferHelper extends BaseHelper {
         query.setParameter("startDate", startDate);
         query.setParameter("endDate", endDate);
 
-        return OfferHelper.getOffersFromQueryWithClearedUsers(query);
+        return getOffersFromQueryWithClearedUsers(query);
     }
 
     public static Offer getOfferById(long id) {
@@ -86,19 +90,31 @@ public class OfferHelper extends BaseHelper {
         query.setParameter("searchMaxPrice", offerSearch.getMaxPrice());
         words.forEach(word -> query.setParameter("word_" + word, String.format("%%%s%%", word)));
 
-        return OfferHelper.getOffersFromQueryWithClearedUsers(query);
+        return getOffersFromQueryWithClearedUsers(query);
     }
 
     public static Boolean getOfferAvailability(long offerId, long startDate, long endDate) {
-        Offer offer = OfferHelper.getOfferById(offerId);
+        Offer offer = getOfferById(offerId);
         return MathUtils.areBetween(offer.getStartDate(), offer.getEndDate(), startDate, endDate);
     }
 
-    public static List<Offer> getOffersByUserId(long userId) {
+    public static List<Offer> getAllOffersByUserId(long userId) {
         String queryString = "select o from Offer o where o.item.user.id = :userId";
+        return getOffersByUserId(queryString, userId);
+    }
+
+    public static List<Offer> getActiveOffersByUserId(long userId) {
+        String queryString =
+                String.format("select o from Offer o where o.item.user.id =:userId " +
+                        "AND o.endDate < %d", DateUtils.getCurrentTimestamp());
+
+        return getOffersByUserId(queryString, userId);
+    }
+
+    private static List<Offer> getOffersByUserId(String queryString, long userId) {
         TypedQuery<Offer> query = HibernateBase.entityManager.createQuery(queryString, Offer.class);
         query.setParameter("userId", userId);
 
-        return OfferHelper.getOffersFromQueryWithClearedUsers(query);
+        return getOffersFromQueryWithClearedUsers(query);
     }
 }
