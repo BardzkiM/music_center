@@ -44,4 +44,9 @@ public class OfferController {
     public List<Offer> getOffersByUserId(HttpSession session, @PathVariable(value = "id") String id){
         return OfferService.getOffersByUserId(session, id);
     }
+
+    @GetMapping("/getActiveOffersByUserId/{id}")
+    public List<Offer> getActiveOffersByUserId(HttpSession session, @PathVariable(value = "id") String id){
+        return OfferService.getActiveOffersByUserId(session, id);
+    }
 }

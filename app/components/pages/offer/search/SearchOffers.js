@@ -53,8 +53,6 @@ export default class SearchOffers extends React.Component {
 
   render() {
     const {offers, formStatus} = this.props;
-
-    console.log(offers)
     
     return (
       <div>

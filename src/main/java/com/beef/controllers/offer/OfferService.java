@@ -34,7 +34,7 @@ class OfferService {
         return null;
     }
 
-    protected static List<Offer> getAllOffers(HttpSession session) {
+    static List<Offer> getAllOffers(HttpSession session) {
         HibernateBase.closeEntityManagers();
 
         if (UserUtils.isUserAuthenticated(session)) {
@@ -44,7 +44,7 @@ class OfferService {
         return null;
     }
 
-    protected static List<Offer> getAllActiveOffers(HttpSession session) {
+    static List<Offer> getAllActiveOffers(HttpSession session) {
         HibernateBase.closeEntityManagers();
 
         if (UserUtils.isUserAuthenticated(session)) {
@@ -54,7 +54,7 @@ class OfferService {
         return null;
     }
 
-    protected static Offer getOfferById(String offerId) {
+    static Offer getOfferById(String offerId) {
         HibernateBase.closeEntityManagers();
 
         return OfferHelper.getOfferById(Long.parseLong(offerId));
@@ -67,9 +67,16 @@ class OfferService {
         return OfferHelper.search(offerSearch);
     }
 
-    protected static List<Offer> getOffersByUserId(HttpSession session, String userId) {
+    static List<Offer> getOffersByUserId(HttpSession session, String userId) {
         if (UserUtils.isUserAuthenticated(session)) {
-            return OfferHelper.getOffersByUserId(Long.parseLong(userId));
+            return OfferHelper.getAllOffersByUserId(Long.parseLong(userId));
+        }
+        return null;
+    }
+
+    static List<Offer> getActiveOffersByUserId(HttpSession session, String userId) {
+        if (UserUtils.isUserAuthenticated(session)) {
+            return OfferHelper.getActiveOffersByUserId(Long.parseLong(userId));
         }
         return null;
     }

@@ -16,7 +16,8 @@ public class RentalHelper extends BaseHelper {
         try {
             List<Rental> rentals = query.getResultList();
             rentals.forEach(Rental::clearUser);
-            return rentals;
+
+            return rentals.size() > 0 ? rentals: null;
         } catch (Exception e) {
             return null;
         }
