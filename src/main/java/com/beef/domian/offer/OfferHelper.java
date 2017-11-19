@@ -95,7 +95,7 @@ public class OfferHelper extends BaseHelper {
 
     public static Boolean getOfferAvailability(long offerId, long startDate, long endDate) {
         Offer offer = getOfferById(offerId);
-        return MathUtils.areBetween(offer.getStartDate(), offer.getEndDate(), startDate, endDate);
+        return MathUtils.areBetween(startDate, endDate, offer.getStartDate(), offer.getEndDate());
     }
 
     public static List<Offer> getAllOffersByUserId(long userId) {
