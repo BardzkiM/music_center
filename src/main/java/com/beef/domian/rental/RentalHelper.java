@@ -50,7 +50,9 @@ public class RentalHelper extends BaseHelper {
         if (offer.getStartDate() == startDate && offer.getEndDate() == endDate && rentals.size() > 0) {
             return false;
         }
-
+        if (rentals == null) {
+            return true;
+        }
         for (Rental rental : rentals) {
             if (MathUtils.areBetween(startDate, endDate, rental.getStartDate(), rental.getEndDate())) {
                 return false;

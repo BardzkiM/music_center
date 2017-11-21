@@ -11,12 +11,14 @@ export default class ViewOffer extends React.Component {
 
   componentDidMount() {
     this.props.getOffer(this.props.params.id);
+    // this.props.getRentalsByOfferId(this.props.params.id);
   }
 
   getOffer() {
     const
-      {offer, addRental} = this.props,
+      {offer, addRental, rentals} = this.props,
       {item} = offer;
+      console.log("rentals", rentals);
 
     return (
       <div className="ViewOffer">
@@ -40,7 +42,7 @@ export default class ViewOffer extends React.Component {
           </div>
         </div>
         <div className="calendar">
-          <Calendar />
+          <Calendar events={rentals}/>
         </div>
       </div>
     );
@@ -48,6 +50,7 @@ export default class ViewOffer extends React.Component {
 
   render() {
     const {offer} = this.props;
+    console.log("offer", offer);
 
     if (offer) {
       return offer.error ? <ErrorMessage message={OFFER_NOT_FOUND}/> : this.getOffer();

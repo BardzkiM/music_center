@@ -28,6 +28,7 @@ export const API = {
     add: '/offer/add',
     search: '/offer/search',
     getById: '/offer',
+    getRentalsByOfferId: '/rental/getAllRentalsByOfferId',
     getByUserId: '/offer/getOffersByUserId',
     getActiveByUserId: '/offer/getActiveOffersByUserId'
   },

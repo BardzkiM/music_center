@@ -61,5 +61,5 @@ export default class Calendar extends React.Component {
 }
 
 Calendar.propTypes = {
-  // events: PropTypes.array
+  events: PropTypes.array
 };
