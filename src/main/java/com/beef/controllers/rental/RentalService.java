@@ -10,7 +10,6 @@ import com.beef.domian.rental.Rental;
 import com.beef.domian.rental.RentalHelper;
 import com.beef.domian.rental.RentalStatus;
 import com.beef.domian.user.User;
-import com.beef.domian.user.UserHelper;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.servlet.http.HttpSession;
@@ -42,7 +41,7 @@ class RentalService {
             }
             AddressHelper.createAddress(rental.getDeliveryAddress());
 
-            Offer offer =  OfferHelper.getOfferById(offerId);
+            Offer offer = OfferHelper.getOfferById(offerId);
             rental.setOffer(offer);
 
             RentalHelper.createRental(rental);
@@ -63,6 +62,23 @@ class RentalService {
             User sessionUser = UserUtils.getSessionUser(session);
             return RentalHelper.getAllUserRentals(sessionUser.getId());
         }
+        return null;
+    }
+
+    static Rental deactivateRentalById(HttpSession session,
+                                       long id) throws IOException {
+        if (UserUtils.isUserAuthenticated(session)) {
+            HibernateBase.closeEntityManagers();
+
+            Rental rental = RentalHelper.getRentalById(id);
+
+            User sessionUser = UserUtils.getSessionUser(session);
+
+            if(sessionUser.getId() == rental.getUser().getId()) {
+                return RentalHelper.deactivateRental(rental);
+            }
+        }
+
         return null;
     }
 }

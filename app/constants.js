@@ -12,6 +12,7 @@ export const
   USER_NOT_FOUND = 'USER_NOT_FOUND',
   OFFER_NOT_FOUND = 'OFFER_NOT_FOUND',
   RENTAL_CANNOT_BE_ADDED = 'RENTAL_CANNOT_BE_ADDED',
+  RENTAL_CANNOT_BE_DEACTIVATED = 'RENTAL_CANNOT_BE_DEACTIVATED',
   NO_RENTALS = 'NO_RENTALS';
 
 export const ROUTER_LOCATION_CHANGE = '@@router/LOCATION_CHANGE';
@@ -33,7 +34,8 @@ export const API = {
   },
   rental: {
     add: '/rental/add',
-    getMyRentals: '/rental/getAllUserRentals'
+    getMyRentals: '/rental/getAllUserRentals',
+    deactivateRental: '/rental/deactivateRentalById'
   },
   user: {
     login: '/user/login',

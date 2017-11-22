@@ -3,7 +3,6 @@ package com.beef.controllers.rental;
 import com.beef.domian.rental.Rental;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
@@ -34,5 +33,11 @@ public class RentalController {
     @GetMapping("/getAllUserRentals")
     public List<Rental> getAllUserRentals(HttpSession session) {
         return RentalService.getAllUserRentals(session);
+    }
+
+    @GetMapping("/deactivateRentalById/{id}")
+    public Rental deactivateRentalById(HttpSession session,
+                                       @PathVariable(value = "id") long id) throws IOException {
+        return RentalService.deactivateRentalById(session, id);
     }
 }

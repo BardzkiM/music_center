@@ -67,4 +67,16 @@ public class RentalHelper extends BaseHelper {
 
         return RentalHelper.getOffersFromQueryWithClearedUsers(query);
     }
+
+    public static Rental getRentalById(long id) {
+        return HibernateBase.entityManager.find(Rental.class, id);
+    }
+
+    public static Rental deactivateRental(Rental rental) {
+        HibernateBase.entityManager.getTransaction().begin();
+        rental.deactivate();
+        HibernateBase.entityManager.persist(rental);
+        HibernateBase.entityManager.getTransaction().commit();
+        return rental;
+    }
 }

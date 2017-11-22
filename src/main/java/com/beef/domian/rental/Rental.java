@@ -35,6 +35,11 @@ public class Rental {
     @JoinColumn(name = "userId")
     private User user;
 
+    public Rental deactivate() {
+        status = RentalStatus.CANCELED;
+        return this;
+    }
+
     public long getId() {
         return id;
     }
