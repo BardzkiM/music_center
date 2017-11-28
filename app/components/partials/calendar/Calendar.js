@@ -11,16 +11,19 @@ export default class Calendar extends React.Component {
   events = [];
 
   getEvents = () => {
-
-    this.events = this.props.events.map((event) => {
-      return (
-        {
-          title: 'rented',
-          start: new Date(event.startDate),
-          end: new Date(event.endDate)
-        }
-      );
-    });
+    const {events} = this.props;
+    if(events) {
+      this.events = this.props.events.map((event) => {
+        return (
+          {
+            title: 'rented',
+            start: new Date(event.startDate),
+            end: new Date(event.endDate)
+          }
+        );
+      });
+    }
+    return null;
   };
 
   componentWillMount() {

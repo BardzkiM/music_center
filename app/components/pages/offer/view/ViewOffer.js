@@ -1,7 +1,8 @@
 import React from 'react';
+import {Link} from 'react-router';
 import {getFormattedDate} from '../../../../utils/dateUtil';
 import './ViewOffer.scss';
-import {PRICE, DELIVERY_AREA, CITY, DELIVERY_PRICE, PER_HOUR, RENT} from '../../../../locales';
+import {PRICE, DELIVERY_AREA, CITY, DELIVERY_PRICE, PER_HOUR, RENT, OFFERED_BY} from '../../../../locales';
 import Gallery from '../../../partials/gallery/Gallery';
 import Calendar from '../../../partials/calendar/Calendar';
 import {Loading, ErrorMessage} from '../../../partials/common/common';
@@ -22,7 +23,8 @@ export default class ViewOffer extends React.Component {
   getOffer() {
     const
       {offer, addRental, rentals} = this.props,
-      {item} = offer;
+      {item} = offer,
+      {user} = item;
 
     return (
       <div className="ViewOffer">
@@ -35,6 +37,9 @@ export default class ViewOffer extends React.Component {
           <p className="title">{item.name}</p>
           <p className="title">{PRICE}: {offer.price} {PER_HOUR}</p>
           <p className="subtitle">{getFormattedDate(offer.startDate)} - {getFormattedDate(offer.endDate)}</p>
+          <p className="subtitle">
+            {OFFERED_BY} <Link to={`/user/${user.id}`}>{user.login}</Link>
+          </p>
           <p className="subtitle">{CITY}: {item.address.city}</p>
           <div className="delivery">
             <p className="subtitle">{DELIVERY_PRICE}: {offer.deliveryPrice}</p>
@@ -55,7 +60,7 @@ export default class ViewOffer extends React.Component {
   render() {
     const {offer} = this.props;
 
-    if (offer) {
+    if(offer) {
       return offer.error ? <ErrorMessage message={OFFER_NOT_FOUND}/> : this.getOffer();
     }
     else {

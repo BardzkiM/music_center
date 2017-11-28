@@ -51,7 +51,8 @@ export const
   CANCEL_RENTAL = 'Cancel rental',
   NON_DELIVERABLE = 'Non deliverable',
   ONLY_PERSONAL_COLLECTION = 'Item is available only with personal collection',
-  RENT = 'Rent';
+  RENT = 'Rent',
+  OFFERED_BY = 'Offered by:';
 
 const ERRORS = {
   'WRONG_CREDENTIALS': 'Wrong Credentials',
