@@ -11,7 +11,12 @@ export default class ViewOffer extends React.Component {
 
   componentDidMount() {
     this.props.getOffer(this.props.params.id);
-    // this.props.getRentalsByOfferId(this.props.params.id);
+  }
+
+  componentDidUpdate() {
+    if(this.props.offer && !this.props.rentals) {
+      this.props.getRentalsByOfferId(this.props.params.id);
+    }
   }
 
   getOffer() {

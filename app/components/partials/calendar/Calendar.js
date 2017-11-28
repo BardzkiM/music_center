@@ -11,38 +11,16 @@ export default class Calendar extends React.Component {
   events = [];
 
   getEvents = () => {
-    this.events = [
-      {
-        'title': 'rented',
-        'start': new Date(2017, 11, 11, 12, 0, 0),
-        'end': new Date(2017, 11, 11, 14, 0, 0)
-      },
-      {
-        'title': 'rented',
-        'start': new Date(2017, 11, 11, 14, 0, 0),
-        'end': new Date(2017, 11, 11, 15, 0, 0)
-      },
-      {
-        'title': 'rented',
-        'start': new Date(2017, 11, 11, 19, 0, 0),
-        'end': new Date(2017, 11, 11, 20, 0, 0)
-      },
-      {
-        'title': 'rented',
-        'start': new Date(2017, 11, 11, 21, 0, 0),
-        'end': new Date(2017, 11, 11, 22, 0, 0),
-      },
-    ];
 
-    // this.events = this.props.events.map((event) => {
-    //   return (
-    //     {
-    //       title: 'rented',
-    //       start: new Date(event.startDate),
-    //       end: new Date(event.endDate)
-    //     }
-    //   );
-    // });
+    this.events = this.props.events.map((event) => {
+      return (
+        {
+          title: 'rented',
+          start: new Date(event.startDate),
+          end: new Date(event.endDate)
+        }
+      );
+    });
   };
 
   componentWillMount() {

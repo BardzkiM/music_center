@@ -8,9 +8,7 @@ import {
   REQUEST_GET_OFFER,
   SET_OFFER,
   REQUEST_USER_OFFERS,
-  SET_OFFERS,
-  REQUEST_GET_RENTALS_BY_OFFER_ID,
-  SET_OFFER_RENTALS
+  SET_OFFERS
 } from './actions';
 
 export default function* watchItemRequests() {
@@ -18,7 +16,6 @@ export default function* watchItemRequests() {
   yield takeLatest(REQUEST_SEARCH_OFFERS, searchOffers);
   yield takeLatest(REQUEST_GET_OFFER, getOffer);
   yield takeLatest(REQUEST_USER_OFFERS, getActiveUserOffers);
-  yield takeLatest(REQUEST_GET_RENTALS_BY_OFFER_ID, getRentalsByOfferId);
 }
 
 const offerAPI = API.offer;
@@ -54,16 +51,12 @@ function* searchOffers({payload: searchData}) {
 }
 
 function* getOffer({payload: offerData}) {
-  console.log('getOffer SAGA');
   try {
     const response = yield call(axios.get, offerAPI.getById + '/' + offerData);
     const data = yield response.data;
-    console.log('!!data: ', data);
+
     if (data) {
-      console.log('setting offer in saga');
       yield put(SET_OFFER(data));
-      yield put(REQUEST_GET_RENTALS_BY_OFFER_ID(offerData));
-      console.log('offer in saga is set');
     } else {
       yield put(SET_OFFER({error: OFFER_NOT_FOUND}));
     }
@@ -87,22 +80,3 @@ function* getActiveUserOffers({payload: userId}) {
   }
 }
 
-function* getRentalsByOfferId({payload: offerId}) {
-  console.log('getRentalsByOfferId SAGA');
-  try {
-    console.log("offerId: ", offerId);
-    const response = yield call(axios.get, offerAPI.getRentalsByOfferId + '/' + offerId);
-    console.log('response: ', response);
-    const data = yield response.data;
-    console.log('data: ', data);
-    if (data) {
-      console.log("setting rentals in saga");
-      yield put(SET_OFFER_RENTALS(data));
-      console.log("setted rentals in saga");
-    } else {
-      yield put(SET_OFFER_RENTALS({error: OFFER_NOT_FOUND}));
-    }
-  } catch (e) {
-    yield put(SET_OFFER_RENTALS({error: e}));
-  }
-}

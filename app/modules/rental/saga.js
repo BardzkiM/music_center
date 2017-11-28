@@ -1,12 +1,13 @@
 import {put, takeLatest, call} from 'redux-saga/effects';
 import * as axios from 'axios';
-import {REQUEST_ADD_RENTAL, REQUEST_MY_RENTALS, SET_RENTALS} from './actions';
+import {REQUEST_ADD_RENTAL, REQUEST_MY_RENTALS, SET_RENTALS, REQUEST_GET_RENTALS_BY_OFFER_ID} from './actions';
 import {API, RENTAL_CANNOT_BE_ADDED, NO_RENTALS} from '../../constants';
 import {REQUEST_DATA_FAILED, REQUEST_DATA_SUCCESS} from '../form/actions';
 
 export default function* watchRentalRequests() {
   yield takeLatest(REQUEST_ADD_RENTAL, handleAddRental);
   yield takeLatest(REQUEST_MY_RENTALS, getMyRentals);
+  yield takeLatest(REQUEST_GET_RENTALS_BY_OFFER_ID, getRentalsByOfferId);
 }
 
 const rentalAPI = API.rental;
@@ -29,6 +30,21 @@ function* handleAddRental({payload: rentalData}) {
 function* getMyRentals() {
   try {
     const response = yield call(axios.get, rentalAPI.getMyRentals);
+    const data = yield response.data;
+
+    if(data) {
+      yield put(SET_RENTALS(data));
+    } else {
+      yield put(SET_RENTALS({error: NO_RENTALS}));
+    }
+  } catch(e) {
+    yield put(SET_RENTALS({error: e}));
+  }
+}
+
+function* getRentalsByOfferId({payload: offerId}) {
+  try {
+    const response = yield call(axios.get, rentalAPI.getRentalsByOfferId + '/' + offerId);
     const data = yield response.data;
 
     if(data) {

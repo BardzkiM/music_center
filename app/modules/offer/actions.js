@@ -6,6 +6,3 @@ export const REQUEST_GET_OFFER = createAction('OFFER/REQUEST_GET', data => data)
 export const REQUEST_USER_OFFERS = createAction('OFFER/REQUEST_USER_OFFERS', data => data);
 export const SET_OFFER = createAction('OFFER/SET', data => data);
 export const SET_OFFERS = createAction('OFFERS/SET', data => data);
-export const REQUEST_GET_RENTALS_BY_OFFER_ID = createAction('OFFER/REQUEST_GET_RENTALS_BY_OFFER_ID', data => data);
-export const SET_OFFER_RENTALS = createAction('OFFER/SET', data => data);
-
