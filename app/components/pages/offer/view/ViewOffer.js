@@ -23,7 +23,6 @@ export default class ViewOffer extends React.Component {
     const
       {offer, addRental, rentals} = this.props,
       {item} = offer;
-      console.log("rentals", rentals);
 
     return (
       <div className="ViewOffer">
@@ -55,7 +54,6 @@ export default class ViewOffer extends React.Component {
 
   render() {
     const {offer} = this.props;
-    console.log("offer", offer);
 
     if (offer) {
       return offer.error ? <ErrorMessage message={OFFER_NOT_FOUND}/> : this.getOffer();
