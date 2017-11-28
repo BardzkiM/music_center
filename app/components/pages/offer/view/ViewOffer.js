@@ -13,9 +13,15 @@ export default class ViewOffer extends React.Component {
     this.props.getOffer(this.props.params.id);
   }
 
+  componentDidUpdate() {
+    if(this.props.offer && !this.props.rentals) {
+      this.props.getRentalsByOfferId(this.props.params.id);
+    }
+  }
+
   getOffer() {
     const
-      {offer, addRental} = this.props,
+      {offer, addRental, rentals} = this.props,
       {item} = offer;
 
     return (
@@ -40,7 +46,7 @@ export default class ViewOffer extends React.Component {
           </div>
         </div>
         <div className="calendar">
-          <Calendar />
+          <Calendar events={rentals}/>
         </div>
       </div>
     );

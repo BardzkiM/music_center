@@ -35,7 +35,8 @@ export const API = {
   rental: {
     add: '/rental/add',
     getMyRentals: '/rental/getAllUserRentals',
-    deactivateRental: '/rental/deactivateRentalById'
+    deactivateRental: '/rental/deactivateRentalById',
+    getRentalsByOfferId: '/rental/getAllRentalsByOfferId'
   },
   user: {
     login: '/user/login',

@@ -1,6 +1,6 @@
 import {handleActions} from 'redux-actions';
 import {fromJS} from 'immutable';
-import {SET_OFFER, SET_OFFERS} from './actions';
+import {SET_OFFER, SET_OFFERS, SET_OFFER_RENTALS} from './actions';
 import {ROUTER_LOCATION_CHANGE} from '../../constants';
 
 const initialState = fromJS({offer: null, offers: null});
