@@ -1,10 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router';
-
 import './Menu.scss';
-import LogOut from '../../../../connectors/logout/LogOutConnector'
+import LogOut from '../../../../connectors/logout/LogOutConnector';
+import LogIn from '../../../partials/LogIn/LogIn';
 
-export default ({menu, logOut}) => (
+export default ({menu, user, logOut}) => {
+  const isUserLogged = user && !user.isEmpty();
+  return (
   <div className="Menu">
     {
       menu.map((menuItem, index) =>
@@ -14,7 +16,8 @@ export default ({menu, logOut}) => (
       )
     }
     <div className="login-buttons">
-      <LogOut />
+      {isUserLogged && <LogOut />}
+      {!isUserLogged && <LogIn />}
     </div>
   </div>
-);
+)};
