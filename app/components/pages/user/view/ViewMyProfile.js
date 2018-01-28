@@ -1,5 +1,6 @@
 import React from 'react';
 import ViewUser from '../../../../connectors/pages/user/ViewUserConnector';
+import './ViewUser.scss';
 
 export default class ViewMyProfile extends React.Component {
   render() {

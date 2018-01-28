@@ -22,7 +22,9 @@ const OfferCard = ({
   }
 }) => (
   <div className="offer-list-item">
-    <img src={item.images[0]}/>
+    <div className="image-wrapper">
+      <img src={item.images[0]}/>
+    </div>
     <div className="item-description">
       <div>
         <p className="title">{title}</p>

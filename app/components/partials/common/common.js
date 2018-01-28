@@ -15,7 +15,7 @@ export const InfoMessage = ({message}) => (
 
 export const AddressView = ({address: {street, houseNumber, apartmentNumber, city, zipCode}}) => (
   <div>
-    <div>{street} {houseNumber}/{apartmentNumber}</div>
-    <div>{city}, {zipCode}</div>
+    <p>{street} {houseNumber}/{apartmentNumber}</p>
+    <p>{city}, {zipCode}</p>
   </div>
 );

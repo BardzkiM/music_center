@@ -36,11 +36,9 @@ class RentalService {
             rental.setUser(sessionUser);
             rental.setStatus(RentalStatus.ACTIVE);
 
-            if (useUserAddress) {
+            if (useUserAddress || rental.getDeliveryAddress() == null) {
                 rental.setDeliveryAddress(new Address(sessionUser.getAddress()));
             }
-            AddressHelper.createAddress(rental.getDeliveryAddress());
-
             Offer offer = OfferHelper.getOfferById(offerId);
             rental.setOffer(offer);
 

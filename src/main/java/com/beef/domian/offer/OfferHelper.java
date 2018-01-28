@@ -106,7 +106,7 @@ public class OfferHelper extends BaseHelper {
     public static List<Offer> getActiveOffersByUserId(long userId) {
         String queryString =
                 String.format("select o from Offer o where o.item.user.id =:userId " +
-                        "AND o.endDate < %d", DateUtils.getCurrentTimestamp());
+                        "AND o.endDate > %d", DateUtils.getCurrentTimestamp());
 
         return getOffersByUserId(queryString, userId);
     }

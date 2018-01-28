@@ -1,5 +1,7 @@
 import React from 'react';
 import {Loading, ErrorMessage, AddressView} from '../../../partials/common/common';
+import {Link} from 'react-router';
+import {SHOW_USER_OFFERS} from "../../../../locales";
 
 export default class ViewUser extends React.Component {
 
@@ -27,10 +29,11 @@ export default class ViewUser extends React.Component {
     const {user} = this.props;
 
     return (
-      <div>
-        <div>{user.get('firstName')} {user.get('lastName')}</div>
-        <div>{user.get('email')}</div>
+      <div className="ViewUser">
+        <p>{user.get('firstName')} {user.get('lastName')}</p>
+        <p>{user.get('email')}</p>
         <AddressView address={user.get('address')}/>
+        <Link to={`user/${user.get('id')}/offers`}>{SHOW_USER_OFFERS}</Link>
       </div>
     );
   }

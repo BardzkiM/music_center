@@ -87,7 +87,7 @@ export default class AddRental extends Form {
   getSuccessContent() {
     return (
       <div className="link-wrapper">
-        <Link to={'/rental/' + this.props.rentalId}>{SHOW_RENTAL}</Link>
+        <Link to={'/user/myRentals'}>{SHOW_RENTAL}</Link>
       </div>
     );
   }

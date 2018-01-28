@@ -3,6 +3,7 @@ import {getErrorMessage, ACTIVE, ITEM_NAME, ITEM_TYPE, ADDRESS, YES, NO} from '.
 import {getItemTypeName} from '../../../../constants';
 import Gallery from '../../../partials/gallery/Gallery';
 import {AddressView, Loading, ErrorMessage} from '../../../partials/common/common';
+import './ViewItem.scss'
 
 export default class ViewItem extends React.Component {
 
@@ -30,24 +31,24 @@ export default class ViewItem extends React.Component {
       images = item.get('images');
 
     return (
-      <div>
+      <div className="ViewItem">
+        {images && <div className="image-wrapper"><img src={images[0]}/></div>}
         <div>
-          <span>{ACTIVE}</span>
+          <span>{ACTIVE}: </span>
           <span>{item.get('active') ? YES : NO}</span>
         </div>
         <div>
-          <span>{ITEM_NAME}</span>
+          <span>{ITEM_NAME}: </span>
           <span>{item.get('name')}</span>
         </div>
         <div>
-          <span>{ITEM_TYPE}</span>
+          <span>{ITEM_TYPE}: </span>
           <span>{getItemTypeName(item.get('type'))}</span>
         </div>
         <div>
           <span>{ADDRESS}</span>
-          <span><AddressView address={item.get('address')}/></span>
+          <div><AddressView address={item.get('address')}/></div>
         </div>
-        {images && <Gallery images={images}/>}
       </div>
     );
   }

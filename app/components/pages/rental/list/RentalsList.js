@@ -35,7 +35,9 @@ class Rental extends React.Component {
 
     return (
       <div className="rental-list-item">
-        <img src={imageUrl}/>
+        <div className="image-wrapper">
+          <img src={imageUrl}/>
+        </div>
         <div className="item-description">
           <div>
             <p className="title">{offer.title}</p>

@@ -8,32 +8,40 @@ import './Calendar.scss';
 ReactBigCalendar.momentLocalizer(moment);
 
 export default class Calendar extends React.Component {
-  events = [];
+  constructor() {
+    super();
+    this.state = { events: [] };
+  }
 
-  getEvents = () => {
-    const {events} = this.props;
-    if(events) {
-      this.events = this.props.events.map((event) => {
-        return (
-          {
+  getEvents = (nextProps) => {
+    const { events } = nextProps;
+
+    if (events) {
+      this.setState({
+        events: events.map((event) => {
+          return ({
             title: 'rented',
             start: new Date(event.startDate),
             end: new Date(event.endDate)
-          }
-        );
+          });
+        })
       });
     }
-    return null;
+    else {
+      this.setState({events: []});
+    }
   };
 
-  componentWillMount() {
-    this.getEvents();
+  componentWillReceiveProps(nextProps) {
+    if (this.state.events !== nextProps) {
+      this.getEvents(nextProps);
+    }
   }
 
   render() {
     return (
       <ReactBigCalendar
-        events={this.events}
+        events={this.state.events}
         selectable={false}
         defaultView='week'
         views={['week']}
