@@ -1,6 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import './Modal.scss';
+import {CLOSE} from "../../../locales";
 
 export default class Modal extends React.Component {
 
@@ -30,7 +31,7 @@ export default class Modal extends React.Component {
       return (
         <div className={classes} ref={el => this.modal = el}>
           <div className='component-wrapper'>
-            <div className='close' onClick={hideModal}>X</div>
+            <div className='close' onClick={hideModal}>{CLOSE}</div>
             {<Component />}
           </div>
         </div>

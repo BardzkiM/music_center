@@ -31,7 +31,7 @@ export default class UserDataForm extends Form {
 
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="generic-form" onSubmit={this.handleSubmit}>
           {getFormControlsDOM(formControls)}
           <AddressFormControls values={addressData}/>
           <SubmitControl text={this.submitButtonText}/>

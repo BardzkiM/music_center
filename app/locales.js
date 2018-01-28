@@ -37,7 +37,8 @@ export const
   ITEM = 'Item',
   ADD_OFFER = 'Add offer',
   CHANGE_DATA = 'Change Data',
-  SHOW_OFFER = 'Show added offer',
+  SHOW_OFFER = 'Show offer',
+  SHOW_ADDED_OFFER = 'Show added offer',
   USE_USER_ADDRESS = 'Use my address',
   NO_ITEMS_ADDED = 'No items added',
   MAX_PRICE = 'Max price',
@@ -48,11 +49,17 @@ export const
   NO = 'No',
   PER_HOUR = 'per hour',
   AVAILABLE = 'Available',
+  AVAILABLE_FROM = 'Available from',
+  AVAILABLE_TO = 'Available to',
   CANCEL_RENTAL = 'Cancel rental',
   NON_DELIVERABLE = 'Non deliverable',
   ONLY_PERSONAL_COLLECTION = 'Item is available only with personal collection',
   RENT = 'Rent',
-  OFFERED_BY = 'Offered by:';
+  OFFERED_BY = 'Offered by:',
+  MY_RENTALS = "My rentals",
+  SEARCH_OFFERS = "Search",
+  CLOSE = "Close",
+  RENTED_ON = "Rented on";
 
 const ERRORS = {
   'WRONG_CREDENTIALS': 'Wrong Credentials',

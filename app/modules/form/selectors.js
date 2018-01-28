@@ -1,3 +1,4 @@
-export const getStatus = state => state.form.get('status');
-export const getError = state => state.form.get('error');
-export const getFormResponse = state => state.form.get('data');
+export const getForm = state => state.form;
+export const getStatus = state => getForm(state).get('status');
+export const getError = state => getForm(state).get('error');
+export const getFormResponse = state => getForm(state).get('data');

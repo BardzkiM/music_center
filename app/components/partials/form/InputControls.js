@@ -54,7 +54,7 @@ TextAreaControl.propTypes = {
 };
 
 const SubmitControl = ({text}) => (
-  <input type="submit" className="" value={text}/>
+  <input type="submit" className="button" value={text}/>
 );
 
 SubmitControl.propTypes = {

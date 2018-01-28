@@ -2,6 +2,7 @@ import React from 'react';
 import {Loading, ErrorMessage, AddressView} from '../../../partials/common/common';
 
 export default class ViewUser extends React.Component {
+
   componentDidMount() {
     const {params, userId} = this.props;
 

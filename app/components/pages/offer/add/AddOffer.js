@@ -13,7 +13,7 @@ import {
   END_DATE,
   DESCRIPTION,
   ADD_OFFER,
-  SHOW_OFFER,
+  SHOW_ADDED_OFFER,
   NO_ITEMS_ADDED,
   ITEM,
   NON_DELIVERABLE
@@ -76,7 +76,7 @@ export default class AddOffer extends Form {
     if (items && items.size) {
       return (
         <div>
-          <form onSubmit={this.handleSubmit}>
+          <form className="generic-form" onSubmit={this.handleSubmit}>
             <CustomSelect name='item' label={ITEM}
                           onChange={this.adjustFormControls} items={formatItems(items).toJS()}/>
             {this.isItemTypeNonDeliverable() || this.getNoDeliveryCheckbox()}
@@ -98,8 +98,10 @@ export default class AddOffer extends Form {
     return (
       <div className='form-row'>
         <label htmlFor='non-deliverable' className="">{NON_DELIVERABLE}</label>
-        <input onChange={this.noDeliveryCheckboxChange}
-               id='non-deliverable' type="checkbox" placeholder={NON_DELIVERABLE}/>
+        <div className="checkbox-wrapper">
+          <input onChange={this.noDeliveryCheckboxChange}
+                 id='non-deliverable' type="checkbox" placeholder={NON_DELIVERABLE}/>
+        </div>
       </div>
     );
   }
@@ -109,6 +111,10 @@ export default class AddOffer extends Form {
   };
 
   getSuccessContent() {
-    return <Link to={`/offer/${this.props.offerId}`}>{SHOW_OFFER}</Link>;
+    return (
+      <div className="link-wrapper">
+        <Link to={`/offer/${this.props.offerId}`}>{SHOW_ADDED_OFFER}</Link>
+      </div>
+    );
   }
 }

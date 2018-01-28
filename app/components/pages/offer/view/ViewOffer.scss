@@ -1,12 +1,15 @@
 .ViewOffer {
   display: flex;
   flex-flow: row wrap;
+  padding: 20px 50px;
 
   .offer-header {
     flex: 1 0 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    text-align: center;
+    font-size: 40px;
   }
 
   .photo-gallery {
@@ -19,18 +22,27 @@
   }
 
   .content {
-    flex-basis: 60%;
+    flex-basis: calc(60% - 40px);
+    padding: 0 20px;
 
     .title {
-
+      font-size: 24px;
+      padding: 10px 0;
     }
 
     .subtitle {
-
+      font-size: 20px;
+      padding: 5px 0;
     }
 
     .description {
+      .title {
+        font-size: 20px;
+      }
 
+      .subtitle {
+        font-size: 18px;
+      }
     }
   }
 

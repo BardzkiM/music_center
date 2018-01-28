@@ -1,0 +1,37 @@
+.RentalsList {
+
+  .rental-list-item {
+    padding: 20px;
+    margin: 20px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: row;
+    background: #ddd;
+
+    img {
+      max-height: 180px;
+    }
+
+    .item-description {
+      padding-left: 15px;
+      display: flex;
+      flex-direction: column;
+
+      p, .availability > a, .cancel {
+        padding: 3px 0;
+      }
+
+      .title {
+        font-size: 22px;
+        font-weight: bold;
+      }
+
+      .availability {
+        margin-top: auto;
+      }
+      .cancel {
+        cursor: pointer;
+      }
+    }
+  }
+}

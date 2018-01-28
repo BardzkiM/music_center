@@ -3,3 +3,13 @@
 .rbc-time-header .rbc-row:nth-child(2) {
   display: none;
 }
+
+.rbc-time-view .rbc-row {
+  min-height: 30px;
+}
+
+.rbc-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

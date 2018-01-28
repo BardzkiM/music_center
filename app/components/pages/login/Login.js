@@ -4,7 +4,7 @@ import {SubmitControl} from '../../partials/form/InputControls';
 import BackToHome from '../../partials/links/BackToHome';
 import {getFormControlsDOM} from '../../../utils/form';
 import Form from '../generic/Form';
-import RegisterConnector from '../../../connectors/pages/RegisterConnector';
+import './Login.scss';
 
 const formControls = [
   {name: 'login', text: LOGIN, type: 'text'},
@@ -18,8 +18,8 @@ export default class LoginPage extends Form {
 
   getForm() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
+      <div className="Login">
+        <form className="generic-form" onSubmit={this.handleSubmit}>
           {getFormControlsDOM(formControls)}
           <SubmitControl text={LOG_IN}/>
         </form>

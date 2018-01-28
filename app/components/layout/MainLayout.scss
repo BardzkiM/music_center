@@ -1,3 +1,5 @@
+@import '../../colors';
+
 .MainLayout {
   display: flex;
   flex-direction: column;
@@ -11,4 +13,71 @@
       pointer-events: none;
     }
   }
+}
+
+.button {
+  margin: 5px auto;
+  background: $mainColor;
+  border-radius: 6px;
+  padding: 5px 10px;
+  cursor: pointer;
+
+  &:hover {
+    background: $mainColorHover;
+  }
+
+  &:disabled {
+    background: $mainColorHover;
+  }
+}
+
+.generic-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 35px auto auto;
+  border-right: 2px solid #999;
+
+  .form-row {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 5px;
+
+    label {
+      width: 120px;
+      text-align: end;
+      padding-right: 15px;
+      font-size: 20px;
+    }
+
+    input, textarea {
+      border-radius: 6px;
+      padding: 5px;
+      width: 250px;
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    .checkbox-wrapper {
+      width: 250px;
+
+      input {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+}
+
+.link-wrapper {
+  width: 100%;
+  text-align: center;
+  margin: 0 auto;
+  font-size: 20px;
+  padding: 10px;
 }

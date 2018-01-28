@@ -3,5 +3,13 @@
 
   &.show {
     display: block;
+    position: fixed;
+    font-size: 20px;
+    right: 0;
+    top: 40px;
+    background: #f4bf42;
+    border: 1px solid #ba902e;
+    border-radius: 5px 0 0 5px;
+    padding: 20px 50px 20px 20px;
   }
 }

@@ -36,7 +36,7 @@ export default class AddItem extends Form {
   getForm() {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="generic-form" onSubmit={this.handleSubmit}>
           {getFormControlsDOM(formControls)}
           <CustomSelect name='type' label={ITEM_TYPE} items={ITEM_TYPES}/>
           {this.getAddressCheckbox()}
@@ -48,14 +48,20 @@ export default class AddItem extends Form {
   }
 
   getSuccessContent() {
-    return <Link to={'/item/' + this.props.itemId}>{SHOW_ITEM}</Link>;
+    return (
+      <div className="link-wrapper">
+        <Link to={'/item/' + this.props.itemId}>{SHOW_ITEM}</Link>
+      </div>
+    );
   }
 
   getAddressCheckbox() {
     return (
       <div className="form-row">
         <label htmlFor='useUserAddress' className="">{USE_USER_ADDRESS}</label>
-        <input id='useUserAddress' type='checkbox' className="" onClick={this.handleCheckboxChange}/>
+        <div className="checkbox-wrapper">
+          <input id='useUserAddress' type='checkbox' className="" onClick={this.handleCheckboxChange}/>
+        </div>
       </div>
     );
   }

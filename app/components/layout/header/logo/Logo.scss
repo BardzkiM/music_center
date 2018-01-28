@@ -1,8 +1,14 @@
+@import '../../../../colors';
+
 .Logo {
-  color: #3bf690;
+  color: $mainColor;
   font-size: 28px;
   position: absolute;
   left: 0;
   margin-left: 10px;
   padding: 10px 0;
+
+  &:hover {
+    color: $mainColorHover;
+  }
 }

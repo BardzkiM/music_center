@@ -12,7 +12,7 @@ const currentDate = moment().format('YYYY-MM-DDTHH:00');
 const endDate = moment().add(1, 'hours').format('YYYY-MM-DDTHH:00');
 
 const formControls = [
-  {name: 'title', text: TITLE, type: 'text'},
+  {name: 'title', text: TITLE, type: 'text', required: false},
   {name: 'maxPrice', text: MAX_PRICE, type: 'number', required: false},
   {name: 'city', text: CITY, type: 'text', required: false},
   {name: 'startDate', text: DATE, type: 'datetime-local', value: currentDate},
@@ -52,11 +52,11 @@ export default class SearchOffers extends React.Component {
   }
 
   render() {
+
     const {offers, formStatus} = this.props;
-    
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className="generic-form" onSubmit={this.handleSubmit}>
           <CustomSelect name='type' label={ITEM_TYPE} items={ITEM_TYPES}/>
           {getFormControlsDOM(formControls)}
           <SubmitControl text={SEARCH}/>

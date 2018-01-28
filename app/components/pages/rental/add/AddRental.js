@@ -70,7 +70,7 @@ export default class AddRental extends Form {
 
       return (
         <div>
-          <form onSubmit={this.handleSubmit}>
+          <form className="generic-form" onSubmit={this.handleSubmit}>
             {isOfferDeliverable || <InfoMessage message={ONLY_PERSONAL_COLLECTION}/>}
             {getFormControlsDOM(controls)}
             {isOfferDeliverable && this.getAddressCheckbox()}
@@ -85,14 +85,20 @@ export default class AddRental extends Form {
   }
 
   getSuccessContent() {
-    return <Link to={'/rental/' + this.props.rentalId}>{SHOW_RENTAL}</Link>;
+    return (
+      <div className="link-wrapper">
+        <Link to={'/rental/' + this.props.rentalId}>{SHOW_RENTAL}</Link>
+      </div>
+    );
   }
 
   getAddressCheckbox() {
     return (
       <div className="form-row">
         <label htmlFor='useUserAddress' className="">{USE_USER_ADDRESS}</label>
-        <input id='useUserAddress' type='checkbox' className="" onClick={this.handleCheckboxChange}/>
+        <div className="checkbox-wrapper">
+          <input id='useUserAddress' type='checkbox' className="" onClick={this.handleCheckboxChange}/>
+        </div>
       </div>
     );
   }
